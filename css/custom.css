@@ -112,4 +112,11 @@ svg.icon {
     overflow: hidden;
   }
   
+
+/* 吸底播放器歌词控制 */
+.aplayer-fixed .aplayer-lrc {
+  display: none !important; /* 完全隐藏 */
+  /* 或者 */
+  height: 20px !important; /* 限制高度 */
+}
   
