@@ -1,0 +1,514 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>微分方程数值解 第二章（1） | Vendredi</title><meta name="author" content="Vendredi"><meta name="copyright" content="Vendredi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="椭圆型方程的有限差分法，一维差分格式的直接差分法求解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微分方程数值解 第二章（1）">
+<meta property="og:url" content="https://www.vendre.top/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/index.html">
+<meta property="og:site_name" content="Vendredi">
+<meta property="og:description" content="椭圆型方程的有限差分法，一维差分格式的直接差分法求解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s21.ax1x.com/2025/05/18/pEvB2WV.png">
+<meta property="article:published_time" content="2025-05-22T12:53:57.000Z">
+<meta property="article:modified_time" content="2025-05-22T13:29:04.288Z">
+<meta property="article:author" content="Vendredi">
+<meta property="article:tag" content="微分方程数值解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s21.ax1x.com/2025/05/18/pEvB2WV.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "微分方程数值解 第二章（1）",
+  "url": "https://www.vendre.top/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/",
+  "image": "https://s21.ax1x.com/2025/05/18/pEvB2WV.png",
+  "datePublished": "2025-05-22T12:53:57.000Z",
+  "dateModified": "2025-05-22T13:29:04.288Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Vendredi",
+      "url": "https://www.vendre.top/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg"><link rel="canonical" href="https://www.vendre.top/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微分方程数值解 第二章（1）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.css">
+
+<link rel="stylesheet" href="https://unpkg.com/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/18/pEvB2WV.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第二章（1）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第二章（1）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-22T12:53:57.000Z" title="发表于 2025-05-22 20:53:57">2025-05-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-22T13:29:04.288Z" title="更新于 2025-05-22 21:29:04">2025-05-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="椭圆型方程有限差分法求解"><a href="#椭圆型方程有限差分法求解" class="headerlink" title="椭圆型方程有限差分法求解"></a>椭圆型方程有限差分法求解</h1><p><strong>椭圆型方程及有限差分法基本步骤</strong></p>
+<p>对于椭圆型方程</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+-\Delta u = f & \Omega\subset\mathbb{R}^d\\u = g & \partial\Omega
+\end{cases}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\Delta u=\sum\frac{\partial^2u}{\partial x_i^2}</script><p>有限差分法的基本步骤：</p>
+<p><strong>1、区域离散化</strong>：划分网格，将求解区域离散成节点</p>
+<p><strong>2、微分算子离散化</strong>：用差分近似导数</p>
+<p><strong>3、离散方程组求解</strong>：求解得到的离散方程组</p>
+<h1 id="一维情形直接离散化方法"><a href="#一维情形直接离散化方法" class="headerlink" title="一维情形直接离散化方法"></a><strong>一维情形直接离散化方法</strong></h1><h1 id="区域离散化"><a href="#区域离散化" class="headerlink" title="区域离散化"></a><strong>区域离散化</strong></h1><p>对于方程</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+Lu=-u'' + q(x)u = f(x),\quad a < x < b,q(x)\geq0\\
+u(a)=\alpha, u(b)=\beta \quad (Dirichlet 边值条件) 
+
+\end{cases}</script><p>将 $[a,b]$ 分成 $N$ 等分，$\displaystyle h=\frac{b - a}{N}$ ，节点 $x_i = a+ih$ ，$i = 0,1,\cdots,N$ </p>
+<h2 id="微分算子离散化"><a href="#微分算子离散化" class="headerlink" title="微分算子离散化"></a><strong>微分算子离散化</strong></h2><p>利用 Taylor 展开</p>
+<script type="math/tex; mode=display">
+\begin{align}
+u(x_{i + h}) &=u(x_i)+u'(x_i)h+\frac{u''(x_i)}{2!}h^2+\frac{u'''(x_i)}{3!}h^3+\frac{u^{(4)}(x_i)}{4!}h^4+O(h^5)\\
+u(x_{i - h})&=u(x_i)-u'(x_i)h+\frac{u''(x_i)}{2!}h^2-\frac{u'''(x_i)}{3!}h^3+\frac{u^{(4)}(x_i)}{4!}h^4+O(h^5)\\
+
+
+
+\end{align}</script><p>两式相加并整理得</p>
+<script type="math/tex; mode=display">
+\frac{u(x_{i + h})+u(x_{i - h})-2u(x_i)}{h^2}=u''(x_i)+\frac{u^{(4)}(x_i)}{12}h^2+O(h^3)</script><p>记 $R_i(u)$ 为截断误差。原方程在 $x_i$ 处写成</p>
+<script type="math/tex; mode=display">
+-\frac{u(x_{i - h})-2u(x_i)+u(x_{i + h})}{h^2}+q(x_i)u(x_i)=f(x_i)+R_i(u)</script><p>舍去 $R_i(u)$ 得差分方程（中心差分格式 ）</p>
+<script type="math/tex; mode=display">
+-\frac{u_{i - 1}-2u_i+u_{i + 1}}{h^2}+q_iu_i = f_i\\
+q_i = q(x_i)\\
+f_i = f(x_i)</script><p>微分算子 $L$ 记为：</p>
+<script type="math/tex; mode=display">
+Lu=-u''+q(x)u</script><p>微分算子 $L_h$ 记为：</p>
+<script type="math/tex; mode=display">
+L_h[u(x_i)]=-\frac{u(x_{i - h})-2u(x_i)+u(x_{i + h})}{h^2}+q(x_i)u(x_i)</script><p>截断误差 $R_i(u)$ 记为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+R_i(u) &=L_h[u(x_i)]-[Lu](x_i)\\
+&=-\frac{u(x_{i - h})-2u(x_i)+u(x_{i + h})}{h^2}+u''
+\end{align}</script><h2 id="离散方程组求解"><a href="#离散方程组求解" class="headerlink" title="离散方程组求解"></a><strong>离散方程组求解</strong></h2><p>离散化方程组为</p>
+<script type="math/tex; mode=display">
+\begin{cases}\displaystyle -\frac{u_{i - 1}-2u_i+u_{i + 1}}{h^2}+q_iu_i = f_i, & i = 1,\cdots,N - 1\\u_0=\alpha, u_N=\beta\end{cases}</script><p>写成矩阵向量形式</p>
+<script type="math/tex; mode=display">
+AU = F\\
+U=(u_1,u_2,\cdots,u_{N - 1})^T</script><p>其中</p>
+<script type="math/tex; mode=display">
+A=\begin{bmatrix}\displaystyle 
+    \frac{2}{h^2}+q_1 &\displaystyle  -\frac{1}{h^2} & 0      & \cdots & 0 \\
+    \displaystyle -\frac{1}{h^2} & \displaystyle \frac{2}{h^2}+q_2 &\displaystyle  -\frac{1}{h^2}  & \ddots & \vdots \\
+    0     & \displaystyle -\frac{1}{h^2} & \ddots & \ddots & 0 \\
+    \vdots& \ddots& \ddots &\displaystyle  \frac{2}{h^2}+q_{N-2}& \displaystyle -\frac{1}{h^2} \\
+    0     & \cdots& 0      & \displaystyle -\frac{1}{h^2} & \displaystyle \frac{2}{h^2}+q_{N-1}
+\end{bmatrix}</script><p>即</p>
+<script type="math/tex; mode=display">
+-\frac{1}{h^2}\begin{bmatrix}
+    -2 & 1 & 0      & \cdots & 0 \\
+    1 & -2 & 1  & \ddots & \vdots \\
+    0     & 1 & \ddots & \ddots & 0 \\
+    \vdots& \ddots& \ddots & -2& 1 \\
+    0     & \cdots& 0      & 1& -2
+\end{bmatrix}
+\begin{bmatrix}
+    u_1 \\ 
+    u_2 \\ 
+    \vdots \\ 
+    \vdots \\
+    \vdots \\
+    u_{N-1}
+\end{bmatrix}+\begin{bmatrix}
+    q_1 & 0      & \cdots & 0 \\
+    0   & q_2    & \ddots & \vdots \\
+    \vdots & \ddots & \ddots & 0 \\
+    0   & \cdots & 0      & q_{N-1}
+\end{bmatrix}\begin{bmatrix}
+    u_1 \\ 
+    u_2 \\ 
+    \vdots \\ 
+    \vdots \\
+    u_{N-1}
+\end{bmatrix}=\begin{bmatrix}
+   \displaystyle  f_1+\frac{\alpha}{h^2} \\ 
+  \displaystyle   f_2 \\ 
+    \vdots \\ 
+    \vdots \\
+    f_{N-2}\\
+    \displaystyle f_{N-1}+\displaystyle \frac{\beta}{h^2}
+\end{bmatrix}</script><h3 id="方法一、追赶法（Thomas-法）"><a href="#方法一、追赶法（Thomas-法）" class="headerlink" title="方法一、追赶法（Thomas 法）"></a><strong>方法一、追赶法（Thomas 法）</strong></h3><p>对于三对角方程组</p>
+<script type="math/tex; mode=display">
+-a_iU_{i - 1}+b_iU_i - c_iU_{i + 1}=d_i \quad \quad i = 1,\cdots,N - 1\\
+u_0 = 0 \quad u_N = 0</script><p>且</p>
+<script type="math/tex; mode=display">
+a_i>0 \quad b_i>0 \quad c_i>0 \quad b_i>a_i + c_i \quad (对角占优 )</script><p>通过逐步消元得到</p>
+<script type="math/tex; mode=display">
+U_i - e_iU_{i + 1}=f_i</script><p> 其中</p>
+<script type="math/tex; mode=display">
+\begin{align}
+e_i=\frac{c_i}{b_i - a_ie_{i - 1}}\\
+f_i=\frac{d_i + a_if_{i - 1}}{b_i - a_ie_{i - 1}}\\
+\end{align}</script><p>$i = 1,\cdots,N - 1$ ，从 $i = 1$ 开始计算，令 $e_0 = 0$ ，$f_0 = 0$ ，最后回代求解 $U_i$ 。 这种方法利用三对角矩阵的结构特点，高效求解离散方程组 </p>
+<h3 id="方法二、迭代法"><a href="#方法二、迭代法" class="headerlink" title="方法二、迭代法"></a><strong>方法二、迭代法</strong></h3><p>除追赶法外，还可使用迭代法（如 Jacobi、Gauss - Seidel 等 ）求解离散方程组</p>
+<p>以方程</p>
+<script type="math/tex; mode=display">
+\begin{cases}-u'' + xu=(x - 1)e^x\\u(0)=1, u(1)=e\end{cases}</script><p>（真解 $u(x)=e^x$ ）为例</p>
+<p>通过中心差分格式得到</p>
+<script type="math/tex; mode=display">
+-\frac{u_{i - 1}-2u_i+u_{i + 1}}{h^2}+x_iu_i=(x_i - 1)e^{x_i}</script><p>整理为</p>
+<script type="math/tex; mode=display">
+-a_iu_{i - 1}+b_iu_i - c_iu_{i + 1}=d_i</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{align}
+a_i = \frac{1}{h^2} ,\quad b_i=\frac{2}{h^2}+x_i ,\quad c_i=\frac{1}{h^2} \\
+d_i=(x_i - 1)e^{x_i}+\frac{u_0}{h^2} \quad (i = 1 时)\\
+d_{N - 1}=(x_{N - 1} - 1)e^{x_{N - 1}}+\frac{u_N}{h^2}
+\end{align}</script><p>迭代法通过不断迭代更新未知量的值，逐步逼近方程组的解</p>
+<p><strong>理论问题</strong></p>
+<p><strong>解的存在唯一性</strong>：分析差分方程是否存在唯一解，常通过研究离散方程组系数矩阵的性质（如对角占优、正定等 ）来判断。例如，若系数矩阵严格对角占优，可利用相关定理证明方程组存在唯一解</p>
+<p><strong>收敛性及收敛速度</strong>：研究当 $h \to 0$ 时，数值解 $u_i$ 是否收敛到精确解 $u(x_i)$ 以及收敛速度。涉及在不同范数意义下的收敛情况。通过分析截断误差、稳定性等因素，推导收敛阶数，比如中心差分格式在合适条件下对二阶导数的逼近具有 $O(h^2)$ 阶的收敛速度 </p>
+<p><strong>记号与概念</strong></p>
+<p><strong>网格点</strong>：$I_h$ 表示网格内点，$\overline{I}_h$ 表示网格内点 + 边界点 </p>
+<p><strong>网格函数及其范数</strong>：定义网格函数 $u_h$ </p>
+<p>$C$ 范数</p>
+<script type="math/tex; mode=display">
+\displaystyle \|u_h\|_C=\max_{1\leq i\leq N - 1}|u_i|</script><p>用于衡量网格函数在离散点上的最大绝对值</p>
+<p>$L^2$ 范数</p>
+<script type="math/tex; mode=display">
+\displaystyle \|u_h\|_0=(\sum_{i = 1}^{N - 1}h u_i^2)^{\frac{1}{2}}</script><p>从离散点加权平方和角度衡量函数大小</p>
+<p>$H^1$ 范数</p>
+<script type="math/tex; mode=display">
+\displaystyle \|u(x)\|_{H^1}=(\int_a^b u^2(x)dx+\int_a^b (u'(x))^2dx)^{\frac{1}{2}}</script><p>用于衡量函数及其一阶导数在区间 $[a,b]$ 上的综合 “大小” </p>
+<p>$H^1$ 半范数 </p>
+<script type="math/tex; mode=display">
+\displaystyle |u_h|_1=(\sum_{i = 1}^{N - 1}h\cdot(\frac{u_i - u_{i + 1}}{h})^2)^{\frac{1}{2}}</script><p>反映网格函数离散导数的某种度量 </p>
+<p>对于网格函数 $u_h$ ，其 $H^1$ 范数</p>
+<script type="math/tex; mode=display">
+\displaystyle \|u_h\|_1=(\|u_h\|_0^2+|u_h|_1^2)^{\frac{1}{2}}</script><p>是对离散函数在离散意义下类似的度量</p>
+<h2 id="相容性、收敛性与稳定性定义"><a href="#相容性、收敛性与稳定性定义" class="headerlink" title="相容性、收敛性与稳定性定义"></a><strong>相容性、收敛性与稳定性定义</strong></h2><p><strong>相容性</strong>：对于某一类光滑函数 $u \in \mathcal{M}$ ，若 $\displaystyle \lim_{h \to 0}|R_h(u)| = 0$ ，则称有限差分格式具有相容性。这里 $R_h(u)$ 是截断误差，反映了差分格式对原微分方程的逼近程度，当步长 $h$ 趋于 0 时，截断误差趋于 0 ，意味着差分格式在极限意义下趋近原方程</p>
+<p><strong>收敛性</strong>：当 $h$ 充分小后，若差分方程的解 $u_h$ 存在，且在某范数下 $\displaystyle \lim_{h \to 0}|u_h - u| = 0$ ，则称差分格式收敛。即随着步长减小，数值解在特定范数度量下趋近于精确解</p>
+<p>其中<strong>真解满足的离散方程</strong>为</p>
+<script type="math/tex; mode=display">
+L_h[u(x_i)]=f_i+R_i(u)</script><p><strong>数值解满足的离散方程</strong>为</p>
+<script type="math/tex; mode=display">
+L_hu_i=f_i</script><p><strong>误差满足的离散方程</strong>为</p>
+<script type="math/tex; mode=display">
+L_he_i=R_i(u)</script><p><strong>稳定性</strong>：对于差分方程 <script type="math/tex">\displaystyle \begin{cases}L_hu_i = f_i\\u_0 = u_N = 0\end{cases}</script> ，若存在与网格 $I_h$ 及 $f_h$ 无关的常数 $M$ 和 $h_0$ ，当 $0 < h < h_0$ 时，有 $|u_h| \leq M|f_h|$ ，则称差分方程关于右端稳定。稳定性保证了在一定条件下，右端项的扰动不会引起解的过大变化，且可推出<strong>差分方程解唯一</strong>，以及误差 $e_h$ 满足 $\displaystyle |e_h| \leq M|R_h(u)|$ </p>
+<h3 id="重要定理"><a href="#重要定理" class="headerlink" title="重要定理"></a><strong>重要定理</strong></h3><p>定理：若解充分光滑，相容性 + 稳定性 $\Rightarrow$ 收敛性（收敛阶与截断误差阶相同 ）。这是有限差分法的关键结论，表明在函数光滑性满足要求时，只要差分格式同时具备相容性和稳定性，就必然收敛，且收敛阶数与截断误差阶数一致 </p>
+<h1 id="一维差分格式"><a href="#一维差分格式" class="headerlink" title="一维差分格式"></a>一维差分格式</h1><h2 id="直接差分法"><a href="#直接差分法" class="headerlink" title="直接差分法"></a>直接差分法</h2><p><strong>一维方程及问题设定</strong></p>
+<p>考虑方程</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\displaystyle Lu = -\frac{d}{dx}(p(x)\frac{du}{dx})+r(x)\frac{du}{dx}+q(x)u = f(x),&a < x < b\\u(a)=\alpha, u(b)=\beta
+\end{cases}</script><p>其中 $p(x)\geq p_{min}>0$ </p>
+<h3 id="直接差分法步骤"><a href="#直接差分法步骤" class="headerlink" title="直接差分法步骤"></a><strong>直接差分法步骤</strong></h3><p><strong>区域离散化</strong>：可采用不均匀网格，将区间 $[a,b]$ 离散为 $a = x_0 < x_1 < \cdots < x_N = b$ ，记 $h_i = x_i - x_{i - 1}$ ，$h=\max h_i$ ，引入对偶剖分 $\displaystyle a = x_0 < x_{\frac{1}{2}} < x_1 < \cdots < x_{N - \frac{1}{2}} < x_N = b$ ，$x_{i - \frac{1}{2}}=\frac{1}{2}(x_{i - 1}+x_i)$ </p>
+<p><strong>导数项离散化尝试</strong>：</p>
+<p><strong>尝试 1</strong>：令 $v = p(x)u’(x)$ ，用</p>
+<script type="math/tex; mode=display">
+\displaystyle \frac{v(x_{i + 1})-v(x_{i - 1})}{h_{i + 1}+h_i}=\frac{p(x_{i + 1})u'(x_{i + 1})-p(x_{i - 1})u'(x_{i - 1})}{h_{i + 1}+h_i}</script><p>近似 $v’(x_i)$ ，但 $u’(x_{i + 1})$ ，$u’(x_{i - 1})$ 还需进一步离散，会涉及 $x_{i + 2}$ ，$x_{i - 2}$ 等节点</p>
+<p><strong>尝试 2</strong>：引入中点 $x_{i\pm\frac{1}{2}}$ ，用</p>
+<script type="math/tex; mode=display">
+\frac{v(x_{i + \frac{1}{2}})-v(x_{i - \frac{1}{2}})}{\frac{1}{2}h_{i + 1}+\frac{1}{2}h_i}=\frac{p(x_{i +\frac{1}{2} })u'(x_{i + \frac{1}{2}})-p(x_{i - \frac{1}{2}})u'(x_{i - \frac{1}{2}})}{\frac{1}{2}(h_{i + 1}+h_i)}</script><p>近似 $v’(x_i)$ ，其中</p>
+<script type="math/tex; mode=display">
+u'(x_{i + \frac{1}{2}})\approx\frac{u(x_{i + 1})-u(x_i)}{h_{i + 1}}</script><p>$\displaystyle u’(x_{i - \frac{1}{2}})$ 同理 。这种方式在对 $(p(x)u’)’(x_i)$ 进行差分离散时，主要用到 $x_{i - 1}$ ，$x_i$ ，$x_{i + 1}$ 三个节点，相比尝试 1 更具优势，后续可在此基础上进一步构建差分格式，将原微分方程转化为离散的差分方程，进而求解 </p>
+<h3 id="差分格式构建"><a href="#差分格式构建" class="headerlink" title="差分格式构建"></a><strong>差分格式构建</strong></h3><p>基于前面的离散化尝试，定义</p>
+<script type="math/tex; mode=display">
+[u]_i\approx\frac{u_{i + 1}-u_{i - 1}}{h_{i + 1}+h_i}\\
+[(p(x)u')']_i\approx\frac{p_{i+\frac{1}{2}}[u]_{i+\frac{1}{2}}-p_{i - \frac{1}{2}}[u]_{i - \frac{1}{2}}}{\frac{1}{2}(h_i+h_{i + 1})}</script><p>进一步得到原微分方程的差分格式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+L_hu_i = -\frac{2}{h_i+h_{i + 1}}[p_{i+\frac{1}{2}}\frac{u_{i + 1}-u_i}{h_{i + 1}}&-p_{i - \frac{1}{2}}\frac{u_i - u_{i - 1}}{h_i}]+\frac{r_i}{h_i+h_{i + 1}}(u_{i + 1}-u_{i - 1})+q_iu_i = f_i\\
+i &= 1,\cdots,N - 1
+\end{align}</script><p>边界条件为 $u_0=\alpha$ ，$u_N=\beta$ 。该差分格式可写成矩阵形式 $AU = F$ ，其中 $A = A_1+A_2+A_3$ 是三对角矩阵。一般情况下</p>
+<script type="math/tex; mode=display">
+-(p(x)u')'+ru'+qu</script><p>不是自伴算子，$A$ 为非对称矩阵；若 $r(x)\equiv0$ ，则是自伴算子，此时若网格均匀，$A$ 对称，若网格不均匀，$A$ 不对称但可对称化 </p>
+<h3 id="局部截断误差分析"><a href="#局部截断误差分析" class="headerlink" title="局部截断误差分析"></a><strong>局部截断误差分析</strong></h3><p><strong>对 $u’(x_i)$ 进行 Taylor 展开分析：</strong></p>
+<p>由</p>
+<script type="math/tex; mode=display">
+\begin{align}
+u(x_{i + h_{i + 1}})&=u(x_i)+u'(x_i)h_{i + 1}+\frac{u''(x_i)}{2!}h_{i + 1}^2+\frac{u'''(x_i)}{3!}h_{i + 1}^3+\cdots\\
+u(x_{i - h_i})&=u(x_i)-u'(x_i)h_i+\frac{u''(x_i)}{2!}h_i^2-\frac{u'''(x_i)}{3!}h_i^3+\cdots
+\end{align}</script><p>可得</p>
+<script type="math/tex; mode=display">
+u'(x_i)\approx\frac{u(x_{i + h_{i + 1}})-u(x_{i - h_i})}{h_{i + 1}+h_i}=u'(x_i)+\frac{u''(x_i)}{2}(h_{i + 1}-h_i)+O(h^2)</script><p><strong>对 $(p(x)u’(x))’$ 进行 Taylor 展开分析</strong>：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+(p(x)u'(x))'(x_i)&\approx\frac{2}{h_i+h_{i + 1}}[p_{i+\frac{1}{2}}\frac{u(x_{i + 1})-u(x_i)}{h_{i + 1}}-p_{i - \frac{1}{2}}\frac{u(x_i)-u(x_{i - 1})}{h_i}]\\
+&=(pu')'(x_i)+\frac{h_{i + 1}-h_i}{4}(pu')''(x_i)+\frac{h_{i + 1}-h_i}{12}p(x_i)u'''(x_i)+O(h^2)
+\end{align}</script><p><strong>综合截断误差</strong>：</p>
+<script type="math/tex; mode=display">
+R_i(u)=(h_{i + 1}-h_i)[\frac{1}{4}(pu')''(x_i)+\frac{1}{12}p(x)u'''(x_i)-\frac{1}{2}r(x_i)u''(x_i)]+O(h^2)</script><p><strong>网格不均匀时</strong>：截断误差 $R_i(u)=O(h)$ 。这是因为在不均匀网格下，节点间距不一致，在 Taylor 展开分析导数近似时，由于步长差异，高阶项不能完全抵消，导致整体误差阶数为 $O(h)$ ，精度相对较低</p>
+<p><strong>网格均匀时</strong>：截断误差 $R_i(u)=O(h^2)$ 。当网格均匀，即 $h_i = h$ （$i = 1,\cdots,N - 1$ ）时 ，在对导数进行差分离散并通过 Taylor 展开分析误差过程中，一些含 $h$ 的高阶项相互抵消，使得误差阶数提高到 $O(h^2)$ ，差分格式具有更高精度</p>
+<p><strong>均匀网格下的差分格式形式</strong></p>
+<p>此时差分格式为</p>
+<script type="math/tex; mode=display">
+L_hu_i = -\frac{1}{h^2}(p_{i+\frac{1}{2}}u_{i + 1}-(p_{i+\frac{1}{2}}+p_{i - \frac{1}{2}})u_i+p_{i - \frac{1}{2}}u_{i - 1})+\frac{r_i}{2h}(u_{i + 1}-u_{i - 1})+q_iu_i = f_i</script><p>当 $p(x)\equiv1$ 时，格式中</p>
+<script type="math/tex; mode=display">
+-\frac{1}{h^2}(p_{i+\frac{1}{2}}u_{i + 1}-(p_{i+\frac{1}{2}}+p_{i - \frac{1}{2}})u_i+p_{i - \frac{1}{2}}u_{i - 1})</script><p>这部分就是常见的中心差分形式，用于逼近二阶导数，体现了均匀网格下差分格式的简洁性和规律性，也反映出在特定条件下格式与经典差分形式的联系 </p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第一章（2）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Runge-Kutta法，绝对稳定性与绝对稳定域，一阶方程组和刚性问题，外推法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-21</div><div class="info-item-2">微分方程数值解 第一章（2）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Runge-Kutta法，绝对稳定性与绝对稳定域，一阶方程组和刚性问题，外推法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">待更新内容：数据结构与算法的笔记，积分好题收录</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A4%AD%E5%9C%86%E5%9E%8B%E6%96%B9%E7%A8%8B%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%B3%95%E6%B1%82%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">椭圆型方程有限差分法求解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%83%85%E5%BD%A2%E7%9B%B4%E6%8E%A5%E7%A6%BB%E6%95%A3%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">一维情形直接离散化方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">区域离散化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E7%AE%97%E5%AD%90%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">微分算子离散化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E6%96%B9%E7%A8%8B%E7%BB%84%E6%B1%82%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">离散方程组求解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E3%80%81%E8%BF%BD%E8%B5%B6%E6%B3%95%EF%BC%88Thomas-%E6%B3%95%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">方法一、追赶法（Thomas 法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E3%80%81%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">3.2.2.</span> <span class="toc-text">方法二、迭代法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%AE%B9%E6%80%A7%E3%80%81%E6%94%B6%E6%95%9B%E6%80%A7%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="toc-number">3.3.</span> <span class="toc-text">相容性、收敛性与稳定性定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E5%AE%9A%E7%90%86"><span class="toc-number">3.3.1.</span> <span class="toc-text">重要定理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">一维差分格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%B7%AE%E5%88%86%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">直接差分法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%B7%AE%E5%88%86%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.1.1.</span> <span class="toc-text">直接差分法步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F%E6%9E%84%E5%BB%BA"><span class="toc-number">4.1.2.</span> <span class="toc-text">差分格式构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E6%88%AA%E6%96%AD%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">4.1.3.</span> <span class="toc-text">局部截断误差分析</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/" title="微分方程数值解 第二章（1）"><img src="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微分方程数值解 第二章（1）"/></a><div class="content"><a class="title" href="/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/" title="微分方程数值解 第二章（1）">微分方程数值解 第二章（1）</a><time datetime="2025-05-22T12:53:57.000Z" title="发表于 2025-05-22 20:53:57">2025-05-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）"><img src="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微分方程数值解 第一章（2）"/></a><div class="content"><a class="title" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）">微分方程数值解 第一章（2）</a><time datetime="2025-05-21T12:30:16.000Z" title="发表于 2025-05-21 20:30:16">2025-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img src="https://s21.ax1x.com/2025/05/18/pEvB2WV.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微分方程数值解 第一章（1）"/></a><div class="content"><a class="title" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）">微分方程数值解 第一章（1）</a><time datetime="2025-05-17T23:57:39.000Z" title="发表于 2025-05-18 07:57:39">2025-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/14/%E7%A7%AF%E5%88%86%E4%B8%8E%E6%B1%82%E5%92%8C%E8%BD%AC%E6%8D%A2%E7%9A%84%E6%80%9D%E6%83%B3%E6%B1%82%E8%A7%A3%E4%B8%80%E7%B1%BB%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F%E9%97%AE%E9%A2%98/" title="积分与求和转换的思想求解一类积分不等式问题"><img src="https://s21.ax1x.com/2025/05/14/pEjld4s.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="积分与求和转换的思想求解一类积分不等式问题"/></a><div class="content"><a class="title" href="/2025/05/14/%E7%A7%AF%E5%88%86%E4%B8%8E%E6%B1%82%E5%92%8C%E8%BD%AC%E6%8D%A2%E7%9A%84%E6%80%9D%E6%83%B3%E6%B1%82%E8%A7%A3%E4%B8%80%E7%B1%BB%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F%E9%97%AE%E9%A2%98/" title="积分与求和转换的思想求解一类积分不等式问题">积分与求和转换的思想求解一类积分不等式问题</a><time datetime="2025-05-14T11:45:20.000Z" title="发表于 2025-05-14 19:45:20">2025-05-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/13/%E5%88%86%E6%95%B0%E9%98%B6%E5%AF%BC%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE%E4%B8%8E%E5%BA%94%E7%94%A8/" title="分数阶导数与积分的数学表达与应用"><img src="https://s21.ax1x.com/2025/05/13/pEjiCHf.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分数阶导数与积分的数学表达与应用"/></a><div class="content"><a class="title" href="/2025/05/13/%E5%88%86%E6%95%B0%E9%98%B6%E5%AF%BC%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE%E4%B8%8E%E5%BA%94%E7%94%A8/" title="分数阶导数与积分的数学表达与应用">分数阶导数与积分的数学表达与应用</a><time datetime="2025-05-13T14:13:12.000Z" title="发表于 2025-05-13 22:13:12">2025-05-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async src="//at.alicdn.com/t/c/font_4890277_rdw0tapxyy.js"></script><div class="aplayer" data-id="13570926609" data-server="netease" data-type="playlist"  data-fixed="true" data-theme="#3F51B5"></div><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  // 销毁非固定播放器
+  const destroyAplayer = () => {
+    if (!window.aplayers) return;
+    
+    // 反向遍历避免数组变化问题
+    for (let i = window.aplayers.length - 1; i >= 0; i--) {
+      const player = window.aplayers[i];
+      if (!player.options.fixed) {
+        player.destroy();
+        window.aplayers.splice(i, 1); // 从数组中移除
+      }
+    }
+  };
+
+  // 初始化播放器管理
+  if (!window.aplayers) window.aplayers = [];
+  
+  // 绑定 PJAX 事件
+  document.addEventListener('pjax:start', destroyAplayer);
+  
+  // 可选：重新初始化逻辑
+  document.addEventListener('pjax:complete', () => {
+    // 这里可以添加页面切换后重新初始化非固定播放器的逻辑
+  });
+})();
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/music/*"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
