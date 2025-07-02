@@ -1,0 +1,575 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>微积分下的 Möbius Transformation | Vendredi</title><meta name="author" content="Vendredi"><meta name="copyright" content="Vendredi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="用复分析中莫比乌斯变换的思想解决一类带根号项的分式有理函数积分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微积分下的 Möbius Transformation">
+<meta property="og:url" content="https://www.vendre.top/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/index.html">
+<meta property="og:site_name" content="Vendredi">
+<meta property="og:description" content="用复分析中莫比乌斯变换的思想解决一类带根号项的分式有理函数积分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg">
+<meta property="article:published_time" content="2025-06-26T12:24:29.000Z">
+<meta property="article:modified_time" content="2025-07-02T13:50:35.300Z">
+<meta property="article:author" content="Vendredi">
+<meta property="article:tag" content="数学分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "微积分下的 Möbius Transformation",
+  "url": "https://www.vendre.top/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/",
+  "image": "https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg",
+  "datePublished": "2025-06-26T12:24:29.000Z",
+  "dateModified": "2025-07-02T13:50:35.300Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Vendredi",
+      "url": "https://www.vendre.top/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg"><link rel="canonical" href="https://www.vendre.top/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微积分下的 Möbius Transformation',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.css">
+
+<link rel="stylesheet" href="https://unpkg.com/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微积分下的 Möbius Transformation</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微积分下的 Möbius Transformation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-26T12:24:29.000Z" title="发表于 2025-06-26 20:24:29">2025-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-02T13:50:35.300Z" title="更新于 2025-07-02 21:50:35">2025-07-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.3k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="莫比乌斯变换（分式线性变换）"><a href="#莫比乌斯变换（分式线性变换）" class="headerlink" title="莫比乌斯变换（分式线性变换）"></a>莫比乌斯变换（分式线性变换）</h1><p>在复变函数中，我们学习过复平面中的<strong>莫比乌斯变换</strong>，形式为</p>
+<script type="math/tex; mode=display">
+f\left(z\right)=\frac{az+b}{cz+d} \quad  \left(a,b,c,d \in \mathbb{C},ad-bc \neq0\right)</script><p>它具有许多优美的性质，我们也称其为分式线性变换</p>
+<p><strong>莫比乌斯变换</strong>（Möbius Transformation）虽然起源于复分析，但其思想和方法可以与微积分的工具结合，用于解决特定类型的积分</p>
+<p>例如这类带根号项的分式有理函数积分</p>
+<script type="math/tex; mode=display">
+\int \frac{gx+h}{\left(ax^2+bx+c\right)\sqrt{dx^2+ex+f}}\, \mathrm{d}x</script><p>下面我们从最基础的变换手段讲起，最后给出解决这类积分问题的通法</p>
+<h2 id="倒代换"><a href="#倒代换" class="headerlink" title="倒代换"></a>倒代换</h2><p>通过倒代换 $\displaystyle x=\frac{1}{t}$ 将待求问题的区间从 $[1,+\infty)$ 转换成 $(0,1]$，简化计算</p>
+<p>若问题区间为 $[0,+\infty)$，则分段求解，将原积分拆解成 </p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{+\infty}f\,\mathrm{d}x &=\int_{0}^1f\,\mathrm{d}x+\int_{1}^{+\infty}f\,\mathrm{d}x\\
+&=\int_{0}^1f\,\mathrm{d}x+\int_{0}^1f(\frac{1}{x})\cdot \frac{1}{x^2}\,\mathrm{d}x\\
+&=\int_{0}^1 \left(f+\frac{f\left(\frac{1}{x}\right)}{x^2}\right)\,\mathrm{d}x
+\end{align}</script><h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><script type="math/tex; mode=display">
+\int_{0}^{+\infty} \frac{1}{(x^{2025}+1)(x^2+1)}\,\mathrm{d}x</script><p>对 $[1,+\infty)$ 作倒代换，令 $\displaystyle x=\frac{1}{t}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{+\infty} \frac{1}{(x^{2025}+1)(x^2+1)}\,\mathrm{d}x &=\int_{0}^1\frac{1}{(x^{2025}+1)(x^2+1)}\,\mathrm{d}x+\int_{1}^{+\infty}\frac{1}{(x^{2025}+1)(x^2+1)}\,\mathrm{d}x\\
+&=\int_{0}^1\frac{1}{(x^{2025}+1)(x^2+1)}\,\mathrm{d}x+\int_{0}^1\frac{1}{(\displaystyle \frac{1}{t^{2025}}+1)(\displaystyle \frac{1}{t^2}+1)}\cdot \frac{1}{t^2}\,\mathrm{d}t\\
+&=\int_{0}^1\left(\frac{1}{(x^{2025}+1)(x^2+1)}+\frac{x^{2025}}{(x^{2025}+1)(x^2+1)}\right)\,\mathrm{d}x\\
+&=\int_{0}^1 \frac{\mathrm{d}x}{x^2+1}=\frac{\pi}{4}
+\end{align}</script><h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><script type="math/tex; mode=display">
+\int_{0}^{+\infty} \frac{4 + x + 2x^2 - x^3}{x^6 + 2x^4 + 2x^2 + 1} \,\mathrm{d}x</script><p>同上题解法</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{+\infty} \frac{4 + x + 2x^2 - x^3}{x^6 + 2x^4 + 2x^2 + 1} \,\mathrm{d}x&=\int_{0}^1\frac{4 + x + 2x^2 - x^3}{x^6 + 2x^4 + 2x^2 + 1} \,\mathrm{d}x +\int_{0}^1 \frac{4 + \frac{1}{t} + 2\cdot \frac{1}{t^2} - \frac{1}{t^3}}{\frac{1}{t^6} + 2\cdot \frac{1}{t^4} + 2\cdot \frac{1}{t^2} + 1} \cdot \frac{1}{t^2} \,\mathrm{d}t\\
+&=\int_{0}^1 \left(\frac{4 + x + 2x^2 - x^3}{x^6 + 2x^4 + 2x^2 + 1}+\frac{4x^4 + x^3 + 2x^2 - x}{x^6 + 2x^4 + 2x^2 + 1}\right)\,\mathrm{d}x\\
+&=\int_{0}^{1}\frac{4x^4 +  4x^2 +4}{x^6 + 2x^4 + 2x^2 + 1}\,\mathrm{d}x\\
+&=\int_{0}^{1}\frac{4\left(x^4+x^2+1\right)}{x^2\cdot \left(x^4+x^2+1\right)+\left(x^4+x^2+1\right)}\,\mathrm{d}x\\
+&=\int_{0}^{1}\frac{\mathrm{d}x}{x^2+1}=\frac{\pi}{4}
+\end{align}</script><h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><script type="math/tex; mode=display">
+\int_{0}^{+\infty} \frac{x^2\ln x}{\left(1+x^2\right)^3}\,\mathrm{d}x</script><script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{+\infty} \frac{x^2\ln x}{\left(1+x^2\right)^3}\,dx &=\int_{0}^{1} \frac{x^2\ln x}{\left(1+x^2\right)^3}\,\mathrm{d}x+\int_{0}^{1} \frac{-\frac{1}{t^2}\cdot \ln t}{\left(1+\frac{1}{t^2}\right)^3}
+\cdot \frac{1}{t^2}\,\mathrm{d}t\\
+&=\int_{0}^{+\infty} \left(\frac{x^2\ln x}{\left(1+x^2\right)^3}-\frac{x^2\ln x}{\left(1+x^2\right)^3}\right)\,\mathrm{d}x\\
+&=0
+\end{align}</script><h2 id="退化莫比乌斯变换"><a href="#退化莫比乌斯变换" class="headerlink" title="退化莫比乌斯变换"></a>退化莫比乌斯变换</h2><p>通过代换 $\displaystyle x=\frac{1-t}{1+t}$ 将待求积分的上下限从 $\displaystyle \int_{0}^{1}$ 转换成 $\displaystyle -\int_{0}^{1}$</p>
+<h3 id="例1-1"><a href="#例1-1" class="headerlink" title="例1"></a>例1</h3><script type="math/tex; mode=display">
+\int_{0}^{1}\frac{\ln\left(x+1\right)}{x^2+1}\,\mathrm{d}x</script><p>令 $\displaystyle x=\frac{1-t}{1+t}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{1}\frac{\ln\left(x+1\right)}{x^2+1}\,\mathrm{d}x &= -\int_{0}^{1}\frac{\ln\left(\frac{1-t}{1+t}+1\right)}{\left(\frac{1-t}{1+t}\right)^2+1}\cdot \frac{-2}{\left(t+1\right)^2}\,\mathrm{d}t\\
+&=\int_{0}^{1}\frac{\ln 2-\ln \left(x+1\right)}{x^2+1}\,\mathrm{d}x\\
+&=\int_{0}^{1}\frac{\ln 2}{x^2+1}\,\mathrm{d}x-\int_{0}^{1}\frac{\ln \left(x+1\right)}{x^2+1}\,\mathrm{d}x\\
+&=\ln 2\cdot \frac{\pi}{4}-\int_{0}^{1}\frac{\ln\left(x+1\right)}{x^2+1}\,\mathrm{d}x
+\end{align}</script><p>即</p>
+<script type="math/tex; mode=display">
+\begin{align}
+2\cdot \int_{0}^{1}\frac{\ln\left(x+1\right)}{x^2+1}\,\mathrm{d}x&=\frac{\ln 2\cdot \pi}{4}\\
+\int_{0}^{1}\frac{\ln\left(x+1\right)}{x^2+1}\,\mathrm{d}x &=\frac{\ln 2\cdot \pi}{8}\
+\end{align}</script><h3 id="例2-1"><a href="#例2-1" class="headerlink" title="例2"></a>例2</h3><script type="math/tex; mode=display">
+\int_{0}^{1}\frac{1}{1-x^2}\cdot \ln \left(\frac{x+1}{2x}\right)\,\mathrm{d}x</script><p>令 $\displaystyle x=\frac{1-t}{1+t}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{1}\frac{1}{1-x^2}\cdot \ln \left(\frac{x+1}{2x}\right)\,\mathrm{d}x &=\int_{0}^{1}\frac{1}{1-\left(\frac{1-t}{1+t}\right)^2}\cdot \frac{1}{\left(1+t\right)^2} \cdot  \ln \left(\frac{\frac{1-t}{1+t}+1}{2\cdot \frac{1-t}{1+t}}\right)\,\mathrm{d}t\\
+&=-\frac{1}{2}\cdot \int_{0}^{1}\frac{\ln \left(1-x\right)}{x}\,\mathrm{d}x\\
+&=-\frac{1}{2}\cdot \int_{0}^{1}\frac{1}{x}\cdot \sum_{k=1}^\infty \frac{\left(-1\right)}{k}\cdot x^k\,\mathrm{d}x\\
+&=\frac{1}{2}\cdot \sum_{k=1}^\infty\int_{0}^{1}x^{k-1}\,\mathrm{d}x\\
+&=\frac{1}{2}\cdot \sum_{k=1}^\infty \frac{1}{k^2}=\frac{\pi ^2}{12}
+\end{align}</script><h3 id="例3-1"><a href="#例3-1" class="headerlink" title="例3"></a>例3</h3><script type="math/tex; mode=display">
+\int \frac{\arctan x}{\left(x+1\right)^2}\,\mathrm{d}x</script><p>令 $\displaystyle x=\frac{1-t}{1+t}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int \frac{\arctan x}{\left(x+1\right)^2}\,\mathrm{d}x &= \int \frac{\arctan \left(\frac{1-t}{1+t}\right)}{\left(\left(\frac{1-t}{1+t}\right)+1\right)^2}\cdot \frac{(-2)}{\left(t+1\right)^2}\,\mathrm{d}t\\
+&=-\frac{1}{2}\cdot \int \arctan \left(\frac{1-t}{1+t}\right)\,\mathrm{d}t\\
+&=-\frac{1}{2}\cdot \int \left(\frac{\pi}{4}-\arctan t\right)\,\mathrm{d}t\\
+&=-\frac{\pi}{8}x+\frac{1}{2}\cdot x\cdot \arctan x-\frac{1}{4}\ln \left(x^2+1\right)+C
+\end{align}</script><h2 id="莫比乌斯变换"><a href="#莫比乌斯变换" class="headerlink" title="莫比乌斯变换"></a>莫比乌斯变换</h2><p>作如下分式线性变换</p>
+<script type="math/tex; mode=display">
+x=\frac{at+b}{ct+d} \quad or \quad t=\frac{ax+b}{cx+d}</script><h3 id="例1-2"><a href="#例1-2" class="headerlink" title="例1"></a>例1</h3><script type="math/tex; mode=display">
+\int_{0}^{1}\frac{x^{m-1}\cdot \left(1-x\right)^{n-1}}{\left(t+x\right)^{m+n}}\,\mathrm{d}x</script><p>令 $\displaystyle x=\frac{t\left(1-z\right)}{t+z}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int_{0}^{1}\frac{x^{m-1}\cdot \left(1-x\right)^{n-1}}{\left(t+x\right)^{m+n}}\,\mathrm{d}x&=\int_{0}^{1}\left(\frac{x}{t+x}\right)^m\cdot \left(\frac{1-x}{t+x}\right)^n\cdot \frac{\mathrm{d}x}{x\cdot \left(1-x\right)}\\
+&=\int_{0}^{1} \left( \left[\frac{\frac{t\left(1-z\right)}{t+z}}{t+\frac{t\left(1-z\right)}{t+z}}\right]^m \cdot \left[\frac{1-\frac{t\left(1-z\right)}{t+z}}{t+\frac{t\left(1-z\right)}{t+z}}\right]^n \cdot \frac{1}{\frac{t\left(1-z\right)}{t+z}\cdot \left(1-\frac{t\left(1-z\right)}{t+z}\right)}\cdot \frac{-t\left(t+1\right)}{\left(t+z\right)^2} \right) \,\mathrm{d}z\\
+&=\int_{0}^{1} \left(\left[\frac{\left(1-z\right)}{t+1}\right]^m\cdot \left[\frac{z}{t}\right]^n\cdot \frac{1}{z\left(z-1\right)}\right)\,\mathrm{d}z\\
+&=\frac{1}{\left(t+1\right)^m\cdot t^n}\cdot \int_{0}^{1} \left(1-z\right)^{m-1} \cdot z^{n-1}\,\mathrm{d}z\\
+&=\frac{\mathrm{B}\left(m,n\right)}{\left(t+1\right)^m\cdot t^n}
+\end{align}</script><h3 id="例2-2"><a href="#例2-2" class="headerlink" title="例2"></a>例2</h3><script type="math/tex; mode=display">
+\int \frac{1}{\left(x+1\right)\sqrt{x^2+x+1}}\,\mathrm{d}x</script><p>令 $\displaystyle t=\frac{1-x}{1+x}$，则 $x=\displaystyle \frac{1+t}{1-t}$，原式化为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int \frac{1}{\left(x+1\right)\sqrt{x^2+x+1}}\,\mathrm{d}x&=\int \frac{1}{\left(\frac{1+t}{1-t}+1\right)\sqrt{\left(\frac{1+t}{1-t}\right)^2+\left(\frac{1+t}{1-t}\right)+1}}\cdot \frac{2}{\left(t-1\right)^2}\,\mathrm{d}x\\
+&=\int \frac{1}{\sqrt{t^2+3}}\,\mathrm{d}t\\
+\end{align}</script><p>由双元法，立刻得出原函数为</p>
+<script type="math/tex; mode=display">
+\int \frac{1}{\sqrt{t^2+3}}\,\mathrm{d}t=\ln \left(x+\sqrt{x^2+3}\right)+C</script><h3 id="例3-2"><a href="#例3-2" class="headerlink" title="例3"></a>例3</h3><script type="math/tex; mode=display">
+\int \frac{1}{\left(x-2\right)^2\left(x-3\right)^3}\,\mathrm{d}x</script><p>对于形如此种形式的积分</p>
+<script type="math/tex; mode=display">
+\int \frac{1}{\left(x-a\right)^m\left(x-b\right)^n}\,\mathrm{d}x \quad \left(m>n\right)</script><p>一般令 $t=\displaystyle \frac{x-b}{x-a}$，将幂次高的项放分母</p>
+<p>对此题而言，只需令 $t=\displaystyle \frac{x-2}{x-3}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int \frac{1}{\left(x-2\right)^2\left(x-3\right)^3}\,\mathrm{d}x &=\int \frac{1}{\left(\frac{x-2}{x-3}\right)^2\cdot \left(x-3\right)^5}\,\mathrm{d}x\\
+&=\int \frac{1}{t^2\cdot \left(\frac{1}{t-1}\right)^5}\cdot \frac{(-1)}{(t-1)^2}\,dt\\
+&=\int \frac{-\left(t-1\right)^3}{t^2}\,\mathrm{d}t\\
+&=\int \left(\frac{1}{t^2}-\frac{3}{t}+3-t\right)\,\mathrm{d}t\\
+&=-\frac{1}{x}-3\ln x +3x-\frac{x^2}{2}+C
+\end{align}</script><h2 id="莫比乌斯变换一般化"><a href="#莫比乌斯变换一般化" class="headerlink" title="莫比乌斯变换一般化"></a>莫比乌斯变换一般化</h2><h3 id="系数推导"><a href="#系数推导" class="headerlink" title="系数推导"></a>系数推导</h3><p>对于一般的带根号项的分式有理函数积分，如</p>
+<script type="math/tex; mode=display">
+\int \frac{gx+h}{\left(ax^2+bx+c\right)\sqrt{dx^2+ex+f}}\,\mathrm{d}x</script><p>不妨令</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x &= \frac{\alpha t+\beta}{t+1}\\
+\rightarrow \mathrm{d}x &= \frac{\alpha-\beta}{\left(t+1\right)^2}\,\mathrm{d}t
+\end{align}</script><p>带入原积分，对于 $(ax^2+bx+c)$，我们观察其一次项系数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\left[a\left(\frac{\alpha t + \beta}{t+1}\right)^2+b\left(\frac{\alpha t+\beta}{t+1}\right)+c\right]\cdot \left(t+1\right)^2\\
+&=a\left(\alpha t+\beta\right)^2+b\left(\alpha t+\beta\right)\cdot \left(t+1\right)+c\cdot  \left(t+1\right)^2\\
+&=a\left(\alpha^2t^2+2\alpha\beta t+\beta^2\right)+b\left(\alpha^2t^2+(\alpha+\beta) t+\beta\right)+c\left(t^2+2t+1\right)\\
+&=\left(a\cdot \alpha^2+b\cdot \alpha^2+c\right)\cdot t^2+\left(2a\cdot \alpha\cdot \beta+b\left(\alpha+\beta\right)+2c\right)\cdot t+\left(a\cdot \beta^2+b\cdot \beta+c\right)
+\end{align}</script><p>同理，对于 $\left(dx^2+ex+f\right)$，其一次项系数应该与 $(ax^2+bx+c)$ 类似，即</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+2a\cdot \alpha\cdot \beta+b\left(\alpha+\beta\right)+2c\\
+\\
+2d\cdot \alpha\cdot \beta+e\left(\alpha+\beta\right)+2f
+\end{cases}</script><p>令</p>
+<script type="math/tex; mode=display">
+u=\alpha\cdot \beta \quad \quad v=\alpha+\beta</script><p>当上述两项的一次项系数都为零时</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+2a\cdot \alpha\cdot \beta+b\left(\alpha+\beta\right)=-2c\\
+\\
+2d\cdot \alpha\cdot \beta+e\left(\alpha+\beta\right)=-2f
+\end{cases}</script><p>记</p>
+<script type="math/tex; mode=display">
+\begin{align}
+
+\begin{vmatrix} 
+2a & b \\  
+2d & e 
+\end{vmatrix} &=2\cdot \begin{vmatrix} 
+a & b \\  
+d & e 
+\end{vmatrix} =D\\
+
+\begin{vmatrix} 
+-2c & b \\  
+-2f & e 
+\end{vmatrix} &=-2\cdot \begin{vmatrix} 
+c& b \\  
+f & e 
+\end{vmatrix} =D_1\\
+
+\begin{vmatrix} 
+2a & -2c \\  
+2d & -2f
+\end{vmatrix} &= -4\cdot  \begin{vmatrix} 
+a & c \\  
+d & f 
+\end{vmatrix} =D_2
+
+
+\end{align}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+u=\displaystyle \frac{D_1}{D}\\
+\\
+v=\displaystyle \frac{D_2}{D}
+\end{cases}</script><p>特征方程为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\left(x-\alpha\right)\left(x-\beta\right) &=x^2-\left(\alpha+\beta\right)\cdot x+\alpha\cdot \beta=0\\
+&=x^2-\frac{D_2}{D}\cdot x+\frac{D_1}{D}=0\\
+&=D\cdot x^2-D_2\cdot x+D_1=0
+\end{align}</script><p>即</p>
+<script type="math/tex; mode=display">
+\begin{vmatrix} 
+a & b \\  
+d & e 
+\end{vmatrix} \cdot x^2+2\cdot\begin{vmatrix} 
+a & c \\  
+d & f 
+\end{vmatrix}\cdot x+\begin{vmatrix} 
+b & c \\  
+e & f 
+\end{vmatrix}=0</script><p>解出该方程的两根即为莫比乌斯变换的两个系数 $\alpha,\beta$ </p>
+<h3 id="例1-3"><a href="#例1-3" class="headerlink" title="例1"></a>例1</h3><script type="math/tex; mode=display">
+\int \frac{1}{\left(x^2-x+1\right)\sqrt{x^2+x+1}}\,\mathrm{d}x</script><p>求出其对应的特征方程系数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{vmatrix} 
+a & b \\  
+d & e 
+\end{vmatrix} &= 2\\
+\begin{vmatrix} 
+a & c \\  
+d & f 
+\end{vmatrix} &= 0\\
+\begin{vmatrix} 
+b & c \\  
+e & f 
+\end{vmatrix} &= -2
+\end{align}</script><p>则特征方程为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x^2&-1=0\\
+\rightarrow &x= \pm1
+\end{align}</script><p>则令 $x=\displaystyle \frac{t-1}{t+1}$，代入原式得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\int \frac{1}{\left(x^2-x+1\right)\sqrt{x^2+x+1}}\,\mathrm{d}x \\
+&=\int \frac{1}{\left[\left(\frac{t-1}{t+1}\right)^2-\left(\frac{t-1}{t+1}\right)+1\right]\cdot \sqrt{\left(\frac{t-1}{t+1}\right)^2+\left(\frac{t-1}{t+1}\right)+1}}\cdot \frac{\left(-2\right)}{\left(t+1\right)^2}\,\mathrm{d}t\\
+&=\int \frac{2\left(t+1\right)}{\left[(t-1)^2-\left(t-1\right)\left(t+1\right)+\left(t+1\right)^2\right]\cdot \sqrt{(t-1)^2+\left(t-1\right)\left(t+1\right)+\left(t+1\right)^2}}\,\mathrm{d}t\\
+&=2\cdot \left[\int \frac{t\cdot \mathrm{d}t}{\left(t^2+3\right)\cdot \sqrt{3t^2+1}}+\int \frac{\mathrm{d}t}{\left(t^2+3\right)\cdot \sqrt{3t^2+1}}\right]
+\end{align}</script><p>对于+号<strong>左边</strong>，直接凑微分</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int \frac{t\cdot \mathrm{d}t}{\left(t^2+3\right)\cdot \sqrt{3t^2+1}} &=\frac{1}{6}\cdot \int \frac{\mathrm{d}\left(3t^2+1\right)}{\left(t^2+3\right)\cdot \sqrt{3t^2+1}}\\
+&=\frac{1}{3}\cdot \int \frac{\mathrm{d}\left(\sqrt{3t^2\\+1}\right)}{t^2+3}\\
+&=\int \frac{\mathrm{d}\left(\sqrt{3t^2\\+1}\right)}{3t^2+1+8}\\
+&=\frac{1}{2\sqrt{2}} \cdot \arctan\frac{\sqrt{3t^2+1}}{2\sqrt{2}}+C
+\end{align}</script><p>对于+号<strong>右边</strong>，可用双元法</p>
+<p>令</p>
+<script type="math/tex; mode=display">
+x=\sqrt{3}t \quad \quad y=\sqrt{3t^2+1}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int \frac{\mathrm{d}t}{\left(t^2+3\right)\cdot \sqrt{3t^2+1}} &= \sqrt{3}\cdot  \int \frac{\mathrm{d}x}{\left(x^2+9\right)\cdot y}\\
+&=\sqrt{3}\cdot \int \frac{1}{\left(x^2+9\right)}\cdot \left[\left(-x^2\right)\cdot \mathrm{d}\left(\frac{y}{x}\right)\right]\\
+&=\sqrt{3}\cdot \int \left(\frac{9}{x^2+9}-1 \right)\cdot \mathrm{d}\left(\frac{y}{x}\right)\\
+&=9\sqrt{3}\cdot \int \frac{y^2-x^2}{x^2+9\cdot \left(y^2-x^2\right)}\,\mathrm{d}\left(\frac{y}{x}\right)-\sqrt{3}\cdot \ln \frac{y}{x}\\
+&=9\sqrt{3}\cdot \int \frac{\left(\frac{y}{x}\right)^2-1}{9\cdot \left(\frac{y}{x}\right)^2-8}\,\mathrm{d}\left(\frac{y}{x}\right)-\sqrt{3}\cdot \ln \frac{y}{x}\\
+&=\sqrt{3}\cdot \ln \frac{y}{x}+\sqrt{3}\cdot \int \frac{\mathrm{d}t}{8-9t^2}-\sqrt{3}\cdot \ln \frac{y}{x}\\
+&=\frac{\sqrt{6}}{24}\cdot \ln \frac{3\cdot \sqrt{3t^2\\+1}+2\sqrt{6}\cdot t}{3\cdot \sqrt{3t^2\\+1}-2\sqrt{6}\cdot t}+C
+\end{align}</script><p>故最终结果为</p>
+<script type="math/tex; mode=display">
+\int \frac{1}{\left(x^2-x+1\right)\sqrt{x^2+x+1}}\,\mathrm{d}x=\sqrt{2} \cdot \arctan\frac{\sqrt{3x^2+1}}{2\sqrt{2}}+\frac{\sqrt{6}}{12}\cdot \ln \frac{3\cdot \sqrt{3x^2\\+1}+2\sqrt{6}\cdot x}{3\cdot \sqrt{3x^2\\+1}-2\sqrt{6}\cdot x}+C</script><h3 id="例2-3"><a href="#例2-3" class="headerlink" title="例2"></a>例2</h3><script type="math/tex; mode=display">
+\int \frac{1}{\left(x^2+2\right)\sqrt{2x^2-2x+5}}\,\mathrm{d}x</script><p>求出其对应的特征方程系数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{vmatrix} 
+a & b \\  
+d & e 
+\end{vmatrix} &= -2\\
+\begin{vmatrix} 
+a & c \\  
+d & f 
+\end{vmatrix} &= 1\\
+\begin{vmatrix} 
+b & c \\  
+e & f 
+\end{vmatrix} &= 4
+\end{align}</script><p>则特征方程为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+x^2&-x-2=0\\
+\rightarrow &x= 2 \quad or \,\,\,-1
+\end{align}</script><p>则令 $x=\displaystyle \frac{2t-1}{t+1} $，代入原式得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\int \frac{1}{\left(x^2+2\right)\sqrt{2x^2-2x+5}}\,\mathrm{d}x &= \frac{1}{3}\cdot \int \frac{t+1}{\left(2t^2+1\right)\sqrt{t^2+1}}\,\mathrm{d}t\\
+&= \frac{1}{3}\cdot \int \frac{t}{\left(2t^2+1\right)\sqrt{t^2+1}}\,\mathrm{d}t+ \frac{1}{3}\cdot \int \frac{1}{\left(2t^2+1\right)\sqrt{t^2+1}}\,\mathrm{d}t\\
+\end{align}</script><p>同例1的分析步骤，对左边的式子凑微分，对右边的式子使用双元法</p>
+<p>最终得到答案为</p>
+<script type="math/tex; mode=display">
+\int \frac{1}{\left(x^2+2\right)\sqrt{2x^2-2x+5}}\,\mathrm{d}x=\frac{\sqrt{2}}{12}\cdot \ln \frac{\sqrt{2x^2+2}-1}{\sqrt{2x^2+2}+1}-\frac{1}{3}\cdot \arctan \frac{\sqrt{x^2+1}}{x}+C</script></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/">数学分析</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/25/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86%E7%83%AD%E6%BD%AE%EF%BC%9A%E5%8F%8C%E5%85%83%E6%B3%95/" title="不定积分热潮：双元法"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">不定积分热潮：双元法</div></div><div class="info-2"><div class="info-item-1">求解不定积分的双元法</div></div></div></a><a class="pagination-related" href="/2025/06/27/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%80%E7%B1%BB%E7%AE%80%E5%8D%95%E6%9C%89%E7%90%86%E5%88%86%E5%BC%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%A7%AF%E5%88%86%E8%A7%A3/" title="一类简单有理分式函数的积分解"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">一类简单有理分式函数的积分解</div></div><div class="info-2"><div class="info-item-1">并不简单</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-01</div><div class="info-item-2">Dirichlet 核与 Dirichlet 积分</div></div><div class="info-2"><div class="info-item-1">Dirichlet 核</div></div></div></a><a class="pagination-related" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-30</div><div class="info-item-2">Fejér-Jackson 不等式及其推论</div></div><div class="info-2"><div class="info-item-1">Fejér-Jackson 不等式</div></div></div></a><a class="pagination-related" href="/2025/06/27/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%80%E7%B1%BB%E7%AE%80%E5%8D%95%E6%9C%89%E7%90%86%E5%88%86%E5%BC%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%A7%AF%E5%88%86%E8%A7%A3/" title="一类简单有理分式函数的积分解"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-27</div><div class="info-item-2">一类简单有理分式函数的积分解</div></div><div class="info-2"><div class="info-item-1">并不简单</div></div></div></a><a class="pagination-related" href="/2025/05/14/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E7%A7%AF%E5%88%86%E4%B8%8E%E6%B1%82%E5%92%8C%E8%BD%AC%E6%8D%A2%E7%9A%84%E6%80%9D%E6%83%B3%E6%B1%82%E8%A7%A3%E4%B8%80%E7%B1%BB%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F%E9%97%AE%E9%A2%98/" title="积分与求和转换的思想求解一类积分不等式问题"><img class="cover" src="https://s21.ax1x.com/2025/05/14/pEjld4s.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-14</div><div class="info-item-2">积分与求和转换的思想求解一类积分不等式问题</div></div><div class="info-2"><div class="info-item-1">积分就是求和，求和就是积分</div></div></div></a><a class="pagination-related" href="/2025/05/11/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E8%B4%9D%E5%A1%94%E5%87%BD%E6%95%B0/" title="伽马函数与贝塔函数"><img class="cover" src="https://s21.ax1x.com/2025/05/11/pEXiIte.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-11</div><div class="info-item-2">伽马函数与贝塔函数</div></div><div class="info-2"><div class="info-item-1">伽马函数与贝塔函数的定义及性质</div></div></div></a><a class="pagination-related" href="/2025/06/25/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86%E7%83%AD%E6%BD%AE%EF%BC%9A%E5%8F%8C%E5%85%83%E6%B3%95/" title="不定积分热潮：双元法"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-25</div><div class="info-item-2">不定积分热潮：双元法</div></div><div class="info-2"><div class="info-item-1">求解不定积分的双元法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">待更新内容：数据结构与算法的笔记，积分好题收录</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2%EF%BC%88%E5%88%86%E5%BC%8F%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">莫比乌斯变换（分式线性变换）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%92%E4%BB%A3%E6%8D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">倒代换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B1"><span class="toc-number">1.1.1.</span> <span class="toc-text">例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B2"><span class="toc-number">1.1.2.</span> <span class="toc-text">例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B3"><span class="toc-number">1.1.3.</span> <span class="toc-text">例3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%80%E5%8C%96%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">退化莫比乌斯变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B1-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B2-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B3-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">例3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">莫比乌斯变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B1-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B2-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B3-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">例3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2%E4%B8%80%E8%88%AC%E5%8C%96"><span class="toc-number">1.4.</span> <span class="toc-text">莫比乌斯变换一般化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E6%95%B0%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.4.1.</span> <span class="toc-text">系数推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B1-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B2-3"><span class="toc-number">1.4.3.</span> <span class="toc-text">例2</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论"><img src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fejér-Jackson 不等式及其推论"/></a><div class="content"><a class="title" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论">Fejér-Jackson 不等式及其推论</a><time datetime="2025-06-30T12:24:29.000Z" title="发表于 2025-06-30 20:24:29">2025-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E5%AE%9A%E7%A7%AF%E5%88%86%E8%AF%81%E6%98%8E%E9%A2%98/" title="数学分析拾遗：定积分相关证明题"><img src="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数学分析拾遗：定积分相关证明题"/></a><div class="content"><a class="title" href="/2025/06/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E5%AE%9A%E7%A7%AF%E5%88%86%E8%AF%81%E6%98%8E%E9%A2%98/" title="数学分析拾遗：定积分相关证明题">数学分析拾遗：定积分相关证明题</a><time datetime="2025-06-29T02:20:07.000Z" title="发表于 2025-06-29 10:20:07">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/27/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%80%E7%B1%BB%E7%AE%80%E5%8D%95%E6%9C%89%E7%90%86%E5%88%86%E5%BC%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%A7%AF%E5%88%86%E8%A7%A3/" title="一类简单有理分式函数的积分解"><img src="https://s21.ax1x.com/2025/07/02/pVu7fr8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一类简单有理分式函数的积分解"/></a><div class="content"><a class="title" href="/2025/06/27/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%80%E7%B1%BB%E7%AE%80%E5%8D%95%E6%9C%89%E7%90%86%E5%88%86%E5%BC%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%A7%AF%E5%88%86%E8%A7%A3/" title="一类简单有理分式函数的积分解">一类简单有理分式函数的积分解</a><time datetime="2025-06-27T12:24:29.000Z" title="发表于 2025-06-27 20:24:29">2025-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/" title="微积分下的 Möbius Transformation"><img src="https://s21.ax1x.com/2025/07/02/pVu7WKf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微积分下的 Möbius Transformation"/></a><div class="content"><a class="title" href="/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/" title="微积分下的 Möbius Transformation">微积分下的 Möbius Transformation</a><time datetime="2025-06-26T12:24:29.000Z" title="发表于 2025-06-26 20:24:29">2025-06-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async src="//at.alicdn.com/t/c/font_4890277_rdw0tapxyy.js"></script><div class="aplayer" data-id="13570926609" data-server="netease" data-type="playlist"  data-fixed="true" data-theme="#3F51B5"></div><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  // 销毁非固定播放器
+  const destroyAplayer = () => {
+    if (!window.aplayers) return;
+    
+    // 反向遍历避免数组变化问题
+    for (let i = window.aplayers.length - 1; i >= 0; i--) {
+      const player = window.aplayers[i];
+      if (!player.options.fixed) {
+        player.destroy();
+        window.aplayers.splice(i, 1); // 从数组中移除
+      }
+    }
+  };
+
+  // 初始化播放器管理
+  if (!window.aplayers) window.aplayers = [];
+  
+  // 绑定 PJAX 事件
+  document.addEventListener('pjax:start', destroyAplayer);
+  
+  // 可选：重新初始化逻辑
+  document.addEventListener('pjax:complete', () => {
+    // 这里可以添加页面切换后重新初始化非固定播放器的逻辑
+  });
+})();
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/music/*"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
