@@ -120,3 +120,7 @@ svg.icon {
   height: 20px !important; /* 限制高度 */
 }
   
+/* 强制显示公式 */
+mjx-container[jax="CHTML"] {
+  display: inline !important;
+}
