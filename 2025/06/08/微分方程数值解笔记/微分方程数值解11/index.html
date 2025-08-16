@@ -160,137 +160,204 @@
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第五章（1）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第五章（1）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-08T04:33:15.000Z" title="发表于 2025-06-08 12:33:15">2025-06-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-20T23:26:30.798Z" title="更新于 2025-06-21 07:26:30">2025-06-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="边值问题的变分形式"><a href="#边值问题的变分形式" class="headerlink" title="边值问题的变分形式"></a>边值问题的变分形式</h1><h2 id="有限元方法基础"><a href="#有限元方法基础" class="headerlink" title="有限元方法基础"></a>有限元方法基础</h2><h3 id="一、数学基础（二次函数极值与线性方程组）"><a href="#一、数学基础（二次函数极值与线性方程组）" class="headerlink" title="一、数学基础（二次函数极值与线性方程组）"></a>一、数学基础（二次函数极值与线性方程组）</h3><p>矩阵 $A \in \mathbb{R}^{n \times n}$ 对称正定 </p>
-<p>定理：求</p>
-<script type="math/tex; mode=display">
-\min_{x} J(x)=\frac{1}{2}(Ax, x)-(b, x)</script><p>等价于解线性方程组 $Ax = b$ </p>
-<h3 id="二、弦的平衡问题（两点边值问题）"><a href="#二、弦的平衡问题（两点边值问题）" class="headerlink" title="二、弦的平衡问题（两点边值问题）"></a>二、弦的平衡问题（两点边值问题）</h3><p><strong>物理模型</strong>：弦在分布外力 $f(x)$ 作用下，平衡位置 $u = u(x)$ 满足微分方程边值问题：</p>
-<script type="math/tex; mode=display">
-\begin{cases} 
-  -Tu'' = f(x), & 0 < x < L \\
-  u(0) = 0, \ u(L) = 0 
-\end{cases}</script><p>$T$ 为弦的张力，$L$ 为弦长 </p>
-<p><strong>总位势与变分原理</strong>：总位势 $J(u)=W_{\text{内}} + W_{\text{外}}$ ，展开为</p>
-<script type="math/tex; mode=display">
-\frac{1}{2}\int_{0}^{L} T(u')^2 dx - \int_{0}^{L} f u dx</script><p>应变能 + 外力位能 </p>
-<p><strong>极小位能原理</strong>：弦的平衡位置是满足边界条件的所有可能位移中，使总位能最小的位移，对应变分问题 $\displaystyle \min_{u \in H_0^1} J(u)$ ，是有限元方法（基于 Ritz - Galerkin 法 ）求解边值问题的物理基础 </p>
-<h4 id="从数学角度分析"><a href="#从数学角度分析" class="headerlink" title="从数学角度分析"></a>从数学角度分析</h4><p><strong>微分方程（ODE - BVP）</strong>：设 $T = 1$ ，方程为</p>
-<script type="math/tex; mode=display">
-\begin{cases} 
-  -u'' = f(x), & 0 < x < L \\
-  u(0) = 0, \ u(L) = 0 
-\end{cases}</script><p><strong>对应变分问题</strong>：最小化总位势</p>
-<script type="math/tex; mode=display">
-J(u)=\frac{1}{2}\int_{0}^{L} (u')^2 dx - \int_{0}^{L} f u dx</script><p>定义域</p>
-<script type="math/tex; mode=display">
-E = \left\{ u \in C^2[0,L] \mid u(0)=0 = u(L) \right\}</script><h4 id="等价性证明（变分问题→微分方程）"><a href="#等价性证明（变分问题→微分方程）" class="headerlink" title="等价性证明（变分问题→微分方程）"></a>等价性证明（变分问题→微分方程）</h4><p>1.设 $\bar{u}$ 是 $J(u)$ 在 $E$ 中的极小值点，取任意 $v \in C^2[0,l]$ 满足 $v(0)=0 = v(l)$ ，构造 $\bar{u}+\lambda v \in E$（$\lambda \in \mathbb{R}$ ）</p>
-<p>2.定义 $\varphi (\lambda)=J(\bar{u}+\lambda v)$ ，因 $\bar{u}$ 是极小值点，故 $\varphi(\lambda)$ 在 $\lambda = 0$ 处取极小，即 $\varphi^\prime(0)=0$ </p>
-<p>3.展开 $\varphi(\lambda)$ 并对 $\lambda$ 求导，代入 $\lambda = 0$ 得：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\left. \frac{d\varphi}{d\lambda} \right|_{\lambda = 0} &=\int_{0}^{l} \bar{u}^\prime v^\prime dx - \int_{0}^{l} f v dx \\
-&=\bar{u}'v|^l_0-\int_0^l\bar{u}''vdx-\int^l_0fvdx\\
-&=-\int_0^l(\bar{u}''+f)vdx\\
-&=0
-
-\end{align}</script><p>4.由<strong>变分法基本引理</strong></p>
-<p>若 $g \in C^2$ 且</p>
-<script type="math/tex; mode=display">
-\int_{a}^{b} g \varphi dx = 0</script><p>对任意 $\varphi \in C_0^\infty[a,b]$ 成立，则 $g \equiv 0$</p>
+<link rel="stylesheet" href="https://unpkg.com/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第五章（1）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第五章（1）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-08T04:33:15.000Z" title="发表于 2025-06-08 12:33:15">2025-06-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-20T23:26:30.798Z" title="更新于 2025-06-21 07:26:30">2025-06-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.1k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>边值问题的变分形式</h1>
+<h2 id="有限元方法基础">有限元方法基础</h2>
+<h3 id="一、数学基础（二次函数极值与线性方程组）">一、数学基础（二次函数极值与线性方程组）</h3>
+<p>矩阵 $A \in \mathbb{R}^{n \times n}$ 对称正定</p>
+<p>定理：求<br>
+$$<br>
+\min_{x} J(x)=\frac{1}{2}(Ax, x)-(b, x)<br>
+$$<br>
+等价于解线性方程组 $Ax = b$</p>
+<h3 id="二、弦的平衡问题（两点边值问题）">二、弦的平衡问题（两点边值问题）</h3>
+<p><strong>物理模型</strong>：弦在分布外力 $f(x)$ 作用下，平衡位置 $u = u(x)$ 满足微分方程边值问题：<br>
+$$<br>
+\begin{cases}<br>
+-Tu’’ = f(x), &amp; 0 &lt; x &lt; L \<br>
+u(0) = 0, \ u(L) = 0<br>
+\end{cases}<br>
+$$<br>
+$T$ 为弦的张力，$L$ 为弦长</p>
+<p><strong>总位势与变分原理</strong>：总位势 $J(u)=W_{\text{内}} + W_{\text{外}}$ ，展开为<br>
+$$<br>
+\frac{1}{2}\int_{0}^{L} T(u’)^2 dx - \int_{0}^{L} f u dx<br>
+$$<br>
+应变能 + 外力位能</p>
+<p><strong>极小位能原理</strong>：弦的平衡位置是满足边界条件的所有可能位移中，使总位能最小的位移，对应变分问题 $\displaystyle \min_{u \in H_0^1} J(u)$ ，是有限元方法（基于 Ritz - Galerkin 法 ）求解边值问题的物理基础</p>
+<h4 id="从数学角度分析">从数学角度分析</h4>
+<p><strong>微分方程（ODE - BVP）</strong>：设 $T = 1$ ，方程为<br>
+$$<br>
+\begin{cases}<br>
+-u’’ = f(x), &amp; 0 &lt; x &lt; L \<br>
+u(0) = 0, \ u(L) = 0<br>
+\end{cases}<br>
+$$<br>
+<strong>对应变分问题</strong>：最小化总位势<br>
+$$<br>
+J(u)=\frac{1}{2}\int_{0}^{L} (u’)^2 dx - \int_{0}^{L} f u dx<br>
+$$<br>
+定义域<br>
+$$<br>
+E = \left{ u \in C^2[0,L] \mid u(0)=0 = u(L) \right}<br>
+$$</p>
+<h4 id="等价性证明（变分问题→微分方程）">等价性证明（变分问题→微分方程）</h4>
+<p>1.设 $\bar{u}$ 是 $J(u)$ 在 $E$ 中的极小值点，取任意 $v \in C^2[0,l]$ 满足 $v(0)=0 = v(l)$ ，构造 $\bar{u}+\lambda v \in E$（$\lambda \in \mathbb{R}$ ）</p>
+<p>2.定义 $\varphi (\lambda)=J(\bar{u}+\lambda v)$ ，因 $\bar{u}$ 是极小值点，故 $\varphi(\lambda)$ 在 $\lambda = 0$ 处取极小，即 $\varphi^\prime(0)=0$</p>
+<p>3.展开 $\varphi(\lambda)$ 并对 $\lambda$ 求导，代入 $\lambda = 0$ 得：<br>
+$$<br>
+\begin{align}<br>
+\left. \frac{d\varphi}{d\lambda} \right|<em>{\lambda = 0} &amp;=\int</em>{0}^{l} \bar{u}^\prime v^\prime dx - \int_{0}^{l} f v dx \<br>
+&amp;=\bar{u}‘v|^l_0-\int_0^l\bar{u}’‘vdx-\int^l_0fvdx\<br>
+&amp;=-\int_0^l(\bar{u}’'+f)vdx\<br>
+&amp;=0</p>
+<p>\end{align}<br>
+$$<br>
+4.由<strong>变分法基本引理</strong></p>
+<p>若 $g \in C^2$ 且<br>
+$$<br>
+\int_{a}^{b} g \varphi dx = 0<br>
+$$<br>
+对任意 $\varphi \in C_0^\infty[a,b]$ 成立，则 $g \equiv 0$</p>
 <p>得 $\bar{u}^{\prime\prime}+f = 0$ ，即 $\bar{u}$ 满足原微分方程 ，又因 $\bar{u}\in E$，故 $\bar{u}(0)=\bar{u}(1)=0$，即 $\bar{u}$ 是原 ODE-BVP 的解</p>
-<h4 id="微分方程→变分问题"><a href="#微分方程→变分问题" class="headerlink" title="微分方程→变分问题"></a>微分方程→变分问题</h4><p>1.设 $\bar{u}(x)$ 是原 ODE - BVP（$-u’’ = f(x),\ u(0)=u(l)=0$ ）的解，任取 $w \in E$，其中 $E = \{ u \in C^2[0,l] \mid u(0)= 0 = u(l) \} $，令</p>
-<script type="math/tex; mode=display">
-v = w - \bar{u}</script><p>则 $v \in C^2[0,l]$  且 $v(0)=v(l)=0$ </p>
-<p>2.展开化简 </p>
-<script type="math/tex; mode=display">
-\begin{align}
-J(w) &=J(\bar{u}+v)=\frac{1}{2}\int_0^l(\bar{u}'+f)^2dx-\int_0^lf(\bar{u}+v)dx\\
-&= \frac{1}{2}\int_0^l[(\bar{u}')^2+2\bar{u}'v'+(v')^2]dx-\int_0^lf(\bar{u}+v)dx\\
-&=J(\bar{u})+\int_0^l\bar{u}'v'dx+\frac{1}{2}\int_0^l(v')^2dx-\int_0^lfvdx\\
-&=J(\bar{u})+\frac{1}{2}\int_0^l(v')^2dx+\bar{u}'v|^l_0-\int_0^l(\bar{u}''+f)vdx\\
-&=J(\bar{u})+\frac{1}{2}\int_0^l(v')^2dx \geq J(\bar{u})
-\end{align}</script><p>故 $\bar{u}$ 是变分问题（极小化 $J(u)$ ）的解，证明 ODE - BVP 的解等价于变分问题的解 </p>
-<h3 id="三、变分法基本引理及拓展"><a href="#三、变分法基本引理及拓展" class="headerlink" title="三、变分法基本引理及拓展"></a>三、变分法基本引理及拓展</h3><p><strong>基本引理</strong>：若</p>
-<script type="math/tex; mode=display">
-\int_{a}^{b} f(x) \varphi(x) dx = 0</script><p>对任意 $\varphi \in C_0^\infty(I)$ 成立，则</p>
+<h4 id="微分方程→变分问题">微分方程→变分问题</h4>
+<p>1.设 $\bar{u}(x)$ 是原 ODE - BVP（$-u’’ = f(x),\ u(0)=u(l)=0$ ）的解，任取 $w \in E$，其中 $E = \{ u \in C^2[0,l] \mid u(0)= 0 = u(l) \} $，令<br>
+$$<br>
+v = w - \bar{u}<br>
+$$<br>
+则 $v \in C^2[0,l]$  且 $v(0)=v(l)=0$</p>
+<p>2.展开化简<br>
+$$<br>
+\begin{align}<br>
+J(w) &amp;=J(\bar{u}+v)=\frac{1}{2}\int_0^l(\bar{u}‘+f)^2dx-\int_0^lf(\bar{u}+v)dx\<br>
+&amp;= \frac{1}{2}\int_0^l[(\bar{u}’)^2+2\bar{u}‘v’+(v’)^2]dx-\int_0^lf(\bar{u}+v)dx\<br>
+&amp;=J(\bar{u})+\int_0^l\bar{u}‘v’dx+\frac{1}{2}\int_0^l(v’)^2dx-\int_0^lfvdx\<br>
+&amp;=J(\bar{u})+\frac{1}{2}\int_0^l(v’)^2dx+\bar{u}‘v|^l_0-\int_0^l(\bar{u}’‘+f)vdx\<br>
+&amp;=J(\bar{u})+\frac{1}{2}\int_0^l(v’)^2dx \geq J(\bar{u})<br>
+\end{align}<br>
+$$<br>
+故 $\bar{u}$ 是变分问题（极小化 $J(u)$ ）的解，证明 ODE - BVP 的解等价于变分问题的解</p>
+<h3 id="三、变分法基本引理及拓展">三、变分法基本引理及拓展</h3>
+<p><strong>基本引理</strong>：若<br>
+$$<br>
+\int_{a}^{b} f(x) \varphi(x) dx = 0<br>
+$$<br>
+对任意 $\varphi \in C_0^\infty(I)$ 成立，则</p>
 <p>若 $f \in C[a,b]$ ，则 $f(x) \equiv 0$ 于 $[a,b]$ ；</p>
-<p>若 $f \in L^2(I)$ ，则 $f(x) = 0$ 几乎处处（a.e.）于 $[a,b]$ </p>
+<p>若 $f \in L^2(I)$ ，则 $f(x) = 0$ 几乎处处（a.e.）于 $[a,b]$</p>
 <p><strong>泛函角度</strong>：$-u’’ - f = 0$ 是 $J(u)$ 的 Euler - Lagrange 方程，$J(u)$ 的一阶变分 $\delta J(u)=-u’’ - f$（Frechet 导数 ）</p>
-<p><strong>广义导数（分部积分推广）</strong>：通过分部积分引入广义导数概念，处理 $f(x) \in C^1[a,b]$ 时，对 $\varphi \in C_0^\infty[a,b]$ 有 </p>
-<script type="math/tex; mode=display">
-\int_{a}^{b} f'(x) \varphi(x) dx = -\int_{a}^{b} f(x) \varphi'(x) dx</script><p>设 $f \in L^2[a,b]$，若存在 $g(x) \in L^2[a,b]$，使得对任意 $\varphi \in C_0^\infty[a,b]$（紧支光滑函数），满足：</p>
-<script type="math/tex; mode=display">
-\int_{a}^{b} g(x) \varphi(x) dx = -\int_{a}^{b} f(x) \varphi'(x) dx</script><p>则称 $g(x)$ 是 $f(x)$ 的<strong>广义导数</strong>，记为  $f’(x) = g(x)$ </p>
-<h3 id="四、Sobolev-空间-H-1-I"><a href="#四、Sobolev-空间-H-1-I" class="headerlink" title="四、Sobolev 空间  $H^1(I)$"></a>四、Sobolev 空间  $H^1(I)$</h3><p>定义：</p>
-<script type="math/tex; mode=display">
-H^1(I) = \left\{ f \mid f \in L^2(I),\ f' \in L^2(I) \right\}</script><p>$I = [a,b]$ ，其中 $f’$ 是广义导数 </p>
+<p><strong>广义导数（分部积分推广）</strong>：通过分部积分引入广义导数概念，处理 $f(x) \in C^1[a,b]$ 时，对 $\varphi \in C_0^\infty[a,b]$ 有<br>
+$$<br>
+\int_{a}^{b} f’(x) \varphi(x) dx = -\int_{a}^{b} f(x) \varphi’(x) dx<br>
+$$</p>
+<p>设 $f \in L^2[a,b]$，若存在 $g(x) \in L^2[a,b]$，使得对任意 $\varphi \in C_0^\infty[a,b]$（紧支光滑函数），满足：<br>
+$$<br>
+\int_{a}^{b} g(x) \varphi(x) dx = -\int_{a}^{b} f(x) \varphi’(x) dx<br>
+$$<br>
+则称 $g(x)$ 是 $f(x)$ 的<strong>广义导数</strong>，记为  $f’(x) = g(x)$</p>
+<h3 id="四、Sobolev-空间-H-1-I">四、Sobolev 空间  $H^1(I)$</h3>
+<p>定义：<br>
+$$<br>
+H^1(I) = \left{ f \mid f \in L^2(I),\ f’ \in L^2(I) \right}<br>
+$$<br>
+$I = [a,b]$ ，其中 $f’$ 是广义导数</p>
 <p><strong>内积与范数</strong>：</p>
-<p>内积：</p>
-<script type="math/tex; mode=display">
-(f,g)_1 = \int_{a}^{b} (fg + f'g') dx</script><p>范数：</p>
-<script type="math/tex; mode=display">
-\|f\|_1 = \sqrt{(f,f)_1}</script><p><strong>空间性质</strong>：$H^1(I)$ 是 Hilbert 空间（完备内积空间 ）</p>
-<h3 id="五、一般-Sobolev-空间-W-k-p-I"><a href="#五、一般-Sobolev-空间-W-k-p-I" class="headerlink" title="五、一般 Sobolev 空间  $W^{k,p}(I)$"></a>五、一般 Sobolev 空间  $W^{k,p}(I)$</h3><p>定义：</p>
-<script type="math/tex; mode=display">
-W^{k,p}(I) = \left\{ f \mid f, f', \dots, f^{(k)} \in L^p(I) \right\}</script><p>其中 $f^{(m)}$（$m \leq k$ ）是 $m$ 阶广义导数，满足：</p>
-<script type="math/tex; mode=display">
-\int_{a}^{b} g(x) \varphi(x) dx = (-1)^k \int_{a}^{b} f(x) \varphi^{(k)}(x) dx \quad (\forall \varphi \in C_0^\infty(I))</script><p><strong>推广</strong>：可拓展到平面区域 $G$，记为 $W^{k,p}(G)$ ，是偏微分方程弱解理论的核心空间框架 </p>
-<h3 id="六、广义解定义"><a href="#六、广义解定义" class="headerlink" title="六、广义解定义"></a>六、广义解定义</h3><p>对 ODE - BVP 的变分问题：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-&\min_{u \in E} J(u)=\frac{1}{2}\int_{0}^{L} (u')^2 dx - \int_{0}^{L} f u dx\\
-&E = \left\{ u \in H^1(0,L) \mid u(0)=0 = u(L) \right\}
-\end{align}</script><p>若变分问题有解 $\bar{u}$，则称 $\bar{u}$ 是原 ODE - BVP 的<strong>广义解</strong> </p>
-<h3 id="七、边界条件分类（本质边值-vs-自然边值）"><a href="#七、边界条件分类（本质边值-vs-自然边值）" class="headerlink" title="七、边界条件分类（本质边值 vs 自然边值）"></a>七、边界条件分类（本质边值 vs 自然边值）</h3><p><strong>本质边值条件</strong>：直接约束函数值的边界条件（如 $u(a)=\alpha, u(b)=\beta$ ），对应变分问题中定义域 $E$ 的约束（$u \in E$ 需满足 $u(a)=\alpha, u(b)=\beta$ ）。</p>
+<p>内积：<br>
+$$<br>
+(f,g)<em>1 = \int</em>{a}^{b} (fg + f’g’) dx<br>
+$$<br>
+范数：<br>
+$$<br>
+|f|_1 = \sqrt{(f,f)_1}<br>
+$$<br>
+<strong>空间性质</strong>：$H^1(I)$ 是 Hilbert 空间（完备内积空间 ）</p>
+<h3 id="五、一般-Sobolev-空间-W-k-p-I">五、一般 Sobolev 空间  $W^{k,p}(I)$</h3>
+<p>定义：<br>
+$$<br>
+W^{k,p}(I) = \left{ f \mid f, f’, \dots, f^{(k)} \in L^p(I) \right}<br>
+$$<br>
+其中 $f^{(m)}$（$m \leq k$ ）是 $m$ 阶广义导数，满足：<br>
+$$<br>
+\int_{a}^{b} g(x) \varphi(x) dx = (-1)^k \int_{a}^{b} f(x) \varphi^{(k)}(x) dx \quad (\forall \varphi \in C_0^\infty(I))<br>
+$$<br>
+<strong>推广</strong>：可拓展到平面区域 $G$，记为 $W^{k,p}(G)$ ，是偏微分方程弱解理论的核心空间框架</p>
+<h3 id="六、广义解定义">六、广义解定义</h3>
+<p>对 ODE - BVP 的变分问题：<br>
+$$<br>
+\begin{align}<br>
+&amp;\min_{u \in E} J(u)=\frac{1}{2}\int_{0}^{L} (u’)^2 dx - \int_{0}^{L} f u dx\<br>
+&amp;E = \left{ u \in H^1(0,L) \mid u(0)=0 = u(L) \right}<br>
+\end{align}<br>
+$$<br>
+若变分问题有解 $\bar{u}$，则称 $\bar{u}$ 是原 ODE - BVP 的<strong>广义解</strong></p>
+<h3 id="七、边界条件分类（本质边值-vs-自然边值）">七、边界条件分类（本质边值 vs 自然边值）</h3>
+<p><strong>本质边值条件</strong>：直接约束函数值的边界条件（如 $u(a)=\alpha, u(b)=\beta$ ），对应变分问题中定义域 $E$ 的约束（$u \in E$ 需满足 $u(a)=\alpha, u(b)=\beta$ ）。</p>
 <p><strong>自然边值条件</strong>：通过变分推导自动满足的边界条件（如 $u’(b)=\beta$ ），无需显式加入定义域约束，由变分问题极小值点的一阶条件导出 。</p>
 <p><strong>不同边界条件的变分问题：</strong></p>
-<p><strong>本质边值（ $u(a)=\alpha, u(b)=\beta$ ）：</strong>变分问题为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-&\min_{u \in E} J(u)=\frac{1}{2}\int_{a}^{b} (u')^2 dx - \int_{a}^{b} f u dx\\
-&E = \left\{ u \in C^2[a,b] \mid u(a)=\alpha, u(b)=\beta \right\}
-\end{align}</script><p><strong>混合边值（ $u(a)=\alpha$ ）：</strong>变分问题为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-&\min_{u \in E} J(u)=\frac{1}{2}\int_{a}^{b} (u')^2 dx - \int_{a}^{b} f u dx - \beta u(b)\\
-&E = \left\{ u \in C^2[a,b] \mid u(a)=\alpha \right\}
-\end{align}</script><h3 id="八、自然边值条件的证明"><a href="#八、自然边值条件的证明" class="headerlink" title="八、自然边值条件的证明"></a>八、自然边值条件的证明</h3><p><strong>先证必要性：</strong></p>
+<p>**本质边值（ $u(a)=\alpha, u(b)=\beta$ ）：**变分问题为<br>
+$$<br>
+\begin{align}<br>
+&amp;\min_{u \in E} J(u)=\frac{1}{2}\int_{a}^{b} (u’)^2 dx - \int_{a}^{b} f u dx\<br>
+&amp;E = \left{ u \in C^2[a,b] \mid u(a)=\alpha, u(b)=\beta \right}<br>
+\end{align}<br>
+$$<br>
+**混合边值（ $u(a)=\alpha$ ）：**变分问题为<br>
+$$<br>
+\begin{align}<br>
+&amp;\min_{u \in E} J(u)=\frac{1}{2}\int_{a}^{b} (u’)^2 dx - \int_{a}^{b} f u dx - \beta u(b)\<br>
+&amp;E = \left{ u \in C^2[a,b] \mid u(a)=\alpha \right}<br>
+\end{align}<br>
+$$</p>
+<h3 id="八、自然边值条件的证明">八、自然边值条件的证明</h3>
+<p><strong>先证必要性：</strong></p>
 <p>设 $\bar{u}$ 是变分问题极小值点，取 $v \in C^2[a,b]$ 满足 $v(a)=0$ ，构造 $\bar{u}+\lambda v \in E$（$\lambda \in \mathbb{R}$ ）</p>
-<p>定义 $\varphi(\lambda)=J(\bar{u}+\lambda v)$ ，因 $\bar{u}$ 是极小值点，故 $\varphi’(0)=0$ 。展开并化简得：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\varphi(\lambda) &= J(\bar{u}+\lambda v)\\
-&=\frac{1}{2}\int_a^b(\bar{u}'+\lambda v')^2dx-\int_a^b f(\bar{u}+\lambda v)dx-\beta(\bar{u}(b)+\lambda v(b))\\
-&=\frac{1}{2}\int_a^b(\bar{u}')^2dx-\int_a^b f\bar{u}dx-\beta \bar{u}(b)+\frac{1}{2}\int_a^b(v')^2dx\cdot\lambda^2+\lambda[\int_a^b(\bar{u}'v'-fv)dx-\beta v(b)]\\
-&=J(\bar{u})+\frac{1}{2}\int_a^b(v')^2dx\cdot\lambda^2+\lambda[\int_a^b(\bar{u}'v'-fv)dx-\beta v(b)]
-\end{align}</script><p>由 $\bar{u}$ 是变分问题极小值点，故 $\varphi’(0)=0$</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\varphi'(0) &= \int_a^b(\bar{u}'v'-fv)dx-\beta v(b)\\
-&=\bar{u}v|_a^b-\int_a^b(\bar{u}''+f)vdx-\beta v(b)\\
-&=-\int_a^b(\bar{u}''+f)vdx+(\bar{u}'(b)-\beta)v(b)\\
-&=0
-\end{align}</script><p>由变分法基本引理得</p>
-<script type="math/tex; mode=display">
--\bar{u}''-f=0</script><p>进而 $u’(b)=\beta$ 自动满足</p>
+<p>定义 $\varphi(\lambda)=J(\bar{u}+\lambda v)$ ，因 $\bar{u}$ 是极小值点，故 $\varphi’(0)=0$ 。展开并化简得：<br>
+$$<br>
+\begin{align}<br>
+\varphi(\lambda) &amp;= J(\bar{u}+\lambda v)\<br>
+&amp;=\frac{1}{2}\int_a^b(\bar{u}‘+\lambda v’)^2dx-\int_a^b f(\bar{u}+\lambda v)dx-\beta(\bar{u}(b)+\lambda v(b))\<br>
+&amp;=\frac{1}{2}\int_a^b(\bar{u}‘)^2dx-\int_a^b f\bar{u}dx-\beta \bar{u}(b)+\frac{1}{2}\int_a^b(v’)^2dx\cdot\lambda^2+\lambda[\int_a^b(\bar{u}‘v’-fv)dx-\beta v(b)]\<br>
+&amp;=J(\bar{u})+\frac{1}{2}\int_a^b(v’)^2dx\cdot\lambda^2+\lambda[\int_a^b(\bar{u}‘v’-fv)dx-\beta v(b)]<br>
+\end{align}<br>
+$$<br>
+由 $\bar{u}$ 是变分问题极小值点，故 $\varphi’(0)=0$<br>
+$$<br>
+\begin{align}<br>
+\varphi’(0) &amp;= \int_a^b(\bar{u}‘v’-fv)dx-\beta v(b)\<br>
+&amp;=\bar{u}v|_a^b-\int_a^b(\bar{u}‘’+f)vdx-\beta v(b)\<br>
+&amp;=-\int_a^b(\bar{u}‘’+f)vdx+(\bar{u}‘(b)-\beta)v(b)\<br>
+&amp;=0<br>
+\end{align}<br>
+$$<br>
+由变分法基本引理得<br>
+$$<br>
+-\bar{u}’‘-f=0<br>
+$$<br>
+进而 $u’(b)=\beta$ 自动满足</p>
 <p><strong>再证充分性：</strong></p>
-<p>设 $\bar{u}$ 是 ODE - BVP 的解，任取 $w \in E$ ，令 $v = w - \bar{u}$ ，则 $v \in C^2[a,b],v(a)=0$ </p>
-<p>展开 $J(w)$ 并化简</p>
-<script type="math/tex; mode=display">
-\begin{align}
-J(w) &=J(\bar{u}+v)=\frac{1}{2}\int_a^b(\bar{u}'+v')^2dx-\int_a^bf(\bar{u}+b)dx-\beta (\bar{u}(b)+v(b))\\
-&=J(\bar{u}) +\frac{1}{2}\int_a^b(v')^2dx+\int_a^b\bar{u}'v'dx-\int_a^bfvdx-\beta v(b)\\
-&=J(\bar{u})+\frac{1}{2}\int_0^l(v')^2dx+\bar{u}'v|^b_a-\int_0^l(\bar{u}''+f)vdx-\beta v(b)\\
-&=J(\bar{u})+\frac{1}{2}\int_0^l(v')^2dx \geq J(\bar{u})
-\end{align}</script><p>即 $\bar{u}$ 是变分问题的解 </p>
-<h3 id="九、虚功原理（弱形式与广义解）"><a href="#九、虚功原理（弱形式与广义解）" class="headerlink" title="九、虚功原理（弱形式与广义解）"></a>九、虚功原理（弱形式与广义解）</h3><p><strong>虚功原理表述</strong>：对 ODE - BVP（$-u’’ = f,\ u(a)=0,\ u(b)=0$ ），$\bar{u} \in C^2$ 是解等价于满足变分方程：</p>
-<script type="math/tex; mode=display">
-\int_{a}^{b} \bar{u}' v' dx - \int_{a}^{b} f v dx = 0 \quad (\forall v \in H_E^1)</script><p>其中</p>
-<script type="math/tex; mode=display">
-H_E^1 = \left\{ u \in H^1(a,b) \mid u(a)=0 \right\}</script><p>称为 Sobolev 空间约束 </p>
+<p>设 $\bar{u}$ 是 ODE - BVP 的解，任取 $w \in E$ ，令 $v = w - \bar{u}$ ，则 $v \in C^2[a,b],v(a)=0$</p>
+<p>展开 $J(w)$ 并化简<br>
+$$<br>
+\begin{align}<br>
+J(w) &amp;=J(\bar{u}+v)=\frac{1}{2}\int_a^b(\bar{u}‘+v’)^2dx-\int_a^bf(\bar{u}+b)dx-\beta (\bar{u}(b)+v(b))\<br>
+&amp;=J(\bar{u}) +\frac{1}{2}\int_a^b(v’)^2dx+\int_a^b\bar{u}‘v’dx-\int_a^bfvdx-\beta v(b)\<br>
+&amp;=J(\bar{u})+\frac{1}{2}\int_0^l(v’)^2dx+\bar{u}‘v|^b_a-\int_0^l(\bar{u}’‘+f)vdx-\beta v(b)\<br>
+&amp;=J(\bar{u})+\frac{1}{2}\int_0^l(v’)^2dx \geq J(\bar{u})<br>
+\end{align}<br>
+$$<br>
+即 $\bar{u}$ 是变分问题的解</p>
+<h3 id="九、虚功原理（弱形式与广义解）">九、虚功原理（弱形式与广义解）</h3>
+<p><strong>虚功原理表述</strong>：对 ODE - BVP（$-u’’ = f,\ u(a)=0,\ u(b)=0$ ），$\bar{u} \in C^2$ 是解等价于满足变分方程：<br>
+$$<br>
+\int_{a}^{b} \bar{u}’ v’ dx - \int_{a}^{b} f v dx = 0 \quad (\forall v \in H_E^1)<br>
+$$<br>
+其中<br>
+$$<br>
+H_E^1 = \left{ u \in H^1(a,b) \mid u(a)=0 \right}<br>
+$$<br>
+称为 Sobolev 空间约束</p>
 <p><strong>广义解</strong>：变分方程的解允许 $u$ 不光滑（仅需 $u \in H_E^1$ ），称为 ODE - BVP 的<strong>广义解</strong>，拓展了经典解的适用范围，是有限元方法求解偏微分方程的核心理论（弱解框架 ）</p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A310/" title="微分方程数值解 第四章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第四章（2）</div></div><div class="info-2"><div class="info-item-1">几种常见的差分格式（迎风格式）及其稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A310/" title="微分方程数值解 第四章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-02</div><div class="info-item-2">微分方程数值解 第四章（2）</div></div><div class="info-2"><div class="info-item-1">几种常见的差分格式（迎风格式）及其稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A313/" title="微分方程数值解 第六章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">微分方程数值解 第六章（1）</div></div><div class="info-2"><div class="info-item-1">有限元方法的基本步骤，Ritz法与Galerkin法下的一维一次元</div></div></div></a><a class="pagination-related" href="/2025/06/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A314/" title="微分方程数值解 第六章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-18</div><div class="info-item-2">微分方程数值解 第六章（2）</div></div><div class="info-2"><div class="info-item-1">一维一次元的收敛性与误差估计，一维二次元与一维三次元的构造</div></div></div></a><a class="pagination-related" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-21</div><div class="info-item-2">微分方程数值解 第一章（2）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Runge-Kutta法，绝对稳定性与绝对稳定域，一阶方程组和刚性问题，外推法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">待更新内容：</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%B9%E5%80%BC%E9%97%AE%E9%A2%98%E7%9A%84%E5%8F%98%E5%88%86%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">边值问题的变分形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">有限元方法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0%E6%9E%81%E5%80%BC%E4%B8%8E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">一、数学基础（二次函数极值与线性方程组）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BC%A6%E7%9A%84%E5%B9%B3%E8%A1%A1%E9%97%AE%E9%A2%98%EF%BC%88%E4%B8%A4%E7%82%B9%E8%BE%B9%E5%80%BC%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">二、弦的平衡问题（两点边值问题）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%95%B0%E5%AD%A6%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">从数学角度分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%89%E4%BB%B7%E6%80%A7%E8%AF%81%E6%98%8E%EF%BC%88%E5%8F%98%E5%88%86%E9%97%AE%E9%A2%98%E2%86%92%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%89"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">等价性证明（变分问题→微分方程）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E2%86%92%E5%8F%98%E5%88%86%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">微分方程→变分问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8F%98%E5%88%86%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%90%86%E5%8F%8A%E6%8B%93%E5%B1%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">三、变分法基本引理及拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Sobolev-%E7%A9%BA%E9%97%B4-H-1-I"><span class="toc-number">1.1.4.</span> <span class="toc-text">四、Sobolev 空间  $H^1(I)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E8%88%AC-Sobolev-%E7%A9%BA%E9%97%B4-W-k-p-I"><span class="toc-number">1.1.5.</span> <span class="toc-text">五、一般 Sobolev 空间  $W^{k,p}(I)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%B9%BF%E4%B9%89%E8%A7%A3%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.6.</span> <span class="toc-text">六、广义解定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%E5%88%86%E7%B1%BB%EF%BC%88%E6%9C%AC%E8%B4%A8%E8%BE%B9%E5%80%BC-vs-%E8%87%AA%E7%84%B6%E8%BE%B9%E5%80%BC%EF%BC%89"><span class="toc-number">1.1.7.</span> <span class="toc-text">七、边界条件分类（本质边值 vs 自然边值）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%87%AA%E7%84%B6%E8%BE%B9%E5%80%BC%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.1.8.</span> <span class="toc-text">八、自然边值条件的证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86%EF%BC%88%E5%BC%B1%E5%BD%A2%E5%BC%8F%E4%B8%8E%E5%B9%BF%E4%B9%89%E8%A7%A3%EF%BC%89"><span class="toc-number">1.1.9.</span> <span class="toc-text">九、虚功原理（弱形式与广义解）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中值定理"/></a><div class="content"><a class="title" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理">中值定理</a><time datetime="2025-08-16T10:39:54.000Z" title="发表于 2025-08-16 18:39:54">2025-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A310/" title="微分方程数值解 第四章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第四章（2）</div></div><div class="info-2"><div class="info-item-1">几种常见的差分格式（迎风格式）及其稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A310/" title="微分方程数值解 第四章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-02</div><div class="info-item-2">微分方程数值解 第四章（2）</div></div><div class="info-2"><div class="info-item-1">几种常见的差分格式（迎风格式）及其稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A313/" title="微分方程数值解 第六章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">微分方程数值解 第六章（1）</div></div><div class="info-2"><div class="info-item-1">有限元方法的基本步骤，Ritz法与Galerkin法下的一维一次元</div></div></div></a><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a><a class="pagination-related" href="/2025/06/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A314/" title="微分方程数值解 第六章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-18</div><div class="info-item-2">微分方程数值解 第六章（2）</div></div><div class="info-2"><div class="info-item-1">一维一次元的收敛性与误差估计，一维二次元与一维三次元的构造</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">待更新内容：</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">边值问题的变分形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">有限元方法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%E6%AC%A1%E5%87%BD%E6%95%B0%E6%9E%81%E5%80%BC%E4%B8%8E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">一、数学基础（二次函数极值与线性方程组）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BC%A6%E7%9A%84%E5%B9%B3%E8%A1%A1%E9%97%AE%E9%A2%98%EF%BC%88%E4%B8%A4%E7%82%B9%E8%BE%B9%E5%80%BC%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">二、弦的平衡问题（两点边值问题）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E6%95%B0%E5%AD%A6%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">从数学角度分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%89%E4%BB%B7%E6%80%A7%E8%AF%81%E6%98%8E%EF%BC%88%E5%8F%98%E5%88%86%E9%97%AE%E9%A2%98%E2%86%92%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%89"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">等价性证明（变分问题→微分方程）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E2%86%92%E5%8F%98%E5%88%86%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">微分方程→变分问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8F%98%E5%88%86%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%90%86%E5%8F%8A%E6%8B%93%E5%B1%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">三、变分法基本引理及拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Sobolev-%E7%A9%BA%E9%97%B4-H-1-I"><span class="toc-number">1.1.4.</span> <span class="toc-text">四、Sobolev 空间  $H^1(I)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E8%88%AC-Sobolev-%E7%A9%BA%E9%97%B4-W-k-p-I"><span class="toc-number">1.1.5.</span> <span class="toc-text">五、一般 Sobolev 空间  $W^{k,p}(I)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%B9%BF%E4%B9%89%E8%A7%A3%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.6.</span> <span class="toc-text">六、广义解定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%E5%88%86%E7%B1%BB%EF%BC%88%E6%9C%AC%E8%B4%A8%E8%BE%B9%E5%80%BC-vs-%E8%87%AA%E7%84%B6%E8%BE%B9%E5%80%BC%EF%BC%89"><span class="toc-number">1.1.7.</span> <span class="toc-text">七、边界条件分类（本质边值 vs 自然边值）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%87%AA%E7%84%B6%E8%BE%B9%E5%80%BC%E6%9D%A1%E4%BB%B6%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.1.8.</span> <span class="toc-text">八、自然边值条件的证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86%EF%BC%88%E5%BC%B1%E5%BD%A2%E5%BC%8F%E4%B8%8E%E5%B9%BF%E4%B9%89%E8%A7%A3%EF%BC%89"><span class="toc-number">1.1.9.</span> <span class="toc-text">九、虚功原理（弱形式与广义解）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中值定理"/></a><div class="content"><a class="title" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理">中值定理</a><time datetime="2025-08-16T10:39:54.000Z" title="发表于 2025-08-16 18:39:54">2025-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
@@ -415,7 +482,7 @@ H_E^1 = \left\{ u \in H^1(a,b) \mid u(a)=0 \right\}</script><p>称为 Sobolev �
         : window.location.href = e.request.responseURL
     }
   })
-})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
   function butterfly_footer_beautify_injector_config(){
     var parent_div_git = document.getElementById('footer-wrap');
     var item_html = '<p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
@@ -439,4 +506,4 @@ H_E^1 = \left\{ u \in H^1(a,b) \mid u(a)=0 \right\}</script><p>称为 Sobolev �
   else if (epage === cpage){
     butterfly_footer_beautify_injector_config();
   }
-  </script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
+  </script><!-- hexo injector body_end end --></body></html>

@@ -160,201 +160,334 @@
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/07/03/pVuqm8A.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">不定积分热潮：双元法</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">不定积分热潮：双元法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-25T12:24:29.000Z" title="发表于 2025-06-25 20:24:29">2025-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-02T16:10:53.847Z" title="更新于 2025-07-03 00:10:53">2025-07-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.4k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>双元法出自知乎答主 “虚调子”，本质上是一种特殊的凑微分手段，用来求解分式带根号的不定积分十分方便，在我下一篇有关莫比乌斯变换的笔记中要经常用到，所以先写一篇关于双元法的笔记吧</p>
-<h1 id="实圆微分式"><a href="#实圆微分式" class="headerlink" title="实圆微分式"></a>实圆微分式</h1><p>对于实圆：</p>
-<script type="math/tex; mode=display">
-x^2+y^2=A^2</script><p>取微分：</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-x\, \mathrm{d}x&+y\, \mathrm{d}y=0\\
-\frac{\, \mathrm{d}x}{y}&=-\frac{\, \mathrm{d}y}{x}\\
-\frac{\, \mathrm{d}x}{iy}&=\frac{\, \mathrm{d}(iy)}{x}=\frac{\, \mathrm{d}(x+iy)}{x+iy}\\
-\frac{\, \mathrm{d}x}{y}&=\frac{y\, \mathrm{d}x-x\, \mathrm{d}y}{y^2+x^2}
-\end{align*}</script><h1 id="虚圆微分式"><a href="#虚圆微分式" class="headerlink" title="虚圆微分式"></a>虚圆微分式</h1><p>对于虚圆：</p>
-<script type="math/tex; mode=display">
-x^2-y^2=A^2 \quad or \quad y^2-x^2=A^2</script><p>取微分：</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-x\, \mathrm{d}x&-y\, \mathrm{d}y=0\\
-\frac{\, \mathrm{d}x}{y}&=\frac{\, \mathrm{d}y}{x}=\frac{\, \mathrm{d}x+\, \mathrm{d}y}{x+y}\\
-\frac{\, \mathrm{d}x}{y}&=\frac{y\, \mathrm{d}x-x\, \mathrm{d}y}{y^2-x^2}
-\end{align*}</script><h1 id="双元第一公式："><a href="#双元第一公式：" class="headerlink" title="双元第一公式："></a>双元第一公式：</h1><h2 id="Re"><a href="#Re" class="headerlink" title="Re:"></a>Re:</h2><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{y} = \int \frac{y \, \mathrm{d}x}{y^2}</script><p>合分比由</p>
-<script type="math/tex; mode=display">
-\frac{y \, \mathrm{d}x}{y^2} = -\frac{x \, \mathrm{d}y}{x^2} \left( \frac{\, \mathrm{d}x}{y} = -\frac{\, \mathrm{d}y}{x} \right)</script><p>有</p>
-<script type="math/tex; mode=display">
-= \int \frac{y \, \mathrm{d}x - x \, \mathrm{d}y}{x^2 + y^2} = \int \frac{y^2}{x^2 + y^2} \, \mathrm{d} \left( \frac{x}{y} \right) = \int \frac{1}{1 + \left( \frac{x}{y} \right)^2} \, \mathrm{d} \left( \frac{x}{y} \right) = \arctan \frac{x}{y}</script><h2 id="Im"><a href="#Im" class="headerlink" title="Im:"></a>Im:</h2><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{y} = \int \frac{\, \mathrm{d}x + \, \mathrm{d}y}{y + x} = \int \frac{\, \mathrm{d}(x + y)}{x + y} = \ln (x + y)</script><p>故</p>
-<script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{y} = 
-\begin{cases} 
-\arctan \displaystyle \frac{x}{y}, & \text{Re} \\
-\ln (x + y), & \text{Im}
-\end{cases}</script><h1 id="双元第三公式"><a href="#双元第三公式" class="headerlink" title="双元第三公式"></a>双元第三公式</h1><h2 id="Re："><a href="#Re：" class="headerlink" title="Re："></a>Re：</h2><script type="math/tex; mode=display">
-\begin{align*}
-\int \frac{\, \mathrm{d}x}{y^3}&=\int \frac{1}{y^2} \cdot \frac{\, \mathrm{d}x}{y}=\int \frac{1}{y^2} \cdot \frac{y\, \mathrm{d}x}{y^2}=\int \frac{1}{y^2} \cdot \frac{y\, \mathrm{d}x - x\, \mathrm{d}y}{y^2 + x^2}\\
-&=\frac{1}{y^2 + x^2} \int \frac{y\, \mathrm{d}x - x\, \mathrm{d}y}{y^2}=\frac{1}{y^2 + x^2} \int \, \mathrm{d}\left( \frac{x}{y} \right) \\
-&=\frac{1}{y^2 + x^2} \cdot \frac{x}{y}
-\end{align*}</script><h3 id="Im-1"><a href="#Im-1" class="headerlink" title="Im:"></a>Im:</h3><script type="math/tex; mode=display">
-\begin{align*}
-\int \frac{\, \mathrm{d}x}{y^3}&=\int \frac{1}{y^2} \cdot \frac{\, \mathrm{d}x}{y}=\int \frac{1}{y^2} \cdot \frac{y\, \mathrm{d}x}{y^2}=\int \frac{1}{y^2} \cdot \frac{y\, \mathrm{d}x - x\, \mathrm{d}y}{y^2 - x^2}\\
-&=\frac{1}{y^2 - x^2} \int \frac{y\, \mathrm{d}x - x\, \mathrm{d}y}{y^2}=\frac{1}{y^2 - x^2} \int \, \mathrm{d}\left( \frac{x}{y} \right)\\
-&=\frac{1}{y^2 - x^2} \cdot \frac{x}{y}
-\end{align*}</script><p>故</p>
-<script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{y^3} = 
-\begin{cases} 
-\displaystyle \frac{1}{y^2 + x^2} \cdot \frac{x}{y}, & \text{Re} \\
-\displaystyle \frac{1}{y^2 - x^2} \cdot \frac{x}{y}, & \text{Im}
-\end{cases}</script><p><strong>总括为</strong></p>
-<script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{y^3} = \frac{1}{y^2 \pm x^2} \cdot \frac{x}{y}</script><h1 id="双元乘积公式"><a href="#双元乘积公式" class="headerlink" title="双元乘积公式"></a>双元乘积公式</h1><script type="math/tex; mode=display">
-\begin{align}
-\int y\, \mathrm{d}x &=\frac{\displaystyle \int (y\, \mathrm{d}x + x\, \mathrm{d}y) + \int (y\, \mathrm{d}x - x\, \mathrm{d}y)}{2}\\
-&= \frac{\displaystyle \int \, \mathrm{d}(xy)}{2} + \frac{\displaystyle \int (y\, \mathrm{d}x - x\, \mathrm{d}y)}{2}\\
-&=\frac{1}{2}xy + \frac{\displaystyle \int (y\, \mathrm{d}x - x\, \mathrm{d}y)}{2}\\
-\end{align}</script><p>其中</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\frac{1}{2} \int (y\, \mathrm{d}x - x\, \mathrm{d}y) &= \frac{y^2 \pm x^2}{2} \int \frac{y\, \mathrm{d}x - x\, \mathrm{d}y}{y^2 \pm x^2} \\
-&= \frac{y^2 \pm x^2}{2} \int \frac{\, \mathrm{d}x}{y}
-\end{align}</script><p><strong>最终形式</strong></p>
-<script type="math/tex; mode=display">
-\int y\, \mathrm{d}x = \frac{1}{2}xy + \frac{y^2 \pm x^2}{2} \int \frac{\, \mathrm{d}x}{y}</script><h1 id="双元点火不足公式"><a href="#双元点火不足公式" class="headerlink" title="双元点火不足公式"></a>双元点火不足公式</h1><p>对于</p>
-<script type="math/tex; mode=display">
-y^2 \pm x^2=A^2</script><p><strong>递推公式</strong>：</p>
-<script type="math/tex; mode=display">
-\int y^n \, \mathrm{d}x = \frac{1}{n + 1}(y^n x) + \frac{n}{n + 1}(A) \int y^{n - 2} \, \mathrm{d}x\\
-\int \frac{\, \mathrm{d}x}{y^n} = \frac{1}{n - 2}\cdot\frac{x}{y^{n - 2}A} + \frac{n - 3}{n - 2}\cdot\frac{1}{A} \int \frac{\, \mathrm{d}x}{y^{n - 2}}</script><p><strong>推论（特殊情况）</strong>：</p>
-<script type="math/tex; mode=display">
-\int y \, \mathrm{d}x = \frac{1}{2}(xy) + \frac{1}{2}(A) \int \frac{\, \mathrm{d}x}{y}\\
-\int \frac{\, \mathrm{d}x}{y^3} = \frac{1}{A}\cdot\frac{x}{y}</script><h1 id="其余常见构型"><a href="#其余常见构型" class="headerlink" title="其余常见构型"></a>其余常见构型</h1><script type="math/tex; mode=display">
-\begin{align*}
-\int \frac{\, \mathrm{d}x}{x^2y}&=-\frac{1}{A}\cdot \frac{y}{x}\\
-\int \frac{\, \mathrm{d}x}{xy^2}&=-\frac{1}{A}\cdot \ln\frac{y}{x}=\frac{1}{A}\cdot \ln\frac{x}{y}
-\end{align*}</script><h1 id="典型例题"><a href="#典型例题" class="headerlink" title="典型例题"></a>典型例题</h1><p>我们先从简单的基本积分开始，熟悉双元法的解题流程</p>
-<h2 id="普通双元配凑"><a href="#普通双元配凑" class="headerlink" title="普通双元配凑"></a>普通双元配凑</h2><h3 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h3><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{\sqrt{x^2+a^2}}</script><p>令 $y=\sqrt{x^2+a^2}$，则有 $y^2-x^2=a^2$，取微分得 $x\, \mathrm{d}x=y\, \mathrm{d}y$</p>
-<p>且有</p>
-<script type="math/tex; mode=display">
-\frac{\, \mathrm{d}x}{y}=\frac{\, \mathrm{d}y}{x}=\frac{\, \mathrm{d}\left( x+y \right)}{x+y}</script><p>则原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{\, \mathrm{d}x}{y}=\frac{\, \mathrm{d}\left( x+y \right)}{x+y} &=\ln |x+y|+C\\
-&=\ln|x+\sqrt{x^2+a^2}|+C
-\end{align}</script><h3 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h3><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{x\sqrt{a^2-x^2}}</script><p>令 $y=\sqrt{a^2-x^2}$</p>
-<p>则原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{\, \mathrm{d}x}{x\sqrt{a^2-x^2}} &=\int \frac{\, \mathrm{d}x}{xy}=-\int \frac{\, \mathrm{d}y}{x^2}\\
-&=\int \frac{\, \mathrm{d}y}{y^2-a^2}=\frac{1}{2a}\ln|\frac{\sqrt{a^2-x^2}-a}{\sqrt{a^2-x^2}+a}|+C
-\end{align}</script><h3 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h3><script type="math/tex; mode=display">
-\int \ln\left( \sqrt{x+1}-\sqrt{1-x} \right)dx</script><p>令 $m=\sqrt{x+1},m=\sqrt{1-x}$，则有 $m^2+n^2=2$，取微分得 $x\, \mathrm{d}x=y\, \mathrm{d}y$</p>
-<p>则原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \ln\left( \sqrt{x+1}+\sqrt{1-x} \right)\, \mathrm{d}x &=x\ln(m+n)-\int x\, \mathrm{d}\ln(m+n)\\
-&=x\ln(m+n)-x\cdot \frac{\, \mathrm{d}m+\, \mathrm{d}n}{m+n}\\
-&=x\ln(m+n)-\frac{1}{2}\int (m-n)(\, \mathrm{d}m+\, \mathrm{d}n)\\
-&=x\ln(m+n)-\frac{1}{4}(m^2+n^2)+\int \frac{n\, \mathrm{d}m-m\, \mathrm{d}n}{2}\\
-&=x\ln (m+n)-\frac{1}{2}x+\int \frac{n^2\, \mathrm{d}\left( \frac{m}{n} \right)}{m^2+n^2}\\
-&=x\ln (m+n)-\frac{1}{2}x+\int \frac{\, \mathrm{d}\left( \frac{m}{n} \right)}{\left( \frac{m}{n} \right)^2+1}\\
-&=x\ln\left( \sqrt{x+1}+\sqrt{1-x} \right)-\frac{1}{2}x+\arctan{\sqrt{\frac{1+x}{1-x}}}+C
-\end{align}</script><h3 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h3><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{\sqrt{x^2+2x+3}}</script><p>令</p>
-<script type="math/tex; mode=display">
-m=x+1,\quad n=\sqrt{x^2+2x+3}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{\, \mathrm{d}m}{n}&=\int \frac{\, \mathrm{d}\left(m+n\right)}{m+n}\\
-&=\ln|m+n|+C\\
-&=\ln|x+1+\sqrt{x^2+2x+3}|+C
-\end{align}</script><h3 id="五、"><a href="#五、" class="headerlink" title="五、"></a>五、</h3><script type="math/tex; mode=display">
-\int \sqrt{x^2+2x+3}</script><p>同上题所示设双元</p>
-<p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int ndm&=\frac{1}{2}mn+\frac{n^2-m^2}{2}\int \frac{\, \mathrm{d}m}{n}\\
-&=\frac{1}{2}\left(x+1\right)\sqrt{x^2+2x+3}+\ln|x+1+\sqrt{x^2+2x+3}|+C
-\end{align}</script><h3 id="六、"><a href="#六、" class="headerlink" title="六、"></a>六、</h3><script type="math/tex; mode=display">
-\int \frac{x\, \mathrm{d}x}{\sqrt{-x^2-2x+3}}</script><p>令</p>
-<script type="math/tex; mode=display">
-m=x+1,\quad n=\sqrt{-x^2-2x+3}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{\left(m-1\right)\, \mathrm{d}m}{n} &= \int \frac{m\, \mathrm{d}m}{n}-\frac{\, \mathrm{d}m}{n}\\
-&=-\int \, \mathrm{d}n-\arcsin \frac{m}{2}\\
-&=-\sqrt{-x^2-2x+3}-\arcsin\frac{x+1}{2}+C
-\end{align}</script><p>接下来是一些技巧性配凑</p>
-<h2 id="对勾双元配凑"><a href="#对勾双元配凑" class="headerlink" title="对勾双元配凑"></a>对勾双元配凑</h2><h3 id="七、"><a href="#七、" class="headerlink" title="七、"></a>七、</h3><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{1+x^4}</script><p>令</p>
-<script type="math/tex; mode=display">
-m=x+\displaystyle \frac{1}{x},\quad n=x-\frac{1}{x}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int  \frac{\, \mathrm{d}x}{1+x^4} &=\int \frac{\frac{\, \mathrm{d}x}{x^2}}{x^2+\frac{1}{x^2}}=\int \frac{\, \mathrm{d}\left(-\frac{1}{x}\right)}{x^2+\frac{1}{x^2}}\\
-&=\int \frac{\, \mathrm{d}\left(\frac{n-m}{2}\right)}{m^2-2}=\frac{1}{2}\int \frac{\, \mathrm{d}n}{n^2+2}-\frac{1}{2}\int \frac{\, \mathrm{d}m}{m^2-2}\\
-&=\frac{1}{2\sqrt{2}}\arctan\frac{x-\frac{1}{x}}{\sqrt{2}}-\frac{1}{4\sqrt{2}}\ln|\frac{x+\frac{1}{x}-\sqrt{2}}{x+\frac{1}{x}+\sqrt{2}}|+C
-\end{align}</script><p>注：为确保严谨，此处最好用如下公式进行间断点修正</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-\arctan\left(k\left(x-\frac{1}{x}\right)\right) &= \arctan\left(k\left(x-\frac{1}{x}\right)\right) 
-+ \arctan\left(\frac{1}{kx}\right) + \arctan\left(kx\right) \\
-&= \arctan\left(kx^3 + \left(\frac{1}{k}-1\right)x\right) + \arctan\left(kx\right)
-\end{align*}</script><h3 id="八、"><a href="#八、" class="headerlink" title="八、"></a>八、</h3><p>对勾三元</p>
-<script type="math/tex; mode=display">
-\int \frac{1 - x^2}{1 + x^2} \frac{\, \mathrm{d}x}{\sqrt{x^4 + x^2 + 1}}</script><p>令</p>
-<script type="math/tex; mode=display">
-p = x + \frac{1}{x}, \quad q = x - \frac{1}{x}, \quad r = \frac{\sqrt{x^4 + x^2 + 1}}{x}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{1 - x^2}{1 + x^2} \frac{\, \mathrm{d}x}{\sqrt{x^4 + x^2 + 1}} &= - \int \frac{\, \mathrm{d}p}{pr}\\
-&= - \int \frac{\, \mathrm{d}r}{p^2} \\
-&= - \int \frac{\, \mathrm{d}r}{r^2 + 1}\\
-&= \arctan \left( \frac{x}{\sqrt{x^4 + x^2 + 1}} \right) + C
-\end{align}</script><h2 id="三角三元"><a href="#三角三元" class="headerlink" title="三角三元"></a>三角三元</h2><h3 id="九、"><a href="#九、" class="headerlink" title="九、"></a>九、</h3><script type="math/tex; mode=display">
-\int \frac{\sin^2 x \cos x}{\sin x + \cos x} \, \mathrm{d}x</script><p>令</p>
-<script type="math/tex; mode=display">
-p = \sin x + \cos x, \quad q = \sin x - \cos x, \quad r = \sqrt{2}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{\sin^2 x \cos x}{\sin x + \cos x} \, \mathrm{d}x &= \int \frac{\frac{r^2}{2} \cdot \frac{p-q}{2} \, \, \mathrm{d}p}{pq}\\
-&= \frac{1}{4} \int \frac{r^2 \, \mathrm{d}p}{q} - \frac{1}{4} \int \frac{r^2 \, \mathrm{d}p}{p}\\
-&= \frac{1}{4} \int \frac{\, \mathrm{d}p}{q} - \frac{1}{4} \int q \, \mathrm{d}p - \frac{1}{4} \int \frac{p^2 - 1}{p} \, \mathrm{d}p\\
-&= -\frac{1}{8} \int p \, \mathrm{d}q + q \, \mathrm{d}p - \frac{1}{4} \left( \frac{1}{2} p^2 - \ln p \right)\\
-&= \frac{1}{4} \ln p - \frac{1}{8} \left( pq + p^2 \right)\\
-&= \frac{1}{4} \ln \left( \sin x + \cos x \right) - \frac{1}{4} \cos x \left( \sin x + \cos x \right) + C
-\end{align}</script><h2 id="其他双元配凑"><a href="#其他双元配凑" class="headerlink" title="其他双元配凑"></a>其他双元配凑</h2><h3 id="十、"><a href="#十、" class="headerlink" title="十、"></a>十、</h3><script type="math/tex; mode=display">
-\int \frac{\, \mathrm{d}x}{x - \sqrt{x^2 + 2x}}</script><p>令</p>
-<script type="math/tex; mode=display">
-p = x + 1 + \sqrt{x^2 + 2x}, \quad q = x + 1 - \sqrt{x^2 + 2x}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \frac{\, \mathrm{d}x}{x - \sqrt{x^2 + 2x}} &= \int \frac{1}{q-1} \, \mathrm{d}\left( \frac{p+q}{2} \right)\\
-&= \frac{1}{2} \int \frac{\, \mathrm{d}p}{q-1} + \frac{1}{2} \int \frac{\, \mathrm{d}q}{q-1}\\
-&= \frac{1}{2} \int \frac{p \, \mathrm{d}p}{1-p} + \frac{1}{2} \ln |q-1|\\
-&= -\frac{1}{2} \int \frac{p-1+1}{p-1} \, \mathrm{d}p + \frac{1}{2} \ln |q-1|\\
-&= -\frac{1}{2} \int \, \mathrm{d}p - \frac{1}{2} \int \frac{\, \mathrm{d}p}{p-1} + \frac{1}{2} \ln |q-1|\\
-&= -\frac{p}{2} - \frac{1}{2} \ln |p-1| + \frac{1}{2} \ln |q-1| + C\\
-&= \frac{1}{2} \ln \left| \frac{x - \sqrt{x^2 + 2x}}{x + \sqrt{x^2 + 2x}} \right| - \frac{x + 1 + \sqrt{x^2 + 2x}}{2} + C
-\end{align}</script><h3 id="十一、"><a href="#十一、" class="headerlink" title="十一、"></a>十一、</h3><script type="math/tex; mode=display">
-\int \sqrt{\frac{e^x - 1}{e^x + 1}} \, dx</script><p>令</p>
-<script type="math/tex; mode=display">
-m = e^x, \quad n = \sqrt{e^{2x} - 1}</script><script type="math/tex; mode=display">
-dm = e^x\, \mathrm{d}x = m \, \mathrm{d}x \implies \mathrm{d}x = \frac{dm}{m}</script><p>原式为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\int \sqrt{\frac{e^x - 1}{e^x + 1}} \, \mathrm{d}x &= \int \frac{\sqrt{m - 1}}{\sqrt{m + 1}} \cdot \frac{\, \mathrm{d}m}{m}\\
-&= \int \frac{m - 1}{n} \cdot \frac{\, \mathrm{d}m}{m} \\
-&= \int \frac{\, \mathrm{d}m}{n} - \int \frac{\, \mathrm{d}m}{m n}\\
-&= \ln(m + n)-\int \frac{\, \mathrm{d}n}{n^2 + 1} \\
-&= \ln(m + n)-\arctan n+C\\
-&= \ln\left(e^x + \sqrt{e^{2x} - 1}\right) - \arctan\left(\sqrt{e^{2x} - 1}\right) + C
-\end{align}</script><p>双元法还有许多延申（如下图所示），本文所介绍的方法足以解决绝大部分的简单不定积分，想继续深入了解的请关注”虚调子”大佬的知乎账号</p>
+<link rel="stylesheet" href="https://unpkg.com/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/07/03/pVuqm8A.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">不定积分热潮：双元法</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">不定积分热潮：双元法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-25T12:24:29.000Z" title="发表于 2025-06-25 20:24:29">2025-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-02T16:10:53.847Z" title="更新于 2025-07-03 00:10:53">2025-07-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.5k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>双元法出自知乎答主 “虚调子”，本质上是一种特殊的凑微分手段，用来求解分式带根号的不定积分十分方便，在我下一篇有关莫比乌斯变换的笔记中要经常用到，所以先写一篇关于双元法的笔记吧</p>
+<h1>实圆微分式</h1>
+<p>对于实圆：<br>
+$$<br>
+x^2+y^2=A^2<br>
+$$<br>
+取微分：<br>
+$$<br>
+\begin{align*}<br>
+x, \mathrm{d}x&amp;+y, \mathrm{d}y=0\<br>
+\frac{, \mathrm{d}x}{y}&amp;=-\frac{, \mathrm{d}y}{x}\<br>
+\frac{, \mathrm{d}x}{iy}&amp;=\frac{, \mathrm{d}(iy)}{x}=\frac{, \mathrm{d}(x+iy)}{x+iy}\<br>
+\frac{, \mathrm{d}x}{y}&amp;=\frac{y, \mathrm{d}x-x, \mathrm{d}y}{y^2+x^2}<br>
+\end{align*}<br>
+$$</p>
+<h1>虚圆微分式</h1>
+<p>对于虚圆：<br>
+$$<br>
+x^2-y^2=A^2 \quad or \quad y^2-x^2=A^2<br>
+$$<br>
+取微分：<br>
+$$<br>
+\begin{align*}<br>
+x, \mathrm{d}x&amp;-y, \mathrm{d}y=0\<br>
+\frac{, \mathrm{d}x}{y}&amp;=\frac{, \mathrm{d}y}{x}=\frac{, \mathrm{d}x+, \mathrm{d}y}{x+y}\<br>
+\frac{, \mathrm{d}x}{y}&amp;=\frac{y, \mathrm{d}x-x, \mathrm{d}y}{y^2-x^2}<br>
+\end{align*}<br>
+$$</p>
+<h1>双元第一公式：</h1>
+<h2 id="Re">Re:</h2>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{y} = \int \frac{y , \mathrm{d}x}{y^2}<br>
+$$</p>
+<p>合分比由<br>
+$$<br>
+\frac{y , \mathrm{d}x}{y^2} = -\frac{x , \mathrm{d}y}{x^2} \left( \frac{, \mathrm{d}x}{y} = -\frac{, \mathrm{d}y}{x} \right)<br>
+$$<br>
+有<br>
+$$<br>
+= \int \frac{y , \mathrm{d}x - x , \mathrm{d}y}{x^2 + y^2} = \int \frac{y^2}{x^2 + y^2} , \mathrm{d} \left( \frac{x}{y} \right) = \int \frac{1}{1 + \left( \frac{x}{y} \right)^2} , \mathrm{d} \left( \frac{x}{y} \right) = \arctan \frac{x}{y}<br>
+$$</p>
+<h2 id="Im">Im:</h2>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{y} = \int \frac{, \mathrm{d}x + , \mathrm{d}y}{y + x} = \int \frac{, \mathrm{d}(x + y)}{x + y} = \ln (x + y)<br>
+$$</p>
+<p>故<br>
+$$<br>
+\int \frac{, \mathrm{d}x}{y} =<br>
+\begin{cases}<br>
+\arctan \displaystyle \frac{x}{y}, &amp; \text{Re} \<br>
+\ln (x + y), &amp; \text{Im}<br>
+\end{cases}<br>
+$$</p>
+<h1>双元第三公式</h1>
+<h2 id="Re：">Re：</h2>
+<p>$$<br>
+\begin{align*}<br>
+\int \frac{, \mathrm{d}x}{y^3}&amp;=\int \frac{1}{y^2} \cdot \frac{, \mathrm{d}x}{y}=\int \frac{1}{y^2} \cdot \frac{y, \mathrm{d}x}{y^2}=\int \frac{1}{y^2} \cdot \frac{y, \mathrm{d}x - x, \mathrm{d}y}{y^2 + x^2}\<br>
+&amp;=\frac{1}{y^2 + x^2} \int \frac{y, \mathrm{d}x - x, \mathrm{d}y}{y^2}=\frac{1}{y^2 + x^2} \int , \mathrm{d}\left( \frac{x}{y} \right) \<br>
+&amp;=\frac{1}{y^2 + x^2} \cdot \frac{x}{y}<br>
+\end{align*}<br>
+$$</p>
+<h3 id="Im-2">Im:</h3>
+<p>$$<br>
+\begin{align*}<br>
+\int \frac{, \mathrm{d}x}{y^3}&amp;=\int \frac{1}{y^2} \cdot \frac{, \mathrm{d}x}{y}=\int \frac{1}{y^2} \cdot \frac{y, \mathrm{d}x}{y^2}=\int \frac{1}{y^2} \cdot \frac{y, \mathrm{d}x - x, \mathrm{d}y}{y^2 - x^2}\<br>
+&amp;=\frac{1}{y^2 - x^2} \int \frac{y, \mathrm{d}x - x, \mathrm{d}y}{y^2}=\frac{1}{y^2 - x^2} \int , \mathrm{d}\left( \frac{x}{y} \right)\<br>
+&amp;=\frac{1}{y^2 - x^2} \cdot \frac{x}{y}<br>
+\end{align*}<br>
+$$</p>
+<p>故<br>
+$$<br>
+\int \frac{, \mathrm{d}x}{y^3} =<br>
+\begin{cases}<br>
+\displaystyle \frac{1}{y^2 + x^2} \cdot \frac{x}{y}, &amp; \text{Re} \<br>
+\displaystyle \frac{1}{y^2 - x^2} \cdot \frac{x}{y}, &amp; \text{Im}<br>
+\end{cases}<br>
+$$<br>
+<strong>总括为</strong><br>
+$$<br>
+\int \frac{, \mathrm{d}x}{y^3} = \frac{1}{y^2 \pm x^2} \cdot \frac{x}{y}<br>
+$$</p>
+<h1>双元乘积公式</h1>
+<p>$$<br>
+\begin{align}<br>
+\int y, \mathrm{d}x &amp;=\frac{\displaystyle \int (y, \mathrm{d}x + x, \mathrm{d}y) + \int (y, \mathrm{d}x - x, \mathrm{d}y)}{2}\<br>
+&amp;= \frac{\displaystyle \int , \mathrm{d}(xy)}{2} + \frac{\displaystyle \int (y, \mathrm{d}x - x, \mathrm{d}y)}{2}\<br>
+&amp;=\frac{1}{2}xy + \frac{\displaystyle \int (y, \mathrm{d}x - x, \mathrm{d}y)}{2}\<br>
+\end{align}<br>
+$$</p>
+<p>其中<br>
+$$<br>
+\begin{align}<br>
+\frac{1}{2} \int (y, \mathrm{d}x - x, \mathrm{d}y) &amp;= \frac{y^2 \pm x^2}{2} \int \frac{y, \mathrm{d}x - x, \mathrm{d}y}{y^2 \pm x^2} \<br>
+&amp;= \frac{y^2 \pm x^2}{2} \int \frac{, \mathrm{d}x}{y}<br>
+\end{align}<br>
+$$<br>
+<strong>最终形式</strong><br>
+$$<br>
+\int y, \mathrm{d}x = \frac{1}{2}xy + \frac{y^2 \pm x^2}{2} \int \frac{, \mathrm{d}x}{y}<br>
+$$</p>
+<h1>双元点火不足公式</h1>
+<p>对于<br>
+$$<br>
+y^2 \pm x^2=A^2<br>
+$$<br>
+<strong>递推公式</strong>：<br>
+$$<br>
+\int y^n , \mathrm{d}x = \frac{1}{n + 1}(y^n x) + \frac{n}{n + 1}(A) \int y^{n - 2} , \mathrm{d}x\<br>
+\int \frac{, \mathrm{d}x}{y^n} = \frac{1}{n - 2}\cdot\frac{x}{y^{n - 2}A} + \frac{n - 3}{n - 2}\cdot\frac{1}{A} \int \frac{, \mathrm{d}x}{y^{n - 2}}<br>
+$$<br>
+<strong>推论（特殊情况）</strong>：<br>
+$$<br>
+\int y , \mathrm{d}x = \frac{1}{2}(xy) + \frac{1}{2}(A) \int \frac{, \mathrm{d}x}{y}\<br>
+\int \frac{, \mathrm{d}x}{y^3} = \frac{1}{A}\cdot\frac{x}{y}<br>
+$$</p>
+<h1>其余常见构型</h1>
+<p>$$<br>
+\begin{align*}<br>
+\int \frac{, \mathrm{d}x}{x^2y}&amp;=-\frac{1}{A}\cdot \frac{y}{x}\<br>
+\int \frac{, \mathrm{d}x}{xy^2}&amp;=-\frac{1}{A}\cdot \ln\frac{y}{x}=\frac{1}{A}\cdot \ln\frac{x}{y}<br>
+\end{align*}<br>
+$$</p>
+<h1>典型例题</h1>
+<p>我们先从简单的基本积分开始，熟悉双元法的解题流程</p>
+<h2 id="普通双元配凑">普通双元配凑</h2>
+<h3 id="一、">一、</h3>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{\sqrt{x^2+a^2}}<br>
+$$</p>
+<p>令 $y=\sqrt{x^2+a^2}$，则有 $y^2-x^2=a^2$，取微分得 $x, \mathrm{d}x=y, \mathrm{d}y$</p>
+<p>且有<br>
+$$<br>
+\frac{, \mathrm{d}x}{y}=\frac{, \mathrm{d}y}{x}=\frac{, \mathrm{d}\left( x+y \right)}{x+y}<br>
+$$<br>
+则原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{, \mathrm{d}x}{y}=\frac{, \mathrm{d}\left( x+y \right)}{x+y} &amp;=\ln |x+y|+C\<br>
+&amp;=\ln|x+\sqrt{x^2+a^2}|+C<br>
+\end{align}<br>
+$$</p>
+<h3 id="二、">二、</h3>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{x\sqrt{a^2-x^2}}<br>
+$$</p>
+<p>令 $y=\sqrt{a^2-x^2}$</p>
+<p>则原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{, \mathrm{d}x}{x\sqrt{a^2-x^2}} &amp;=\int \frac{, \mathrm{d}x}{xy}=-\int \frac{, \mathrm{d}y}{x^2}\<br>
+&amp;=\int \frac{, \mathrm{d}y}{y^2-a^2}=\frac{1}{2a}\ln|\frac{\sqrt{a^2-x^2}-a}{\sqrt{a^2-x^2}+a}|+C<br>
+\end{align}<br>
+$$</p>
+<h3 id="三、">三、</h3>
+<p>$$<br>
+\int \ln\left( \sqrt{x+1}-\sqrt{1-x} \right)dx<br>
+$$</p>
+<p>令 $m=\sqrt{x+1},m=\sqrt{1-x}$，则有 $m^2+n^2=2$，取微分得 $x, \mathrm{d}x=y, \mathrm{d}y$</p>
+<p>则原式为<br>
+$$<br>
+\begin{align}<br>
+\int \ln\left( \sqrt{x+1}+\sqrt{1-x} \right), \mathrm{d}x &amp;=x\ln(m+n)-\int x, \mathrm{d}\ln(m+n)\<br>
+&amp;=x\ln(m+n)-x\cdot \frac{, \mathrm{d}m+, \mathrm{d}n}{m+n}\<br>
+&amp;=x\ln(m+n)-\frac{1}{2}\int (m-n)(, \mathrm{d}m+, \mathrm{d}n)\<br>
+&amp;=x\ln(m+n)-\frac{1}{4}(m^2+n^2)+\int \frac{n, \mathrm{d}m-m, \mathrm{d}n}{2}\<br>
+&amp;=x\ln (m+n)-\frac{1}{2}x+\int \frac{n^2, \mathrm{d}\left( \frac{m}{n} \right)}{m^2+n^2}\<br>
+&amp;=x\ln (m+n)-\frac{1}{2}x+\int \frac{, \mathrm{d}\left( \frac{m}{n} \right)}{\left( \frac{m}{n} \right)^2+1}\<br>
+&amp;=x\ln\left( \sqrt{x+1}+\sqrt{1-x} \right)-\frac{1}{2}x+\arctan{\sqrt{\frac{1+x}{1-x}}}+C<br>
+\end{align}<br>
+$$</p>
+<h3 id="四、">四、</h3>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{\sqrt{x^2+2x+3}}<br>
+$$</p>
+<p>令<br>
+$$<br>
+m=x+1,\quad n=\sqrt{x^2+2x+3}<br>
+$$<br>
+原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{, \mathrm{d}m}{n}&amp;=\int \frac{, \mathrm{d}\left(m+n\right)}{m+n}\<br>
+&amp;=\ln|m+n|+C\<br>
+&amp;=\ln|x+1+\sqrt{x^2+2x+3}|+C<br>
+\end{align}<br>
+$$</p>
+<h3 id="五、">五、</h3>
+<p>$$<br>
+\int \sqrt{x^2+2x+3}<br>
+$$</p>
+<p>同上题所示设双元</p>
+<p>原式为<br>
+$$<br>
+\begin{align}<br>
+\int ndm&amp;=\frac{1}{2}mn+\frac{n^2-m^2}{2}\int \frac{, \mathrm{d}m}{n}\<br>
+&amp;=\frac{1}{2}\left(x+1\right)\sqrt{x^2+2x+3}+\ln|x+1+\sqrt{x^2+2x+3}|+C<br>
+\end{align}<br>
+$$</p>
+<h3 id="六、">六、</h3>
+<p>$$<br>
+\int \frac{x, \mathrm{d}x}{\sqrt{-x^2-2x+3}}<br>
+$$</p>
+<p>令<br>
+$$<br>
+m=x+1,\quad n=\sqrt{-x^2-2x+3}<br>
+$$<br>
+原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{\left(m-1\right), \mathrm{d}m}{n} &amp;= \int \frac{m, \mathrm{d}m}{n}-\frac{, \mathrm{d}m}{n}\<br>
+&amp;=-\int , \mathrm{d}n-\arcsin \frac{m}{2}\<br>
+&amp;=-\sqrt{-x^2-2x+3}-\arcsin\frac{x+1}{2}+C<br>
+\end{align}<br>
+$$<br>
+接下来是一些技巧性配凑</p>
+<h2 id="对勾双元配凑">对勾双元配凑</h2>
+<h3 id="七、">七、</h3>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{1+x^4}<br>
+$$</p>
+<p>令<br>
+$$<br>
+m=x+\displaystyle \frac{1}{x},\quad n=x-\frac{1}{x}<br>
+$$<br>
+原式为<br>
+$$<br>
+\begin{align}<br>
+\int  \frac{, \mathrm{d}x}{1+x^4} &amp;=\int \frac{\frac{, \mathrm{d}x}{x^2}}{x^2+\frac{1}{x^2}}=\int \frac{, \mathrm{d}\left(-\frac{1}{x}\right)}{x^2+\frac{1}{x^2}}\<br>
+&amp;=\int \frac{, \mathrm{d}\left(\frac{n-m}{2}\right)}{m^2-2}=\frac{1}{2}\int \frac{, \mathrm{d}n}{n^2+2}-\frac{1}{2}\int \frac{, \mathrm{d}m}{m^2-2}\<br>
+&amp;=\frac{1}{2\sqrt{2}}\arctan\frac{x-\frac{1}{x}}{\sqrt{2}}-\frac{1}{4\sqrt{2}}\ln|\frac{x+\frac{1}{x}-\sqrt{2}}{x+\frac{1}{x}+\sqrt{2}}|+C<br>
+\end{align}<br>
+$$<br>
+注：为确保严谨，此处最好用如下公式进行间断点修正<br>
+$$<br>
+\begin{align*}<br>
+\arctan\left(k\left(x-\frac{1}{x}\right)\right) &amp;= \arctan\left(k\left(x-\frac{1}{x}\right)\right)</p>
+<ul>
+<li>\arctan\left(\frac{1}{kx}\right) + \arctan\left(kx\right) \<br>
+&amp;= \arctan\left(kx^3 + \left(\frac{1}{k}-1\right)x\right) + \arctan\left(kx\right)<br>
+\end{align*}<br>
+$$</li>
+</ul>
+<h3 id="八、">八、</h3>
+<p>对勾三元<br>
+$$<br>
+\int \frac{1 - x^2}{1 + x^2} \frac{, \mathrm{d}x}{\sqrt{x^4 + x^2 + 1}}<br>
+$$</p>
+<p>令</p>
+<p>$$<br>
+p = x + \frac{1}{x}, \quad q = x - \frac{1}{x}, \quad r = \frac{\sqrt{x^4 + x^2 + 1}}{x}<br>
+$$</p>
+<p>原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{1 - x^2}{1 + x^2} \frac{, \mathrm{d}x}{\sqrt{x^4 + x^2 + 1}} &amp;= - \int \frac{, \mathrm{d}p}{pr}\<br>
+&amp;= - \int \frac{, \mathrm{d}r}{p^2} \<br>
+&amp;= - \int \frac{, \mathrm{d}r}{r^2 + 1}\<br>
+&amp;= \arctan \left( \frac{x}{\sqrt{x^4 + x^2 + 1}} \right) + C<br>
+\end{align}<br>
+$$</p>
+<h2 id="三角三元">三角三元</h2>
+<h3 id="九、">九、</h3>
+<p>$$<br>
+\int \frac{\sin^2 x \cos x}{\sin x + \cos x} , \mathrm{d}x<br>
+$$</p>
+<p>令<br>
+$$<br>
+p = \sin x + \cos x, \quad q = \sin x - \cos x, \quad r = \sqrt{2}<br>
+$$</p>
+<p>原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{\sin^2 x \cos x}{\sin x + \cos x} , \mathrm{d}x &amp;= \int \frac{\frac{r^2}{2} \cdot \frac{p-q}{2} , , \mathrm{d}p}{pq}\<br>
+&amp;= \frac{1}{4} \int \frac{r^2 , \mathrm{d}p}{q} - \frac{1}{4} \int \frac{r^2 , \mathrm{d}p}{p}\<br>
+&amp;= \frac{1}{4} \int \frac{, \mathrm{d}p}{q} - \frac{1}{4} \int q , \mathrm{d}p - \frac{1}{4} \int \frac{p^2 - 1}{p} , \mathrm{d}p\<br>
+&amp;= -\frac{1}{8} \int p , \mathrm{d}q + q , \mathrm{d}p - \frac{1}{4} \left( \frac{1}{2} p^2 - \ln p \right)\<br>
+&amp;= \frac{1}{4} \ln p - \frac{1}{8} \left( pq + p^2 \right)\<br>
+&amp;= \frac{1}{4} \ln \left( \sin x + \cos x \right) - \frac{1}{4} \cos x \left( \sin x + \cos x \right) + C<br>
+\end{align}<br>
+$$</p>
+<h2 id="其他双元配凑">其他双元配凑</h2>
+<h3 id="十、">十、</h3>
+<p>$$<br>
+\int \frac{, \mathrm{d}x}{x - \sqrt{x^2 + 2x}}<br>
+$$</p>
+<p>令<br>
+$$<br>
+p = x + 1 + \sqrt{x^2 + 2x}, \quad q = x + 1 - \sqrt{x^2 + 2x}<br>
+$$</p>
+<p>原式为<br>
+$$<br>
+\begin{align}<br>
+\int \frac{, \mathrm{d}x}{x - \sqrt{x^2 + 2x}} &amp;= \int \frac{1}{q-1} , \mathrm{d}\left( \frac{p+q}{2} \right)\<br>
+&amp;= \frac{1}{2} \int \frac{, \mathrm{d}p}{q-1} + \frac{1}{2} \int \frac{, \mathrm{d}q}{q-1}\<br>
+&amp;= \frac{1}{2} \int \frac{p , \mathrm{d}p}{1-p} + \frac{1}{2} \ln |q-1|\<br>
+&amp;= -\frac{1}{2} \int \frac{p-1+1}{p-1} , \mathrm{d}p + \frac{1}{2} \ln |q-1|\<br>
+&amp;= -\frac{1}{2} \int , \mathrm{d}p - \frac{1}{2} \int \frac{, \mathrm{d}p}{p-1} + \frac{1}{2} \ln |q-1|\<br>
+&amp;= -\frac{p}{2} - \frac{1}{2} \ln |p-1| + \frac{1}{2} \ln |q-1| + C\<br>
+&amp;= \frac{1}{2} \ln \left| \frac{x - \sqrt{x^2 + 2x}}{x + \sqrt{x^2 + 2x}} \right| - \frac{x + 1 + \sqrt{x^2 + 2x}}{2} + C<br>
+\end{align}<br>
+$$</p>
+<h3 id="十一、">十一、</h3>
+<p>$$<br>
+\int \sqrt{\frac{e^x - 1}{e^x + 1}} , dx<br>
+$$</p>
+<p>令<br>
+$$<br>
+m = e^x, \quad n = \sqrt{e^{2x} - 1}<br>
+$$</p>
+<p>$$<br>
+dm = e^x, \mathrm{d}x = m , \mathrm{d}x \implies \mathrm{d}x = \frac{dm}{m}<br>
+$$</p>
+<p>原式为<br>
+$$<br>
+\begin{align}<br>
+\int \sqrt{\frac{e^x - 1}{e^x + 1}} , \mathrm{d}x &amp;= \int \frac{\sqrt{m - 1}}{\sqrt{m + 1}} \cdot \frac{, \mathrm{d}m}{m}\<br>
+&amp;= \int \frac{m - 1}{n} \cdot \frac{, \mathrm{d}m}{m} \<br>
+&amp;= \int \frac{, \mathrm{d}m}{n} - \int \frac{, \mathrm{d}m}{m n}\<br>
+&amp;= \ln(m + n)-\int \frac{, \mathrm{d}n}{n^2 + 1} \<br>
+&amp;= \ln(m + n)-\arctan n+C\<br>
+&amp;= \ln\left(e^x + \sqrt{e^{2x} - 1}\right) - \arctan\left(\sqrt{e^{2x} - 1}\right) + C<br>
+\end{align}<br>
+$$</p>
+<p>双元法还有许多延申（如下图所示），本文所介绍的方法足以解决绝大部分的简单不定积分，想继续深入了解的请关注&quot;虚调子&quot;大佬的知乎账号</p>
 <p><img src="https://s21.ax1x.com/2025/06/18/pVEHDiV.png" alt=""></p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/">数学分析</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/07/03/pVuqm8A.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a><a class="pagination-related" href="/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/" title="微积分下的 Möbius Transformation"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微积分下的 Möbius Transformation</div></div><div class="info-2"><div class="info-item-1">用复分析中莫比乌斯变换的思想解决一类带根号项的分式有理函数积分</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img class="cover" src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-02</div><div class="info-item-2">Bohr-Mollerup 定理</div></div><div class="info-2"><div class="info-item-1">Bohr-Mollerup 定理</div></div></div></a><a class="pagination-related" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论"><img class="cover" src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-30</div><div class="info-item-2">Fejér-Jackson 不等式及其推论</div></div><div class="info-2"><div class="info-item-1">Fejér-Jackson 不等式</div></div></div></a><a class="pagination-related" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-01</div><div class="info-item-2">Dirichlet 核与 Dirichlet 积分</div></div><div class="info-2"><div class="info-item-1">Dirichlet 核</div></div></div></a><a class="pagination-related" href="/2025/06/27/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%80%E7%B1%BB%E7%AE%80%E5%8D%95%E6%9C%89%E7%90%86%E5%88%86%E5%BC%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%A7%AF%E5%88%86%E8%A7%A3/" title="一类简单有理分式函数的积分解"><img class="cover" src="https://s21.ax1x.com/2025/07/03/pVuqQDf.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-27</div><div class="info-item-2">一类简单有理分式函数的积分解</div></div><div class="info-2"><div class="info-item-1">并不简单</div></div></div></a><a class="pagination-related" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-04</div><div class="info-item-2">一则有关伽马函数与三角函数的积分问题</div></div><div class="info-2"><div class="info-item-1">伽马函数与对数函数，三角函数结合</div></div></div></a><a class="pagination-related" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-16</div><div class="info-item-2">中值定理</div></div><div class="info-2"><div class="info-item-1">Dirichlet 核</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">待更新内容：</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E5%9C%86%E5%BE%AE%E5%88%86%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">实圆微分式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E5%9C%86%E5%BE%AE%E5%88%86%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">虚圆微分式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%85%83%E7%AC%AC%E4%B8%80%E5%85%AC%E5%BC%8F%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">双元第一公式：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Re"><span class="toc-number">3.1.</span> <span class="toc-text">Re:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Im"><span class="toc-number">3.2.</span> <span class="toc-text">Im:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%85%83%E7%AC%AC%E4%B8%89%E5%85%AC%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">双元第三公式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Re%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">Re：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Im-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">Im:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%85%83%E4%B9%98%E7%A7%AF%E5%85%AC%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">双元乘积公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%85%83%E7%82%B9%E7%81%AB%E4%B8%8D%E8%B6%B3%E5%85%AC%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">双元点火不足公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BD%99%E5%B8%B8%E8%A7%81%E6%9E%84%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">其余常见构型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">典型例题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%8F%8C%E5%85%83%E9%85%8D%E5%87%91"><span class="toc-number">8.1.</span> <span class="toc-text">普通双元配凑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81"><span class="toc-number">8.1.1.</span> <span class="toc-text">一、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81"><span class="toc-number">8.1.2.</span> <span class="toc-text">二、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81"><span class="toc-number">8.1.3.</span> <span class="toc-text">三、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81"><span class="toc-number">8.1.4.</span> <span class="toc-text">四、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81"><span class="toc-number">8.1.5.</span> <span class="toc-text">五、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81"><span class="toc-number">8.1.6.</span> <span class="toc-text">六、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8B%BE%E5%8F%8C%E5%85%83%E9%85%8D%E5%87%91"><span class="toc-number">8.2.</span> <span class="toc-text">对勾双元配凑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81"><span class="toc-number">8.2.1.</span> <span class="toc-text">七、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81"><span class="toc-number">8.2.2.</span> <span class="toc-text">八、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E4%B8%89%E5%85%83"><span class="toc-number">8.3.</span> <span class="toc-text">三角三元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81"><span class="toc-number">8.3.1.</span> <span class="toc-text">九、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%8C%E5%85%83%E9%85%8D%E5%87%91"><span class="toc-number">8.4.</span> <span class="toc-text">其他双元配凑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E3%80%81"><span class="toc-number">8.4.1.</span> <span class="toc-text">十、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81"><span class="toc-number">8.4.2.</span> <span class="toc-text">十一、</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中值定理"/></a><div class="content"><a class="title" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理">中值定理</a><time datetime="2025-08-16T10:39:54.000Z" title="发表于 2025-08-16 18:39:54">2025-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/">数学分析</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/07/03/pVuqm8A.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a><a class="pagination-related" href="/2025/06/26/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%98%E6%8D%A2/" title="微积分下的 Möbius Transformation"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微积分下的 Möbius Transformation</div></div><div class="info-2"><div class="info-item-1">用复分析中莫比乌斯变换的思想解决一类带根号项的分式有理函数积分</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img class="cover" src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-02</div><div class="info-item-2">Bohr-Mollerup 定理</div></div><div class="info-2"><div class="info-item-1">Bohr-Mollerup 定理</div></div></div></a><a class="pagination-related" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-01</div><div class="info-item-2">Dirichlet 核与 Dirichlet 积分</div></div><div class="info-2"><div class="info-item-1">Dirichlet 核</div></div></div></a><a class="pagination-related" href="/2025/06/27/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%80%E7%B1%BB%E7%AE%80%E5%8D%95%E6%9C%89%E7%90%86%E5%88%86%E5%BC%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%A7%AF%E5%88%86%E8%A7%A3/" title="一类简单有理分式函数的积分解"><img class="cover" src="https://s21.ax1x.com/2025/07/03/pVuqQDf.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-27</div><div class="info-item-2">一类简单有理分式函数的积分解</div></div><div class="info-2"><div class="info-item-1">并不简单</div></div></div></a><a class="pagination-related" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论"><img class="cover" src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-30</div><div class="info-item-2">Fejér-Jackson 不等式及其推论</div></div><div class="info-2"><div class="info-item-1">Fejér-Jackson 不等式</div></div></div></a><a class="pagination-related" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-04</div><div class="info-item-2">一则有关伽马函数与三角函数的积分问题</div></div><div class="info-2"><div class="info-item-1">伽马函数与对数函数，三角函数结合</div></div></div></a><a class="pagination-related" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理"><img class="cover" src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-16</div><div class="info-item-2">中值定理</div></div><div class="info-2"><div class="info-item-1">Dirichlet 核</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">待更新内容：</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">实圆微分式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">虚圆微分式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">双元第一公式：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Re"><span class="toc-number">3.1.</span> <span class="toc-text">Re:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Im"><span class="toc-number">3.2.</span> <span class="toc-text">Im:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">双元第三公式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Re%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">Re：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Im-2"><span class="toc-number">4.1.1.</span> <span class="toc-text">Im:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">双元乘积公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">双元点火不足公式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">其余常见构型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">典型例题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%8F%8C%E5%85%83%E9%85%8D%E5%87%91"><span class="toc-number">8.1.</span> <span class="toc-text">普通双元配凑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81"><span class="toc-number">8.1.1.</span> <span class="toc-text">一、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81"><span class="toc-number">8.1.2.</span> <span class="toc-text">二、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81"><span class="toc-number">8.1.3.</span> <span class="toc-text">三、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81"><span class="toc-number">8.1.4.</span> <span class="toc-text">四、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81"><span class="toc-number">8.1.5.</span> <span class="toc-text">五、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81"><span class="toc-number">8.1.6.</span> <span class="toc-text">六、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8B%BE%E5%8F%8C%E5%85%83%E9%85%8D%E5%87%91"><span class="toc-number">8.2.</span> <span class="toc-text">对勾双元配凑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81"><span class="toc-number">8.2.1.</span> <span class="toc-text">七、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81"><span class="toc-number">8.2.2.</span> <span class="toc-text">八、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E4%B8%89%E5%85%83"><span class="toc-number">8.3.</span> <span class="toc-text">三角三元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%9D%E3%80%81"><span class="toc-number">8.3.1.</span> <span class="toc-text">九、</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%8C%E5%85%83%E9%85%8D%E5%87%91"><span class="toc-number">8.4.</span> <span class="toc-text">其他双元配凑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E3%80%81"><span class="toc-number">8.4.1.</span> <span class="toc-text">十、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81"><span class="toc-number">8.4.2.</span> <span class="toc-text">十一、</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中值定理"/></a><div class="content"><a class="title" href="/2025/08/16/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理">中值定理</a><time datetime="2025-08-16T10:39:54.000Z" title="发表于 2025-08-16 18:39:54">2025-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {
@@ -479,7 +612,7 @@ dm = e^x\, \mathrm{d}x = m \, \mathrm{d}x \implies \mathrm{d}x = \frac{dm}{m}</s
         : window.location.href = e.request.responseURL
     }
   })
-})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
   function butterfly_footer_beautify_injector_config(){
     var parent_div_git = document.getElementById('footer-wrap');
     var item_html = '<p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
@@ -503,4 +636,4 @@ dm = e^x\, \mathrm{d}x = m \, \mathrm{d}x \implies \mathrm{d}x = \frac{dm}{m}</s
   else if (epage === cpage){
     butterfly_footer_beautify_injector_config();
   }
-  </script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
+  </script><!-- hexo injector body_end end --></body></html>
