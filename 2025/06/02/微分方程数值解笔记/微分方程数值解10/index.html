@@ -159,266 +159,65 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://unpkg.com/hexo-math@4.0.0/dist/style.css">
-<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第四章（2）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第四章（2）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-02T12:39:57.000Z" title="发表于 2025-06-02 20:39:57">2025-06-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-02T12:42:31.915Z" title="更新于 2025-06-02 20:42:31">2025-06-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>初值问题的差分逼近</h1>
-<p>对于一阶双曲方程<br>
-$$<br>
-\begin{cases}u_t + a u_x = 0 \ \text{初值条件、边值}\end{cases}<br>
-$$<br>
-周期边界：$u(0,t)=u(L,t)$</p>
-<p>Dirichlet 边界：$\begin{cases}a&gt;0时，u(0,t)=g(t) \ a&lt;0时，u(L,t)=g(t) \end{cases}$</p>
-<p>双曲、椭圆、抛物型方程区别</p>
-<p>依据<strong>特征</strong>来区分，初值的性质体现为沿特征传播，无间断</p>
-<h2 id="几种常见差分格式（迎风格式相关）">几种常见差分格式（迎风格式相关）</h2>
-<p>设时间步长为$\tau$，空间步长为$h$，$\displaystyle r = \frac{a\tau}{h}$，以下为时间向前的三种显式格式：</p>
-<h3 id="格式-一：空间向后">格式 一：空间向后</h3>
-<p>$$<br>
-\frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_j^n - u_{j - 1}^n}{h} = 0<br>
-$$</p>
-<p>精度 $O(\tau + h)$ ，对应 Fourier 方法变换（设 $u_j^n = v^n e^{i\lambda x_j}$ ）<br>
-$$<br>
-\begin{align}<br>
-u_j^{n+1} &amp;= (1 - r)u_j^n + r u_{j - 1}^n \<br>
-\implies v^{n+1} &amp;= [(1 - r) + r e^{-i\lambda h}]v^n \<br>
-&amp;= \lambda_1 v^n<br>
-\end{align}<br>
-$$</p>
-<h3 id="格式-二：空间向前">格式 二：空间向前</h3>
-<p>$$<br>
-\frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^n - u_j^n}{h} = 0<br>
-$$</p>
-<p>精度 $O(\tau + h)$ ，Fourier 变换后：<br>
-$$<br>
-\begin{align}<br>
-u_j^{n+1} &amp;= (1 + r)u_j^n - r u_{j + 1}^n \<br>
-\implies v^{n+1} &amp;= [(1 + r) - r e^{i\lambda h}]v^n \<br>
-&amp;= \lambda_2 v^n<br>
-\end{align}<br>
-$$</p>
-<h3 id="格式-三：空间中心">格式 三：空间中心</h3>
-<p>$$<br>
-\frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^n - u_{j - 1}^n}{2h} = 0<br>
-$$</p>
-<p>精度 $O(\tau + h^2)$ ，Fourier 变换后：<br>
-$$<br>
-\begin{align}<br>
-u_j^{n+1} &amp;= u_j^n + \frac{r}{2}u_{j - 1}^n - \frac{r}{2}u_{j + 1}^n \<br>
-\implies v^{n+1} &amp;= \left[1 - \frac{r}{2}(e^{i\lambda h} - e^{-i\lambda h})\right]v^n \<br>
-&amp;= \lambda_3 v^n<br>
-\end{align}<br>
-$$</p>
-<h2 id="差分格式稳定性（Fourier-分析）">差分格式稳定性（Fourier 分析）</h2>
-<p>设三种差分格式对应增长因子为 $\lambda_1$、$\lambda_2$、$\lambda_3$ ，通过模长 $|\lambda|^2$ 分析稳定性：</p>
-<h3 id="格式-一：（空间向后，-a-0-场景）">格式 一：（空间向后，$a&gt;0$ 场景）</h3>
-<p>$$<br>
-\begin{align}<br>
-|\lambda_1|^2 &amp;=(1 - r + r\cos\lambda h)^2 + (-r\sin\lambda h)^2 \<br>
-&amp;= 1 + 2r(1 - r)(\cos\lambda h - 1)<br>
-\end{align}<br>
-$$</p>
-<p>由 $2r(1 - r)\geq0$（需 $0\leq r\leq1$ ，即 $\displaystyle \frac{a\tau}{h}\leq1$ 且 $a&gt;0$ ），当 $a&gt;0$ 且 $\displaystyle \frac{a\tau}{h}\leq1$ 时，格式 1 稳定</p>
-<h3 id="格式-二：（空间向前，-a-0-场景）">格式 二：（空间向前，$a&lt;0$ 场景）</h3>
-<p>$$<br>
-|\lambda_2|^2=1 + 2r(r + 1)(1 - \cos\lambda h)<br>
-$$</p>
-<p>由 $r(r + 1)\leq0$（需 $-1\leq r\leq0$ ，即 $\displaystyle \frac{a\tau}{h}\geq -1$ 且 $a&lt;0$ ），对应情况下格式 2 稳定</p>
-<h3 id="格式-三：（空间中心）">格式 三：（空间中心）</h3>
-<p>$$<br>
-|\lambda_3|^2=1 + r^2\sin^2\lambda h &gt; 1<br>
-$$</p>
-<p>增长因子模长恒大于 1，<strong>格式 3 恒不稳定</strong></p>
-<h3 id="稳定性条件的特征线解释">稳定性条件的特征线解释</h3>
-<p>特征线方程 $\displaystyle \frac{dx}{dt}=a$ ，沿特征线 $u = \text{const}$ 。以 $a&gt;0$ 为例，利用特征线附近节点（$Q_1,Q_0$ 等）做线性插值构造数值解，推导得数值解形式 $u_j^{n+1}=ru_{j - 1}^n + (1 - r)u_j^n$（即格式 1 ），稳定性条件要求<strong>数值解依赖域包含精确解依赖域</strong> ；$a&lt;0$ 时同理分析格式 2</p>
-<h2 id="迎风格式总结">迎风格式总结</h2>
-<h3 id="一、显式迎风格式">一、显式迎风格式</h3>
-<p>$$<br>
-\begin{cases}<br>
-\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_j^n - u_{j - 1}^n}{h} = 0, &amp; a&gt;0 \<br>
-\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^n - u_j^n}{h} = 0, &amp; a&lt;0<br>
-\end{cases}<br>
-$$</p>
-<h3 id="二、隐式迎风格式">二、隐式迎风格式</h3>
-<p>$$<br>
-\begin{cases}<br>
-\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_j^{n+1} - u_{j - 1}^{n+1}}{h} = 0, &amp; a&gt;0 \<br>
-\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^{n+1} - u_j^{n+1}}{h} = 0, &amp; a&lt;0<br>
-\end{cases}<br>
-$$</p>
-<h3 id="三、变系数情形（-a-x-为系数）">三、变系数情形（$a(x)$ 为系数）</h3>
-<p>对于方程<br>
-$$<br>
-u_t + a(x) u_x = 0<br>
-$$<br>
-<strong>显式迎风格式：</strong><br>
-$$<br>
-\begin{cases}<br>
-\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a(x_j)\frac{u_j^n - u_{j - 1}^n}{h} = 0, &amp; a(x_j)\geq0 \<br>
-\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a(x_j)\frac{u_{j + 1}^n - u_j^n}{h} = 0, &amp; a(x_j)&lt;0<br>
-\end{cases}<br>
-$$<br>
-<strong>稳定性充分条件：</strong><br>
-$$<br>
-\frac{\tau}{h}\max_j|a(x_j)|\leq1<br>
-$$</p>
-<h2 id="一阶双曲方程组">一阶双曲方程组</h2>
-<p>形式为<br>
-$$<br>
-\frac{\partial U}{\partial t} + A(x)\frac{\partial U}{\partial x} = F<br>
-$$<br>
-也有迎风格式，空间导数离散依赖 $A(x)$ 特征值的正交性</p>
-<h2 id="积分守恒格式（有限体积法）">积分守恒格式（有限体积法）</h2>
-<p>针对散度型 PDE：<br>
-$$<br>
-\frac{\partial u}{\partial t} + \frac{\partial f(t,u)}{\partial x} = 0<br>
-$$<br>
-设 $G$ 为 $x$ - $t$ 平面有界域，由 Green 公式：<br>
-$$<br>
-\iint_G \left(\frac{\partial u}{\partial t} + \frac{\partial f(u)}{\partial x}\right)dxdt = \int_{\Gamma} (f dt - u dx)<br>
-$$</p>
-<p>结合边界积分关系，得<br>
-$$<br>
-\int_{\Gamma} (f dt - u dx) = 0<br>
-$$<br>
-体现积分守恒特性，是有限体积法离散的理论基础</p>
-<h3 id="一、Lax-Friedrichs-格式">一、Lax - Friedrichs 格式</h3>
-<p><strong>推导</strong>：通过对积分守恒形式（在区域 $G = ABCD$ 上积分  $\displaystyle \int_{\Gamma} fdt - udx = 0$ ）做数值积分近似，得到格式：<br>
-$$<br>
-\frac{u_j^{n + 1}-\frac{u_{j + 1}^n + u_{j - 1}^n}{2}}{\tau}+\frac{f_{j + 1}^n - f_{j - 1}^n}{2h}=0<br>
-$$<br>
-截断误差 $O(\tau + h^2)$</p>
-<p><strong>特殊情形（$f=au$ 时）</strong>：格式为<br>
-$$<br>
-\frac{u_j^{n + 1}-\frac{u_{j + 1}^n + u_{j - 1}^n}{2}}{\tau}+a\frac{u_{j + 1}^n - u_{j - 1}^n}{2h}=0<br>
-$$<br>
-变形得<br>
-$$<br>
-u_j^{n + 1}=\frac{1}{2}(1 - r)u_{j + 1}^n+\frac{1}{2}(1 + r)u_{j - 1}^n<br>
-$$<br>
-<strong>增长因子与稳定性</strong>：</p>
-<p>增长因子<br>
-$$<br>
-\lambda=\frac{1}{2}(1 - r)e^{i\lambda h}+\frac{1}{2}(1 + r)e^{-i\lambda h}<br>
-$$<br>
-模长平方<br>
-$$<br>
-|\lambda|^2 = 1+\frac{r^2}{2}(\cos\lambda h - 1)<br>
-$$<br>
-由 $|\lambda|$ 一致有界得 $|r|\leq1$（即 $\displaystyle \left|\frac{a\tau}{h}\right|\leq1$ ）时稳定</p>
-<h3 id="二、盒式格式（Box-scheme）">二、盒式格式（Box scheme）</h3>
-<p><strong>形式</strong>：在区域 $G = ABCD$ 上，格式为<br>
-$$<br>
-\frac{u_j^{n + 1}-u_j^n}{\tau}+\frac{u_{j + 1}^{n + 1}-u_{j - 1}^{n + 1}}{2h}+\frac{f_j^n - f_{j - 1}^n}{h}+\frac{f_{j + 1}^{n + 1}-f_j^{n + 1}}{h}=0<br>
-$$<br>
-<strong>截断误差</strong>：$O(\tau^2 + h^2)$</p>
-<p><strong>特殊情形（$f=au$ 时）</strong>：化简得<br>
-$$<br>
-(1 + r)au_j^{n + 1}+(1 - r)au_{j + 1}^{n + 1}=(1 - r)au_j^n+(1 + r)au_{j - 1}^n<br>
-$$<br>
-显式实现时，$a&gt;0$ 给左边值，$a&lt;0$ 给右边值</p>
-<p>增长因子 $\lambda$ 满足<br>
-$$<br>
-\lambda =\frac{(1-r)+(1+r)\cos{\alpha h}-i(1+r)\sin{\alpha h}}{(1+r)+(1-r)\cos{\alpha h}-i(1-r)\sin{\alpha h}}<br>
-$$<br>
-$|\lambda|=1$，故盒式格式<strong>恒稳定</strong></p>
-<h3 id="三、粘性差分格式（迎风格式改写）">三、粘性差分格式（迎风格式改写）</h3>
-<p>对迎风格式<br>
-$$<br>
-\frac{u_j^{n+1}-u_j^n}{\tau}+a_j\frac{u_j^n - u_{j - 1}^n}{h}=0 \quad (a_j\geq0)<br>
-$$<br>
-改写、变形，可等价为带小参数的抛物方程中心差分格式：<br>
-$$<br>
-u_t + a(x)u_x = a(x)\cdot\frac{h}{2}\cdot u_{xx}<br>
-$$<br>
-构造方式含<strong>自然粘性项</strong>与<strong>人工粘性项</strong>，通过引入小参数正则化，改善格式稳定性精度</p>
-<h3 id="四、Lax-Wendroff-格式">四、Lax - Wendroff 格式</h3>
-<p>从守恒律方程<br>
-$$<br>
-\frac{\partial u}{\partial t}+\frac{\partial f(u)}{\partial x}=0<br>
-$$<br>
-出发，对$u$做 Tayler 展开并消去余项，用中心差商代换导数，得到格式：<br>
-$$<br>
-u_j^{n+1}=u_j^n+(-\tau)\frac{f_{j + 1}^n - f_{j - 1}^n}{2h}+\frac{\tau^2}{2}\cdot\frac{a_{j + \frac{1}{2}}^n (f_{j + 1}^n-f_j^n) -   a_{j - \frac{1}{2}}^n (f_j^n-f_{j - 1}^n)}{h^2}<br>
-$$<br>
-其中<br>
-$$<br>
-a_{j+\frac{1}{2}}^n = f^\prime(\frac{u_{j}^n+u_{j+1}^n}{2})<br>
-$$<br>
-本质是<strong>带粘性项方程的中心差分格式</strong>，利用泰勒展开和差商构造，实现二阶精度离散<br>
-$$<br>
-\frac{\partial u}{\partial t}+\frac{\partial f}{\partial x}=\frac{\tau}{2}\cdot \frac{\partial}{\partial x}(f^{\prime}(u)\frac{\partial f}{\partial x})<br>
-$$<br>
-<strong>特殊情形（$f = au$ 时）</strong></p>
-<p>方程：<br>
-$$<br>
-\frac{\partial u}{\partial t}+a\frac{\partial u}{\partial x}=\frac{\tau}{2}\cdot a^2\frac{\partial^2 u}{\partial x^2}<br>
-$$<br>
-截断误差 $O(\tau^2 + h^2)$</p>
-<p>差分格式：<br>
-$$<br>
-u_j^{n+1}=\frac{1}{2}r(r - 1)u_{j + 1}^n+(1 - r^2)u_j^n+\frac{1}{2}r(r + 1)u_{j - 1}^n<br>
-$$<br>
-增长因子：<br>
-$$<br>
-G = 1 + r^2(\cos\lambda h - 1)-ir\sin\lambda h<br>
-$$<br>
-<strong>稳定性条件</strong>：$|r|\leq1$</p>
-<h3 id="五、隐式中心格式">五、隐式中心格式</h3>
-<p>格式：<br>
-$$<br>
-\frac{u_j^{n+1}-u_j^n}{\tau}+a\frac{u_{j + 1}^{n+1}-u_{j - 1}^{n+1}}{2h}=0<br>
-$$<br>
-<strong>性质</strong>：恒稳定</p>
-<h3 id="六、跳蛙格式（Leap-frog）">六、跳蛙格式（Leap - frog）</h3>
-<p>格式：<br>
-$$<br>
-\frac{u_j^{n+1}-u_j^{n-1}}{2\tau}+a\frac{u_{j + 1}^n - u_{j - 1}^n}{2h}=0<br>
-$$<br>
-<strong>稳定性条件</strong>：$|r|\leq1$</p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A39/" title="微分方程数值解 第四章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第四章（1）</div></div><div class="info-2"><div class="info-item-1">双曲方程的有限差分法，双曲方程显式格式与隐式格式的稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/08/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A311/" title="微分方程数值解 第五章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微分方程数值解 第五章（1）</div></div><div class="info-2"><div class="info-item-1">边值问题的变分形式，Sobolev 空间的基本性质，边值问题的分类，虚功原理等</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A313/" title="微分方程数值解 第六章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">微分方程数值解 第六章（1）</div></div><div class="info-2"><div class="info-item-1">有限元方法的基本步骤，Ritz法与Galerkin法下的一维一次元</div></div></div></a><a class="pagination-related" href="/2025/06/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A314/" title="微分方程数值解 第六章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-18</div><div class="info-item-2">微分方程数值解 第六章（2）</div></div><div class="info-2"><div class="info-item-1">一维一次元的收敛性与误差估计，一维二次元与一维三次元的构造</div></div></div></a><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a><a class="pagination-related" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-21</div><div class="info-item-2">微分方程数值解 第一章（2）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Runge-Kutta法，绝对稳定性与绝对稳定域，一阶方程组和刚性问题，外推法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">由于插件更新导致mathjax渲染插件与其他插件产生冲突，造成大面积数学公式加载不完全，有空再更新，请移步微信公众号查看文章</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">初值问题的差分逼近</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F%EF%BC%88%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F%E7%9B%B8%E5%85%B3%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">几种常见差分格式（迎风格式相关）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-%E4%B8%80%EF%BC%9A%E7%A9%BA%E9%97%B4%E5%90%91%E5%90%8E"><span class="toc-number">1.1.1.</span> <span class="toc-text">格式 一：空间向后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-%E4%BA%8C%EF%BC%9A%E7%A9%BA%E9%97%B4%E5%90%91%E5%89%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">格式 二：空间向前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-%E4%B8%89%EF%BC%9A%E7%A9%BA%E9%97%B4%E4%B8%AD%E5%BF%83"><span class="toc-number">1.1.3.</span> <span class="toc-text">格式 三：空间中心</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F%E7%A8%B3%E5%AE%9A%E6%80%A7%EF%BC%88Fourier-%E5%88%86%E6%9E%90%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">差分格式稳定性（Fourier 分析）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-%E4%B8%80%EF%BC%9A%EF%BC%88%E7%A9%BA%E9%97%B4%E5%90%91%E5%90%8E%EF%BC%8C-a-0-%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">格式 一：（空间向后，$a&gt;0$ 场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-%E4%BA%8C%EF%BC%9A%EF%BC%88%E7%A9%BA%E9%97%B4%E5%90%91%E5%89%8D%EF%BC%8C-a-0-%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">格式 二：（空间向前，$a&lt;0$ 场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-%E4%B8%89%EF%BC%9A%EF%BC%88%E7%A9%BA%E9%97%B4%E4%B8%AD%E5%BF%83%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">格式 三：（空间中心）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%89%B9%E5%BE%81%E7%BA%BF%E8%A7%A3%E9%87%8A"><span class="toc-number">1.2.4.</span> <span class="toc-text">稳定性条件的特征线解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">迎风格式总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%98%BE%E5%BC%8F%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、显式迎风格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%9A%90%E5%BC%8F%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、隐式迎风格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8F%98%E7%B3%BB%E6%95%B0%E6%83%85%E5%BD%A2%EF%BC%88-a-x-%E4%B8%BA%E7%B3%BB%E6%95%B0%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、变系数情形（$a(x)$ 为系数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%98%B6%E5%8F%8C%E6%9B%B2%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-number">1.4.</span> <span class="toc-text">一阶双曲方程组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%AF%E5%88%86%E5%AE%88%E6%81%92%E6%A0%BC%E5%BC%8F%EF%BC%88%E6%9C%89%E9%99%90%E4%BD%93%E7%A7%AF%E6%B3%95%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">积分守恒格式（有限体积法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Lax-Friedrichs-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text">一、Lax - Friedrichs 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9B%92%E5%BC%8F%E6%A0%BC%E5%BC%8F%EF%BC%88Box-scheme%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">二、盒式格式（Box scheme）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B2%98%E6%80%A7%E5%B7%AE%E5%88%86%E6%A0%BC%E5%BC%8F%EF%BC%88%E8%BF%8E%E9%A3%8E%E6%A0%BC%E5%BC%8F%E6%94%B9%E5%86%99%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">三、粘性差分格式（迎风格式改写）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Lax-Wendroff-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.5.4.</span> <span class="toc-text">四、Lax - Wendroff 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%AD%E5%BF%83%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.5.5.</span> <span class="toc-text">五、隐式中心格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%B7%B3%E8%9B%99%E6%A0%BC%E5%BC%8F%EF%BC%88Leap-frog%EF%BC%89"><span class="toc-number">1.5.6.</span> <span class="toc-text">六、跳蛙格式（Leap - frog）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fejér-Jackson 不等式及其推论"/></a><div class="content"><a class="title" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论">Fejér-Jackson 不等式及其推论</a><time datetime="2025-06-30T12:24:29.000Z" title="发表于 2025-06-30 20:24:29">2025-06-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
-  const loadMathjax = () => {
-    if (!window.MathJax) {
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          tags: 'none',
-        },
-        chtml: {
-          scale: 1.1
-        },
-        options: {
-          enableMenu: true,
-          renderActions: {
-            findScript: [10, doc => {
-              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-                const display = !!node.type.match(/; *mode=display/)
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
-                const text = document.createTextNode('')
-                node.parentNode.replaceChild(text, node)
-                math.start = {node: text, delim: '', n: 0}
-                math.end = {node: text, delim: '', n: 0}
-                doc.math.push(math)
-              }
-            }, '']
-          }
-        }
-      }
-
-      const script = document.createElement('script')
-      script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
-      script.id = 'MathJax-script'
-      script.async = true
-      document.head.appendChild(script)
-    } else {
-      MathJax.startup.document.state(0)
-      MathJax.texReset()
-      MathJax.typesetPromise()
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><script src="/js/mathjax-pjax.js" defer></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    processRefs: true,
+    macros: {
+      "\\RR": "\\mathbb{R}",
+      "\\bold": ["\\mathbf{#1}", 1],
+      "\\,": "\\thinspace"
     }
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  chtml: {
+    scale: 1.1,
+    mtextInheritFont: true
   }
-
-  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
-  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
-})()</script></div><script async src="//at.alicdn.com/t/c/font_4890277_rdw0tapxyy.js"></script><div class="aplayer" data-id="13570926609" data-server="netease" data-type="playlist"  data-fixed="true" data-theme="#3F51B5"></div><script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+};
+</script><script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第四章（2）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第四章（2）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-02T12:39:57.000Z" title="发表于 2025-06-02 20:39:57">2025-06-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-02T12:42:31.915Z" title="更新于 2025-06-02 20:42:31">2025-06-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>初值问题的差分逼近</h1><p>对于一阶双曲方程<br>$$<br>\begin{cases}u_t + a u_x &#x3D; 0 \ \text{初值条件、边值}\end{cases}<br>$$<br>周期边界：$u(0,t)&#x3D;u(L,t)$</p>
+<p>Dirichlet 边界：$\begin{cases}a&gt;0时，u(0,t)&#x3D;g(t) \ a&lt;0时，u(L,t)&#x3D;g(t) \end{cases}$</p>
+<p>双曲、椭圆、抛物型方程区别</p>
+<p>依据<strong>特征</strong>来区分，初值的性质体现为沿特征传播，无间断 </p>
+<h2>几种常见差分格式（迎风格式相关）</h2><p>设时间步长为$\tau$，空间步长为$h$，$\displaystyle r &#x3D; \frac{a\tau}{h}$，以下为时间向前的三种显式格式：</p>
+<h3>格式 一：空间向后</h3><p>$$<br>\frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_j^n - u_{j - 1}^n}{h} &#x3D; 0<br>$$</p>
+<p>精度 $O(\tau + h)$ ，对应 Fourier 方法变换（设 $u_j^n &#x3D; v^n e^{i\lambda x_j}$ ）<br>$$<br>\begin{align}<br>u_j^{n+1} &amp;&#x3D; (1 - r)u_j^n + r u_{j - 1}^n \<br>\implies v^{n+1} &amp;&#x3D; [(1 - r) + r e^{-i\lambda h}]v^n \<br>&amp;&#x3D; \lambda_1 v^n<br>\end{align}<br>$$</p>
+<h3>格式 二：空间向前</h3><p>$$<br>\frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^n - u_j^n}{h} &#x3D; 0<br>$$</p>
+<p>精度 $O(\tau + h)$ ，Fourier 变换后：<br>$$<br>\begin{align}<br>u_j^{n+1} &amp;&#x3D; (1 + r)u_j^n - r u_{j + 1}^n \<br>\implies v^{n+1} &amp;&#x3D; [(1 + r) - r e^{i\lambda h}]v^n \<br>&amp;&#x3D; \lambda_2 v^n<br>\end{align}<br>$$</p>
+<h3>格式 三：空间中心</h3><p>$$<br>\frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^n - u_{j - 1}^n}{2h} &#x3D; 0<br>$$</p>
+<p>精度 $O(\tau + h^2)$ ，Fourier 变换后：<br>$$<br>\begin{align}<br>u_j^{n+1} &amp;&#x3D; u_j^n + \frac{r}{2}u_{j - 1}^n - \frac{r}{2}u_{j + 1}^n \<br>\implies v^{n+1} &amp;&#x3D; \left[1 - \frac{r}{2}(e^{i\lambda h} - e^{-i\lambda h})\right]v^n \<br>&amp;&#x3D; \lambda_3 v^n<br>\end{align}<br>$$</p>
+<h2>差分格式稳定性（Fourier 分析）</h2><p>设三种差分格式对应增长因子为 $\lambda_1$、$\lambda_2$、$\lambda_3$ ，通过模长 $|\lambda|^2$ 分析稳定性：</p>
+<h3>格式 一：（空间向后，$a&gt;0$ 场景）</h3><p>$$<br>\begin{align}<br>|\lambda_1|^2 &amp;&#x3D;(1 - r + r\cos\lambda h)^2 + (-r\sin\lambda h)^2 \<br>&amp;&#x3D; 1 + 2r(1 - r)(\cos\lambda h - 1)<br>\end{align}<br>$$</p>
+<p>由 $2r(1 - r)\geq0$（需 $0\leq r\leq1$ ，即 $\displaystyle \frac{a\tau}{h}\leq1$ 且 $a&gt;0$ ），当 $a&gt;0$ 且 $\displaystyle \frac{a\tau}{h}\leq1$ 时，格式 1 稳定 </p>
+<h3>格式 二：（空间向前，$a&lt;0$ 场景）</h3><p>$$<br>|\lambda_2|^2&#x3D;1 + 2r(r + 1)(1 - \cos\lambda h)<br>$$</p>
+<p>由 $r(r + 1)\leq0$（需 $-1\leq r\leq0$ ，即 $\displaystyle \frac{a\tau}{h}\geq -1$ 且 $a&lt;0$ ），对应情况下格式 2 稳定 </p>
+<h3>格式 三：（空间中心）</h3><p>$$<br>|\lambda_3|^2&#x3D;1 + r^2\sin^2\lambda h &gt; 1<br>$$</p>
+<p>增长因子模长恒大于 1，<strong>格式 3 恒不稳定</strong> </p>
+<h3>稳定性条件的特征线解释</h3><p>特征线方程 $\displaystyle \frac{dx}{dt}&#x3D;a$ ，沿特征线 $u &#x3D; \text{const}$ 。以 $a&gt;0$ 为例，利用特征线附近节点（$Q_1,Q_0$ 等）做线性插值构造数值解，推导得数值解形式 $u_j^{n+1}&#x3D;ru_{j - 1}^n + (1 - r)u_j^n$（即格式 1 ），稳定性条件要求<strong>数值解依赖域包含精确解依赖域</strong> ；$a&lt;0$ 时同理分析格式 2 </p>
+<h2>迎风格式总结</h2><h3>一、显式迎风格式</h3><p>$$<br>\begin{cases}<br>\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_j^n - u_{j - 1}^n}{h} &#x3D; 0, &amp; a&gt;0 \<br>\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^n - u_j^n}{h} &#x3D; 0, &amp; a&lt;0<br>\end{cases}<br>$$</p>
+<h3>二、隐式迎风格式</h3><p>$$<br>\begin{cases}<br>\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_j^{n+1} - u_{j - 1}^{n+1}}{h} &#x3D; 0, &amp; a&gt;0 \<br>\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a\frac{u_{j + 1}^{n+1} - u_j^{n+1}}{h} &#x3D; 0, &amp; a&lt;0<br>\end{cases}<br>$$</p>
+<h3>三、变系数情形（$a(x)$ 为系数）</h3><p>对于方程<br>$$<br>u_t + a(x) u_x &#x3D; 0<br>$$<br><strong>显式迎风格式：</strong><br>$$<br>\begin{cases}<br>\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a(x_j)\frac{u_j^n - u_{j - 1}^n}{h} &#x3D; 0, &amp; a(x_j)\geq0 \<br>\displaystyle \frac{u_j^{n+1} - u_j^n}{\tau} + a(x_j)\frac{u_{j + 1}^n - u_j^n}{h} &#x3D; 0, &amp; a(x_j)&lt;0<br>\end{cases}<br>$$<br><strong>稳定性充分条件：</strong><br>$$<br>\frac{\tau}{h}\max_j|a(x_j)|\leq1<br>$$</p>
+<h2>一阶双曲方程组</h2><p>形式为<br>$$<br>\frac{\partial U}{\partial t} + A(x)\frac{\partial U}{\partial x} &#x3D; F<br>$$<br>也有迎风格式，空间导数离散依赖 $A(x)$ 特征值的正交性 </p>
+<h2>积分守恒格式（有限体积法）</h2><p>针对散度型 PDE：<br>$$<br>\frac{\partial u}{\partial t} + \frac{\partial f(t,u)}{\partial x} &#x3D; 0<br>$$<br>设 $G$ 为 $x$ - $t$ 平面有界域，由 Green 公式：<br>$$<br>\iint_G \left(\frac{\partial u}{\partial t} + \frac{\partial f(u)}{\partial x}\right)dxdt &#x3D; \int_{\Gamma} (f dt - u dx)<br>$$</p>
+<p>结合边界积分关系，得<br>$$<br>\int_{\Gamma} (f dt - u dx) &#x3D; 0<br>$$<br>体现积分守恒特性，是有限体积法离散的理论基础 </p>
+<h3>一、Lax - Friedrichs 格式</h3><p><strong>推导</strong>：通过对积分守恒形式（在区域 $G &#x3D; ABCD$ 上积分  $\displaystyle \int_{\Gamma} fdt - udx &#x3D; 0$ ）做数值积分近似，得到格式：<br>$$<br>\frac{u_j^{n + 1}-\frac{u_{j + 1}^n + u_{j - 1}^n}{2}}{\tau}+\frac{f_{j + 1}^n - f_{j - 1}^n}{2h}&#x3D;0<br>$$<br>截断误差 $O(\tau + h^2)$ </p>
+<p><strong>特殊情形（$f&#x3D;au$ 时）</strong>：格式为<br>$$<br>\frac{u_j^{n + 1}-\frac{u_{j + 1}^n + u_{j - 1}^n}{2}}{\tau}+a\frac{u_{j + 1}^n - u_{j - 1}^n}{2h}&#x3D;0<br>$$<br>变形得<br>$$<br>u_j^{n + 1}&#x3D;\frac{1}{2}(1 - r)u_{j + 1}^n+\frac{1}{2}(1 + r)u_{j - 1}^n<br>$$<br><strong>增长因子与稳定性</strong>：</p>
+<p>增长因子<br>$$<br>\lambda&#x3D;\frac{1}{2}(1 - r)e^{i\lambda h}+\frac{1}{2}(1 + r)e^{-i\lambda h}<br>$$<br>模长平方<br>$$<br>|\lambda|^2 &#x3D; 1+\frac{r^2}{2}(\cos\lambda h - 1)<br>$$<br>由 $|\lambda|$ 一致有界得 $|r|\leq1$（即 $\displaystyle \left|\frac{a\tau}{h}\right|\leq1$ ）时稳定 </p>
+<h3>二、盒式格式（Box scheme）</h3><p><strong>形式</strong>：在区域 $G &#x3D; ABCD$ 上，格式为<br>$$<br>\frac{u_j^{n + 1}-u_j^n}{\tau}+\frac{u_{j + 1}^{n + 1}-u_{j - 1}^{n + 1}}{2h}+\frac{f_j^n - f_{j - 1}^n}{h}+\frac{f_{j + 1}^{n + 1}-f_j^{n + 1}}{h}&#x3D;0<br>$$<br><strong>截断误差</strong>：$O(\tau^2 + h^2)$  </p>
+<p><strong>特殊情形（$f&#x3D;au$ 时）</strong>：化简得<br>$$<br>(1 + r)au_j^{n + 1}+(1 - r)au_{j + 1}^{n + 1}&#x3D;(1 - r)au_j^n+(1 + r)au_{j - 1}^n<br>$$<br>显式实现时，$a&gt;0$ 给左边值，$a&lt;0$ 给右边值 </p>
+<p>增长因子 $\lambda$ 满足<br>$$<br>\lambda &#x3D;\frac{(1-r)+(1+r)\cos{\alpha h}-i(1+r)\sin{\alpha h}}{(1+r)+(1-r)\cos{\alpha h}-i(1-r)\sin{\alpha h}}<br>$$<br>$|\lambda|&#x3D;1$，故盒式格式<strong>恒稳定</strong> </p>
+<h3>三、粘性差分格式（迎风格式改写）</h3><p>对迎风格式<br>$$<br>\frac{u_j^{n+1}-u_j^n}{\tau}+a_j\frac{u_j^n - u_{j - 1}^n}{h}&#x3D;0 \quad (a_j\geq0)<br>$$<br>改写、变形，可等价为带小参数的抛物方程中心差分格式：<br>$$<br>u_t + a(x)u_x &#x3D; a(x)\cdot\frac{h}{2}\cdot u_{xx}<br>$$<br>构造方式含<strong>自然粘性项</strong>与<strong>人工粘性项</strong>，通过引入小参数正则化，改善格式稳定性精度 </p>
+<h3>四、Lax - Wendroff 格式</h3><p>从守恒律方程<br>$$<br>\frac{\partial u}{\partial t}+\frac{\partial f(u)}{\partial x}&#x3D;0<br>$$<br>出发，对$u$做 Tayler 展开并消去余项，用中心差商代换导数，得到格式：<br>$$<br>u_j^{n+1}&#x3D;u_j^n+(-\tau)\frac{f_{j + 1}^n - f_{j - 1}^n}{2h}+\frac{\tau^2}{2}\cdot\frac{a_{j + \frac{1}{2}}^n (f_{j + 1}^n-f_j^n) -   a_{j - \frac{1}{2}}^n (f_j^n-f_{j - 1}^n)}{h^2}<br>$$<br>其中<br>$$<br>a_{j+\frac{1}{2}}^n &#x3D; f^\prime(\frac{u_{j}^n+u_{j+1}^n}{2})<br>$$<br>本质是<strong>带粘性项方程的中心差分格式</strong>，利用泰勒展开和差商构造，实现二阶精度离散<br>$$<br>\frac{\partial u}{\partial t}+\frac{\partial f}{\partial x}&#x3D;\frac{\tau}{2}\cdot \frac{\partial}{\partial x}(f^{\prime}(u)\frac{\partial f}{\partial x})<br>$$<br><strong>特殊情形（$f &#x3D; au$ 时）</strong></p>
+<p>方程：<br>$$<br>\frac{\partial u}{\partial t}+a\frac{\partial u}{\partial x}&#x3D;\frac{\tau}{2}\cdot a^2\frac{\partial^2 u}{\partial x^2}<br>$$<br>截断误差 $O(\tau^2 + h^2)$</p>
+<p>差分格式：<br>$$<br>u_j^{n+1}&#x3D;\frac{1}{2}r(r - 1)u_{j + 1}^n+(1 - r^2)u_j^n+\frac{1}{2}r(r + 1)u_{j - 1}^n<br>$$<br>增长因子：<br>$$<br>G &#x3D; 1 + r^2(\cos\lambda h - 1)-ir\sin\lambda h<br>$$<br><strong>稳定性条件</strong>：$|r|\leq1$</p>
+<h3>五、隐式中心格式</h3><p>格式：<br>$$<br>\frac{u_j^{n+1}-u_j^n}{\tau}+a\frac{u_{j + 1}^{n+1}-u_{j - 1}^{n+1}}{2h}&#x3D;0<br>$$<br><strong>性质</strong>：恒稳定</p>
+<h3>六、跳蛙格式（Leap - frog）</h3><p>格式：<br>$$<br>\frac{u_j^{n+1}-u_j^{n-1}}{2\tau}+a\frac{u_{j + 1}^n - u_{j - 1}^n}{2h}&#x3D;0<br>$$<br><strong>稳定性条件</strong>：$|r|\leq1$</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A39/" title="微分方程数值解 第四章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第四章（1）</div></div><div class="info-2"><div class="info-item-1">双曲方程的有限差分法，双曲方程显式格式与隐式格式的稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/08/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A311/" title="微分方程数值解 第五章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微分方程数值解 第五章（1）</div></div><div class="info-2"><div class="info-item-1">边值问题的变分形式，Sobolev 空间的基本性质，边值问题的分类，虚功原理等</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/08/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A311/" title="微分方程数值解 第五章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-08</div><div class="info-item-2">微分方程数值解 第五章（1）</div></div><div class="info-2"><div class="info-item-1">边值问题的变分形式，Sobolev 空间的基本性质，边值问题的分类，虚功原理等</div></div></div></a><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A313/" title="微分方程数值解 第六章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">微分方程数值解 第六章（1）</div></div><div class="info-2"><div class="info-item-1">有限元方法的基本步骤，Ritz法与Galerkin法下的一维一次元</div></div></div></a><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a><a class="pagination-related" href="/2025/05/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A32/" title="微分方程数值解 第一章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-21</div><div class="info-item-2">微分方程数值解 第一章（2）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Runge-Kutta法，绝对稳定性与绝对稳定域，一阶方程组和刚性问题，外推法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">由于插件更新导致mathjax渲染插件与其他插件产生冲突，造成大面积数学公式加载不完全，有空再更新，请移步微信公众号查看文章</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">初值问题的差分逼近</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">几种常见差分格式（迎风格式相关）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text">格式 一：空间向后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.2.</span> <span class="toc-text">格式 二：空间向前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.3.</span> <span class="toc-text">格式 三：空间中心</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">差分格式稳定性（Fourier 分析）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">格式 一：（空间向后，$a&gt;0$ 场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.2.</span> <span class="toc-text">格式 二：（空间向前，$a&lt;0$ 场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.3.</span> <span class="toc-text">格式 三：（空间中心）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.4.</span> <span class="toc-text">稳定性条件的特征线解释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">迎风格式总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、显式迎风格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、隐式迎风格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、变系数情形（$a(x)$ 为系数）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">一阶双曲方程组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text">积分守恒格式（有限体积法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.1.</span> <span class="toc-text">一、Lax - Friedrichs 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.2.</span> <span class="toc-text">二、盒式格式（Box scheme）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.3.</span> <span class="toc-text">三、粘性差分格式（迎风格式改写）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.4.</span> <span class="toc-text">四、Lax - Wendroff 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.5.</span> <span class="toc-text">五、隐式中心格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.6.</span> <span class="toc-text">六、跳蛙格式（Leap - frog）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/test/" title="数学公式测试">数学公式测试</a><time datetime="2025-12-31T16:00:00.000Z" title="发表于 2026-01-01 00:00:00">2026-01-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"></div><script async src="//at.alicdn.com/t/c/font_4890277_rdw0tapxyy.js"></script><div class="aplayer" data-id="13570926609" data-server="netease" data-type="playlist"  data-fixed="true" data-theme="#3F51B5"></div><script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
   // 销毁非固定播放器
   const destroyAplayer = () => {
     if (!window.aplayers) return;

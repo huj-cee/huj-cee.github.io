@@ -159,431 +159,91 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://unpkg.com/hexo-math@4.0.0/dist/style.css">
-<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第一章（2）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第一章（2）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-21T12:30:16.000Z" title="发表于 2025-05-21 20:30:16">2025-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-24T15:27:08.108Z" title="更新于 2025-05-24 23:27:08">2025-05-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.8k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>Runge - kutta 法</h1>
-<p>对于初值问题<br>
-$$<br>
-\begin{cases}u’ = f(t, u)\u(t_0)=u_0\end{cases}<br>
-$$</p>
-<h2 id="中点公式推导"><strong>中点公式推导</strong></h2>
-<p>首先有 $\displaystyle u(t_1)\approx u(t_0)+hf(t_0+\frac{h}{2},u(t_0+\frac{h}{2}))$ ，这里局部截断误差为 $O(h^3)$ 。但 $u(t_0+\frac{h}{2})$ 未知，用 Euler 法近似：<br>
-$$<br>
-\displaystyle u(t_0+\frac{h}{2})\approx u(t_0)+\frac{h}{2}f(t_0,u_0)<br>
-$$<br>
-代入可得<br>
-$$<br>
-u(t_1)\approx u(t_0)+hf(t_0+\frac{h}{2},u(t_0)+\frac{h}{2}f(t_0,u_0))<br>
-$$<br>
-引入记号：<br>
-$$<br>
-K_1 = f(t_0,u_0)\<br>
-K_2 = f(t_0+\frac{h}{2},u_0+\frac{h}{2}K_1)<br>
-$$</p>
-<p>则数值解<br>
-$$<br>
-u_1 = u_0+hK_2<br>
-$$</p>
-<h2 id="数值解与精确解展开及误差分析"><strong>数值解与精确解展开及误差分析</strong></h2>
-<p><strong>数值解展开</strong>：<br>
-$$<br>
-u_1 = u_0+hf(t_0,u_0)+\frac{h^2}{2}(f_t + f_uf)(t_0,u_0)+\frac{h^3}{8}(f_{tt}+2f_{tu}f+\cdots)(t_0,u_0)+\cdots<br>
-$$<br>
-<strong>精确解展开</strong>：<br>
-$$<br>
-\begin{align}<br>
-u(t_1)&amp;=u(t_0)+hu’(t_0)+\frac{h^2}{2!}u^{(2)}(t_0)+\frac{h^3}{3!}u^{(3)}(t_0)+\cdots\&amp;=u(t_0)+hf(t_0,u_0)+\frac{h^2}{2}(f_t + f_uf)(t_0,u_0)+\frac{h^3}{6}(f_{tt} + 2f_{tu}f +f_{uu}f^2 +f_uf_t+f_u^2f)(t_0,u_0)+\cdots<br>
-\end{align}<br>
-$$</p>
-<p>所以 $|u(t_1)-u_1| = O(h^3)$ ，即该 Runge - kutta 方法是二阶的</p>
-<h2 id="一般-m-点-Runge-kutta-法思路"><strong>一般 m 点 Runge - kutta 法思路</strong></h2>
-<p>已知 $\displaystyle u(t + h)=u(t)+\int_{t}^{t + h}f(\tau,u(\tau))d\tau$ 。在区间 $[t,t + h]$ 上取 $m$ 个点 $t = t_1\leq t_2\leq\cdots\leq t_m = t + h$</p>
-<p>类似于多步法，有近似式 $\displaystyle u(t + h)\approx u(t)+h\sum_{i = 1}^{m}c_if(t_i,u(t_i))$ ，其中 $\displaystyle k_i = f(t_i,u(t_i))$ 。但 $u(t_i)$ 未知，需进行近似</p>
-<p>利用 Euler 法：<br>
-$$<br>
-\begin{align}<br>
-u(t_2)&amp;=u(t_1)+(t_2 - t_1)k_1 \<br>
-k_1 &amp;= f(t_1,u(t_1))\<br>
-\<br>
-u(t_3)&amp;=u(t_2)+(t_3 - t_2)k_2 \<br>
-k_2 &amp;= f(t_2,u(t_2))\approx f(t_2,u(t)+(t_2 - t_1)k_1)\<br>
-\<br>
-u(t_4)&amp;=u(t_3)+(t_4 - t_3)k_3 \<br>
-k_3 &amp;= f(t_3,u(t_3))\approx\cdots</p>
-<p>\end{align}<br>
-$$<br>
-故<br>
-$$<br>
-\begin{align}<br>
-u(t_3)&amp;\approx u(t)+(t_2 - t_1)k_1+(t_3 - t_2)k_2 \</p>
-<p>u(t_4)&amp;\approx u(t)+(t_2 - t_1)k_1+(t_3 - t_2)k_2+(t_4 - t_3)k_3 \<br>
-\vdots\<br>
-u(t_m)&amp;\approx u(t)+(t_2 - t_1)k_1+\cdots+(t_m - t_{m - 1})k_{m - 1} \<br>
-\end{align}<br>
-$$<br>
-即通过前一步的近似值和当前点的斜率 $k_i$ 逐步递推后续点的函数值近似</p>
-<p>用类似多步法的思想<br>
-$$<br>
-\begin{align}<br>
-u(t_i)&amp;\approx u(t_1)+\rho_{i1}k_1+\cdots+\rho_{i,i - 1}k_{i - 1}\<br>
-&amp;=u(t_1)+h(b_{i1}k_1+\cdots+b_{i,i - 1}k_{i - 1})<br>
-\end{align}<br>
-$$<br>
-其中 $\displaystyle \rho_{i1}+\cdots+\rho_{i,i - 1}=t_i - t_1$</p>
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><script src="/js/mathjax-pjax.js" defer></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    processRefs: true,
+    macros: {
+      "\\RR": "\\mathbb{R}",
+      "\\bold": ["\\mathbf{#1}", 1],
+      "\\,": "\\thinspace"
+    }
+  },
+  svg: {
+    fontCache: 'global'
+  },
+  chtml: {
+    scale: 1.1,
+    mtextInheritFont: true
+  }
+};
+</script><script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://s21.ax1x.com/2025/04/29/pEHZTVU.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vendredi</span></a><a class="nav-page-title" href="/"><span class="site-name">微分方程数值解 第一章（2）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">微分方程数值解 第一章（2）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-21T12:30:16.000Z" title="发表于 2025-05-21 20:30:16">2025-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-24T15:27:08.108Z" title="更新于 2025-05-24 23:27:08">2025-05-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.9k</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>Runge - kutta 法</h1><p>对于初值问题<br>$$<br>\begin{cases}u’ &#x3D; f(t, u)\u(t_0)&#x3D;u_0\end{cases}<br>$$</p>
+<h2><strong>中点公式推导</strong></h2><p>首先有 $\displaystyle u(t_1)\approx u(t_0)+hf(t_0+\frac{h}{2},u(t_0+\frac{h}{2}))$ ，这里局部截断误差为 $O(h^3)$ 。但 $u(t_0+\frac{h}{2})$ 未知，用 Euler 法近似：<br>$$<br>\displaystyle u(t_0+\frac{h}{2})\approx u(t_0)+\frac{h}{2}f(t_0,u_0)<br>$$<br>代入可得<br>$$<br>u(t_1)\approx u(t_0)+hf(t_0+\frac{h}{2},u(t_0)+\frac{h}{2}f(t_0,u_0))<br>$$<br>引入记号：<br>$$<br>K_1 &#x3D; f(t_0,u_0)\<br>K_2 &#x3D; f(t_0+\frac{h}{2},u_0+\frac{h}{2}K_1)<br>$$</p>
+<p>则数值解<br>$$<br>u_1 &#x3D; u_0+hK_2<br>$$</p>
+<h2><strong>数值解与精确解展开及误差分析</strong></h2><p><strong>数值解展开</strong>：<br>$$<br>u_1 &#x3D; u_0+hf(t_0,u_0)+\frac{h^2}{2}(f_t + f_uf)(t_0,u_0)+\frac{h^3}{8}(f_{tt}+2f_{tu}f+\cdots)(t_0,u_0)+\cdots<br>$$<br><strong>精确解展开</strong>：<br>$$<br>\begin{align}<br>u(t_1)&amp;&#x3D;u(t_0)+hu’(t_0)+\frac{h^2}{2!}u^{(2)}(t_0)+\frac{h^3}{3!}u^{(3)}(t_0)+\cdots\&amp;&#x3D;u(t_0)+hf(t_0,u_0)+\frac{h^2}{2}(f_t + f_uf)(t_0,u_0)+\frac{h^3}{6}(f_{tt} + 2f_{tu}f +f_{uu}f^2 +f_uf_t+f_u^2f)(t_0,u_0)+\cdots<br>\end{align}<br>$$</p>
+<p>所以 $|u(t_1)-u_1| &#x3D; O(h^3)$ ，即该 Runge - kutta 方法是二阶的</p>
+<h2><strong>一般 m 点 Runge - kutta 法思路</strong></h2><p>已知 $\displaystyle u(t + h)&#x3D;u(t)+\int_{t}^{t + h}f(\tau,u(\tau))d\tau$ 。在区间 $[t,t + h]$ 上取 $m$ 个点 $t &#x3D; t_1\leq t_2\leq\cdots\leq t_m &#x3D; t + h$ </p>
+<p>类似于多步法，有近似式 $\displaystyle u(t + h)\approx u(t)+h\sum_{i &#x3D; 1}^{m}c_if(t_i,u(t_i))$ ，其中 $\displaystyle k_i &#x3D; f(t_i,u(t_i))$ 。但 $u(t_i)$ 未知，需进行近似</p>
+<p>利用 Euler 法：<br>$$<br>\begin{align}<br>u(t_2)&amp;&#x3D;u(t_1)+(t_2 - t_1)k_1 \<br>k_1 &amp;&#x3D; f(t_1,u(t_1))\<br>\<br>u(t_3)&amp;&#x3D;u(t_2)+(t_3 - t_2)k_2 \<br>k_2 &amp;&#x3D; f(t_2,u(t_2))\approx f(t_2,u(t)+(t_2 - t_1)k_1)\<br>\<br>u(t_4)&amp;&#x3D;u(t_3)+(t_4 - t_3)k_3 \<br>k_3 &amp;&#x3D; f(t_3,u(t_3))\approx\cdots </p>
+<p>\end{align}<br>$$<br>故<br>$$<br>\begin{align}<br>u(t_3)&amp;\approx u(t)+(t_2 - t_1)k_1+(t_3 - t_2)k_2 \</p>
+<p>u(t_4)&amp;\approx u(t)+(t_2 - t_1)k_1+(t_3 - t_2)k_2+(t_4 - t_3)k_3 \<br>\vdots\<br>u(t_m)&amp;\approx u(t)+(t_2 - t_1)k_1+\cdots+(t_m - t_{m - 1})k_{m - 1} \<br>\end{align}<br>$$<br>即通过前一步的近似值和当前点的斜率 $k_i$ 逐步递推后续点的函数值近似 </p>
+<p>用类似多步法的思想<br>$$<br>\begin{align}<br>u(t_i)&amp;\approx u(t_1)+\rho_{i1}k_1+\cdots+\rho_{i,i - 1}k_{i - 1}\<br>&amp;&#x3D;u(t_1)+h(b_{i1}k_1+\cdots+b_{i,i - 1}k_{i - 1})<br>\end{align}<br>$$<br>其中 $\displaystyle \rho_{i1}+\cdots+\rho_{i,i - 1}&#x3D;t_i - t_1$ </p>
 <p><strong>引入记号简化</strong></p>
-<p>引入 $\displaystyle t_i = t + a_ih$ ，$i = 2,3,\cdots,m$ ，$t_1 = t$ ，以及 $\displaystyle b_{ij}=\frac{\rho_{ij}}{h}$ ，$i = 2,\cdots,m$ ，$j = 1,\cdots,i - 1$</p>
-<h2 id="Runge-kutta-法一般形式（m-级）">Runge - kutta 法一般形式（m 级）</h2>
-<p><strong>格式构建</strong></p>
-<p>从 $f(t_1,u_1)=k_1$ 开始，依次通过<br>
-$$<br>
-\begin{align}<br>
-k_1 &amp;= f(t_1,u_1)\<br>
-k_2 &amp;= f(t_2,u(t_2))\approx f(t_1 + a_2h,u_1+hb_{21}k_1)\<br>
-k_3 &amp;= f(t_1,u(t_3))\approx f(t_1 + a_3h,u_1+h(b_{31}k_1 + b_{32}k_2))\<br>
-\vdots\<br>
-k_m &amp;= f(t_1,u(t_m))\approx f(t_1 + a_mh,u_1+h(b_{m1}k_1+\cdots + b_{m,m - 1}k_{m - 1}))<br>
-\end{align}<br>
-$$<br>
-最终数值解<br>
-$$<br>
-\displaystyle u(t + h)\approx u_1+h(c_1k_1+\cdots + c_mk_m)=\overline{u}<br>
-$$<br>
-其中满足<br>
-$$<br>
-h(b_{i1}+\cdots + b_{i,i - 1}) = a_i\cdot h=t_i - t_1<br>
-$$</p>
-<p>即<br>
-$$<br>
-b_{i1}+\cdots + b_{i,i - 1}=a_i<br>
-$$</p>
-<h2 id="待定系数法（以三级三阶为例）"><strong>待定系数法（以三级三阶为例）</strong></h2>
-<p><strong>精确解展开</strong>：<br>
-$$<br>
-\begin{align}<br>
-u(t + h)&amp;=u(t)+hu’(t)+\cdots+\frac{h^3}{3!}u^{(3)}(t)+\cdots\<br>
-&amp;=u(t)+hf(t,u)+\frac{h^2}{2}(f_t + f_uf)(t,u)+\frac{h^3}{6}(f_{tt}+2f_{tu}f + f_{uu}f^2 + f_uf_t +f_u^2f)(t,u)+\cdots<br>
-\end{align}<br>
-$$<br>
-记<br>
-$$<br>
-F = f_t + f_uf\<br>
-G = f_{tt}+2f_{tu}f + f_{uu}f^2<br>
-$$</p>
-<h2 id="Runge-kutta-格式展开："><strong>Runge - kutta 格式展开</strong>：</h2>
-<p>$$<br>
-\begin{align}<br>
-\displaystyle \overline{u}&amp;=u(t)+h(c_1k_1+\cdots + c_mk_m)\<br>
-k_1 &amp;= f(t_1,u(t_1)) = f\<br>
-k_2 &amp;= f(t_1 + a_2h,u_1+hb_{21}k_1)\<br>
-&amp;=f+ha_2(f_t + f_uf)+\frac{h^2a_2^2}{2}(f_{tt}+2f_{tu}f + f_{uu}f^2)+o(h^3)\<br>
-&amp;=f+ha_2F+\frac{h^2a_2^2}{2}G+o(h^3)\<br>
-k_3 &amp;= f+ha_3F+h^2(a_3b_{32}f_uF+\frac{1}{2}a_3^2G)+o(h^3)</p>
-<p>\end{align}<br>
-$$</p>
-<p>其中 $b_{21}=a_2$</p>
+<p>引入 $\displaystyle t_i &#x3D; t + a_ih$ ，$i &#x3D; 2,3,\cdots,m$ ，$t_1 &#x3D; t$ ，以及 $\displaystyle b_{ij}&#x3D;\frac{\rho_{ij}}{h}$ ，$i &#x3D; 2,\cdots,m$ ，$j &#x3D; 1,\cdots,i - 1$ </p>
+<h2>Runge - kutta 法一般形式（m 级）</h2><p><strong>格式构建</strong></p>
+<p>从 $f(t_1,u_1)&#x3D;k_1$ 开始，依次通过<br>$$<br>\begin{align}<br>k_1 &amp;&#x3D; f(t_1,u_1)\<br>k_2 &amp;&#x3D; f(t_2,u(t_2))\approx f(t_1 + a_2h,u_1+hb_{21}k_1)\<br>k_3 &amp;&#x3D; f(t_1,u(t_3))\approx f(t_1 + a_3h,u_1+h(b_{31}k_1 + b_{32}k_2))\<br>\vdots\<br>k_m &amp;&#x3D; f(t_1,u(t_m))\approx f(t_1 + a_mh,u_1+h(b_{m1}k_1+\cdots + b_{m,m - 1}k_{m - 1}))<br>\end{align}<br>$$<br>最终数值解<br>$$<br>\displaystyle u(t + h)\approx u_1+h(c_1k_1+\cdots + c_mk_m)&#x3D;\overline{u}<br>$$<br>其中满足<br>$$<br>h(b_{i1}+\cdots + b_{i,i - 1}) &#x3D; a_i\cdot h&#x3D;t_i - t_1<br>$$</p>
+<p>即<br>$$<br>b_{i1}+\cdots + b_{i,i - 1}&#x3D;a_i<br>$$</p>
+<h2><strong>待定系数法（以三级三阶为例）</strong></h2><p><strong>精确解展开</strong>：<br>$$<br>\begin{align}<br>u(t + h)&amp;&#x3D;u(t)+hu’(t)+\cdots+\frac{h^3}{3!}u^{(3)}(t)+\cdots\<br>&amp;&#x3D;u(t)+hf(t,u)+\frac{h^2}{2}(f_t + f_uf)(t,u)+\frac{h^3}{6}(f_{tt}+2f_{tu}f + f_{uu}f^2 + f_uf_t +f_u^2f)(t,u)+\cdots<br>\end{align}<br>$$<br>记<br>$$<br>F &#x3D; f_t + f_uf\<br>G &#x3D; f_{tt}+2f_{tu}f + f_{uu}f^2<br>$$</p>
+<h2><strong>Runge - kutta 格式展开</strong>：</h2><p>$$<br>\begin{align}<br>\displaystyle \overline{u}&amp;&#x3D;u(t)+h(c_1k_1+\cdots + c_mk_m)\<br>k_1 &amp;&#x3D; f(t_1,u(t_1)) &#x3D; f\<br>k_2 &amp;&#x3D; f(t_1 + a_2h,u_1+hb_{21}k_1)\<br>&amp;&#x3D;f+ha_2(f_t + f_uf)+\frac{h^2a_2^2}{2}(f_{tt}+2f_{tu}f + f_{uu}f^2)+o(h^3)\<br>&amp;&#x3D;f+ha_2F+\frac{h^2a_2^2}{2}G+o(h^3)\<br>k_3 &amp;&#x3D; f+ha_3F+h^2(a_3b_{32}f_uF+\frac{1}{2}a_3^2G)+o(h^3)</p>
+<p>\end{align}<br>$$</p>
+<p>其中 $b_{21}&#x3D;a_2$ </p>
 <p>对 $\displaystyle h(c_1k_1 + c_2k_2 + c_3k_3)$ 展开并与精确解 $u(t + h)$ 的展开式对比 $h$ 同次幂系数：</p>
-<p>令<br>
-$$<br>
-F = f_t + f_uf\<br>
-G = f_{tt}+2f_{tu}f + f_{uu}f^2<br>
-$$<br>
-展开后得到方程组<br>
-$$<br>
-\begin{cases}c_1 + c_2 + c_3 = 1\c_2a_2 + c_3a_3=\frac{1}{2}\c_2a_2^2 + c_3a_3^2=\frac{1}{3}\c_3a_3b_{32}=\frac{1}{6}\end{cases}<br>
-$$<br>
-这里有 6 个未知数，4 个方程，存在 2 个自由参数，可确定三级三阶方法</p>
-<p><strong>经典四阶 Runge - kutta 法格式</strong><br>
-$$<br>
-\begin{cases}u_{n + 1}=u_n+\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)\k_1 = f(t_n,u_n)\k_2 = f(t_n+\frac{h}{2},u_n+\frac{h}{2}k_1)\k_3 = f(t_n+\frac{h}{2},u_n+\frac{h}{2}k_2)\k_4 = f(t_n + h,u_n+hk_3)\end{cases}<br>
-$$<br>
-注：Runge - kutta 法是单步法，从 $u_n$ 计算 $u_{n + 1}$</p>
+<p>令<br>$$<br> F &#x3D; f_t + f_uf\<br> G &#x3D; f_{tt}+2f_{tu}f + f_{uu}f^2<br>$$<br>展开后得到方程组<br>$$<br>\begin{cases}c_1 + c_2 + c_3 &#x3D; 1\c_2a_2 + c_3a_3&#x3D;\frac{1}{2}\c_2a_2^2 + c_3a_3^2&#x3D;\frac{1}{3}\c_3a_3b_{32}&#x3D;\frac{1}{6}\end{cases}<br>$$<br>这里有 6 个未知数，4 个方程，存在 2 个自由参数，可确定三级三阶方法 </p>
+<p><strong>经典四阶 Runge - kutta 法格式</strong><br>$$<br>\begin{cases}u_{n + 1}&#x3D;u_n+\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)\k_1 &#x3D; f(t_n,u_n)\k_2 &#x3D; f(t_n+\frac{h}{2},u_n+\frac{h}{2}k_1)\k_3 &#x3D; f(t_n+\frac{h}{2},u_n+\frac{h}{2}k_2)\k_4 &#x3D; f(t_n + h,u_n+hk_3)\end{cases}<br>$$<br>注：Runge - kutta 法是单步法，从 $u_n$ 计算 $u_{n + 1}$ </p>
 <p><strong>与多步法比较及单步法特性</strong></p>
 <p><strong>线性单步法</strong>：关于 $f$ 线性时，最高为二阶（$O(h^2)$ ）</p>
-<p><strong>非线性单步法（如 Runge - kutta 法 ）</strong>：因为 $k_1 + k_2 + 2k_3 + k_4$ 不是 $f(t_n,u_n)$ 的线性函数，所以能有更高阶数</p>
-<p><strong>Taylor 展开法</strong><br>
-$$<br>
-\begin{align}<br>
-u(t_1)&amp;=u(t_0)+u’(t_0)h+\frac{u’‘(t_0)}{2!}h^2+\cdots+\frac{u^{(p)}(t_0)}{p!}h^p+O(h^{p + 1})\<br>
-&amp;=u(t_0)+h[u’(t_0)+\frac{u’‘(t_0)}{2!}h+\cdots+\frac{u^{(p)}(t_0)}{p!}h^{p - 1}]+O(h^{p + 1})\<br>
-&amp;=u(t_0)+h\varphi(t_0,h)+O(h^{p + 1})<br>
-\end{align}<br>
-$$<br>
-其中<br>
-$$<br>
-\begin{align}<br>
-u’(t)&amp;=f(t,u(t))\<br>
-u’‘(t)&amp;=\frac{d}{dt}(f(t,u(t)))=f_t + f_uf\<br>
-u’‘’(t)&amp;=\frac{d^2}{dt^2}(f(t,u(t)))=\cdots<br>
-\end{align}<br>
-$$<br>
-舍去余项后，得到 $u_1 = u_0 + h\varphi(t_0, u_0, h)$ ，一般形式为<br>
-$$<br>
-u_{n + 1} = u_n + h\varphi(t_n, u_n, h)<br>
-$$<br>
-例如四阶 Runge - kutta 法：<br>
-$$<br>
-\varphi(t_n, u_n, h)=\frac{1}{6}k_1+\frac{1}{3}k_2+\frac{1}{3}k_3+\frac{1}{6}k_4<br>
-$$<br>
-<strong>相容性</strong>：$\displaystyle \frac{u_{n + 1}-u_n}{h}=\varphi(t_n, u_n, h)$ 逼近微分方程，即<br>
-$$<br>
-\lim_{h \to 0}\varphi(t, u(t), h)=f(t, u(t))<br>
-$$</p>
-<h1><strong>绝对稳定性和绝对稳定域</strong></h1>
-<p><strong>回顾 Euler 法稳定性</strong>：已知 $\displaystyle |e_n| \leq e^{LT}|e_0|$ 。以初值问题 $$\displaystyle \begin{cases}u’=-5u \ u(0) = 1\end{cases}$$ 为例，$f(t, u)=-5u$ ，$L = 5$ ，$T = 20$ ，$e^{LT}=e^{100}$ ，精确解 $u(t)=e^{-5t}$ ，$t \to +\infty$ 时，$u(t) \to 0$<br>
-$$<br>
-\begin{align}<br>
-u_{n + 1}&amp;=u_n+hf(t_n, u_n)\<br>
-&amp;=u_n - 5hu_n\<br>
-&amp;=(1 - 5h)u_n\<br>
-&amp;=(1 - 5h)^{n + 1}u_0<br>
-\end{align}<br>
-$$<br>
-当 $h = 0.5$ 时，$u_n=(-1.5)^n \to \pm\infty$ ，与真解不同；当 $h = 0.4$ 时，$u_n=(-1)^n$ ，振荡；当 $h = 0.39$ 时，$u_n=(1 - 5h)^n \to 0$</p>
+<p><strong>非线性单步法（如 Runge - kutta 法 ）</strong>：因为 $k_1 + k_2 + 2k_3 + k_4$ 不是 $f(t_n,u_n)$ 的线性函数，所以能有更高阶数 </p>
+<p><strong>Taylor 展开法</strong><br>$$<br>\begin{align}<br>u(t_1)&amp;&#x3D;u(t_0)+u’(t_0)h+\frac{u’’(t_0)}{2!}h^2+\cdots+\frac{u^{(p)}(t_0)}{p!}h^p+O(h^{p + 1})\<br>&amp;&#x3D;u(t_0)+h[u’(t_0)+\frac{u’’(t_0)}{2!}h+\cdots+\frac{u^{(p)}(t_0)}{p!}h^{p - 1}]+O(h^{p + 1})\<br>&amp;&#x3D;u(t_0)+h\varphi(t_0,h)+O(h^{p + 1})<br>\end{align}<br>$$<br>其中<br>$$<br>\begin{align}<br>u’(t)&amp;&#x3D;f(t,u(t))\<br>u’’(t)&amp;&#x3D;\frac{d}{dt}(f(t,u(t)))&#x3D;f_t + f_uf\<br>u’’’(t)&amp;&#x3D;\frac{d^2}{dt^2}(f(t,u(t)))&#x3D;\cdots<br>\end{align}<br>$$<br>舍去余项后，得到 $u_1 &#x3D; u_0 + h\varphi(t_0, u_0, h)$ ，一般形式为<br>$$<br>u_{n + 1} &#x3D; u_n + h\varphi(t_n, u_n, h)<br>$$<br>例如四阶 Runge - kutta 法：<br>$$<br>\varphi(t_n, u_n, h)&#x3D;\frac{1}{6}k_1+\frac{1}{3}k_2+\frac{1}{3}k_3+\frac{1}{6}k_4<br>$$<br><strong>相容性</strong>：$\displaystyle \frac{u_{n + 1}-u_n}{h}&#x3D;\varphi(t_n, u_n, h)$ 逼近微分方程，即<br>$$<br>\lim_{h \to 0}\varphi(t, u(t), h)&#x3D;f(t, u(t))<br>$$</p>
+<h1><strong>绝对稳定性和绝对稳定域</strong></h1><p><strong>回顾 Euler 法稳定性</strong>：已知 $\displaystyle |e_n| \leq e^{LT}|e_0|$ 。以初值问题 $$\displaystyle \begin{cases}u’&#x3D;-5u \ u(0) &#x3D; 1\end{cases}$$ 为例，$f(t, u)&#x3D;-5u$ ，$L &#x3D; 5$ ，$T &#x3D; 20$ ，$e^{LT}&#x3D;e^{100}$ ，精确解 $u(t)&#x3D;e^{-5t}$ ，$t \to +\infty$ 时，$u(t) \to 0$<br>$$<br>\begin{align}<br>u_{n + 1}&amp;&#x3D;u_n+hf(t_n, u_n)\<br>&amp;&#x3D;u_n - 5hu_n\<br>&amp;&#x3D;(1 - 5h)u_n\<br>&amp;&#x3D;(1 - 5h)^{n + 1}u_0<br>\end{align}<br>$$<br>当 $h &#x3D; 0.5$ 时，$u_n&#x3D;(-1.5)^n \to \pm\infty$ ，与真解不同；当 $h &#x3D; 0.4$ 时，$u_n&#x3D;(-1)^n$ ，振荡；当 $h &#x3D; 0.39$ 时，$u_n&#x3D;(1 - 5h)^n \to 0$ </p>
 <p>说明稳定性概念需要改进，引入绝对稳定性</p>
-<h2 id="Euler-法绝对稳定性定义："><strong>Euler 法绝对稳定性定义</strong>：</h2>
-<p>将 Euler 法用于形如 $u’=\lambda u$ （$\lambda$ 为实数或复数 ）的方程，若 $|1 + h\lambda| &lt; 1$ ，则称 Euler 法关于 $\overline{h}=h\lambda$ 绝对稳定 。$\overline{D}_A={\overline{h}:|1 + \overline{h}| &lt; 1}$ 称为 Euler 法的绝对稳定域</p>
-<p>其绝对稳定域 $\overline{D}<em>A$ 是以 - 1 为圆心，半径为 1 的圆，即满足 $|1 + h\lambda| &lt; 1$ 时，误差不会无限增长<br>
-$$<br>
-u</em>{n+1}=u_n+h\mu u_n=(1+\mu h)u_n\<br>
-v_{n+1}=v_n+h\mu v_n=(1+\mu h)v_n<br>
-$$<br>
-记 $e_n=u_n-v_n$ ，则<br>
-$$<br>
-\begin{align}<br>
-e_n&amp;=(1+\mu h)e_{n-1}\<br>
-&amp;=(1+\mu h)^ne_0<br>
-\end{align}<br>
-$$</p>
-<h2 id="k-步法的绝对稳定性">**k 步法的绝对稳定性 **</h2>
-<p>对于测试方程 $u’=\lambda u$ ，线性 $k$ 步法：<br>
-$$<br>
-\sum_{j = 0}^{k} \alpha_j u_{n + j}=h\sum_{j = 0}^{k} \beta_j f_{n + j}=h\lambda\sum_{j = 0}^{k} \beta_j u_{n + j}<br>
-$$<br>
-令 $\overline{h}=h\lambda$ ，则<br>
-$$<br>
-\sum_{j = 0}^{k} (\alpha_j - \overline{h}\beta_j)u_{n + j}=0<br>
-$$<br>
-在实际计算中，每步存在舍入误差，设近似解 $\overline{u}<em>n$ 满足<br>
-$$<br>
-\sum</em>{j = 0}^{k} (\alpha_j - \overline{h}\beta_j)\overline{u}<em>{n + j}=\eta_n<br>
-$$<br>
-其中 $\eta_n$ 为舍入误差，且 $|\eta_n| \leq M$ 。记 $\overline{e}<em>n=\overline{u}<em>n - u_n$ ，则<br>
-$$<br>
-\sum</em>{j = 0}^{k} (\alpha_j - \overline{h}\beta_j)\overline{e}</em>{n + j}=\eta_n<br>
-$$<br>
-记<br>
-$$<br>
-\begin{align}<br>
-E_n &amp;= (\overline{e}</em>{n + k - 1}, \cdots, \overline{e}_n)^T \<br>
-a_j &amp;= \alpha_j - \overline{h}\beta_j\<br>
-\overline{\eta}_n &amp;= (a_k^{-1}\eta_n, 0, \cdots, 0)^T<br>
-\end{align}<br>
-$$<br>
-矩阵<br>
-$$<br>
-\overline{C}=<br>
-\begin{bmatrix}</p>
+<h2><strong>Euler 法绝对稳定性定义</strong>：</h2><p>将 Euler 法用于形如 $u’&#x3D;\lambda u$ （$\lambda$ 为实数或复数 ）的方程，若 $|1 + h\lambda| &lt; 1$ ，则称 Euler 法关于 $\overline{h}&#x3D;h\lambda$ 绝对稳定 。$\overline{D}_A&#x3D;{\overline{h}:|1 + \overline{h}| &lt; 1}$ 称为 Euler 法的绝对稳定域 </p>
+<p>其绝对稳定域 $\overline{D}<em>A$ 是以 - 1 为圆心，半径为 1 的圆，即满足 $|1 + h\lambda| &lt; 1$ 时，误差不会无限增长<br>$$<br>u</em>{n+1}&#x3D;u_n+h\mu u_n&#x3D;(1+\mu h)u_n\<br>v_{n+1}&#x3D;v_n+h\mu v_n&#x3D;(1+\mu h)v_n<br>$$<br>记 $e_n&#x3D;u_n-v_n$ ，则<br>$$<br>\begin{align}<br>e_n&amp;&#x3D;(1+\mu h)e_{n-1}\<br>&amp;&#x3D;(1+\mu h)^ne_0<br>\end{align}<br>$$</p>
+<h2>**k 步法的绝对稳定性 **</h2><p>对于测试方程 $u’&#x3D;\lambda u$ ，线性 $k$ 步法：<br>$$<br>\sum_{j &#x3D; 0}^{k} \alpha_j u_{n + j}&#x3D;h\sum_{j &#x3D; 0}^{k} \beta_j f_{n + j}&#x3D;h\lambda\sum_{j &#x3D; 0}^{k} \beta_j u_{n + j}<br>$$<br>令 $\overline{h}&#x3D;h\lambda$ ，则<br>$$<br>\sum_{j &#x3D; 0}^{k} (\alpha_j - \overline{h}\beta_j)u_{n + j}&#x3D;0<br>$$<br>在实际计算中，每步存在舍入误差，设近似解 $\overline{u}<em>n$ 满足<br>$$<br>\sum</em>{j &#x3D; 0}^{k} (\alpha_j - \overline{h}\beta_j)\overline{u}<em>{n + j}&#x3D;\eta_n<br>$$<br>其中 $\eta_n$ 为舍入误差，且 $|\eta_n| \leq M$ 。记 $\overline{e}<em>n&#x3D;\overline{u}<em>n - u_n$ ，则<br>$$<br>\sum</em>{j &#x3D; 0}^{k} (\alpha_j - \overline{h}\beta_j)\overline{e}</em>{n + j}&#x3D;\eta_n<br>$$<br>记<br>$$<br>\begin{align}<br>E_n &amp;&#x3D; (\overline{e}</em>{n + k - 1}, \cdots, \overline{e}_n)^T \<br>a_j &amp;&#x3D; \alpha_j - \overline{h}\beta_j\<br>\overline{\eta}_n &amp;&#x3D; (a_k^{-1}\eta_n, 0, \cdots, 0)^T<br>\end{align}<br>$$<br>矩阵<br>$$<br>\overline{C}&#x3D;<br>\begin{bmatrix}</p>
 <p>-a_k^{-1}a_{k - 1}  &amp;  -a_k^{-1}a_{k - 2}  &amp;\cdots   &amp;-a_k^{-1}a_0   \</p>
 <p>1&amp;0&amp;\cdots&amp;0\</p>
 <p>\vdots  &amp;\ddots&amp;\ddots&amp;\vdots\</p>
 <p>0&amp;\cdots&amp;1&amp;0</p>
-<p>\end{bmatrix}<br>
-$$<br>
-可将误差方程转化为矩阵形式 $E_{n + 1}=\overline{C}E_n+\overline{\eta}_n$ ，后续可通过分析矩阵 $\overline{C}$ 的特征值等性质，确定线性 $k$ 步法的绝对稳定域 ，即确定 $\overline{h}=h\lambda$ 的取值范围，使得在存在舍入误差情况下，误差不会无限增长</p>
-<p>将误差方程<br>
-$$<br>
-\sum_{j = 0}^{k} (\alpha_j - \overline{h}\beta_j)\overline{e}<em>{n + j}=\eta_n<br>
-$$<br>
-写成向量形式<br>
-$$<br>
-E_n=\overline{C}E</em>{n - 1}+\overline{\eta}<em>n<br>
-$$<br>
-进一步得到<br>
-$$<br>
-E_n=\overline{C}^nE_0+\sum</em>{l = 0}^{n - 1} \overline{C}^l\overline{\eta}<em>{n - 1 - l}<br>
-$$<br>
-为使误差 $E_n$ 在计算中逐步减小，要求<br>
-$$<br>
-\lim</em>{n \to \infty}\overline{C}^n = 0<br>
-$$<br>
-$\overline{C}$ 的特征方程为<br>
-$$<br>
-\begin{align}<br>
-0=\sum_{j = 0}^{k} a_j\lambda^j&amp;=\sum_{j = 0}^{k} (\alpha_j - \overline{h}\beta_j)\lambda^j\<br>
-&amp;=\sum_{j = 0}^{k} \alpha_j\lambda^j-\overline{h}\sum_{j = 0}^{k} \beta_j\lambda^j\<br>
-&amp;=\rho(\lambda)-\overline{h}\sigma(\lambda)<br>
-\end{align}<br>
-$$</p>
+<p>\end{bmatrix}<br>$$<br>可将误差方程转化为矩阵形式 $E_{n + 1}&#x3D;\overline{C}E_n+\overline{\eta}_n$ ，后续可通过分析矩阵 $\overline{C}$ 的特征值等性质，确定线性 $k$ 步法的绝对稳定域 ，即确定 $\overline{h}&#x3D;h\lambda$ 的取值范围，使得在存在舍入误差情况下，误差不会无限增长 </p>
+<p>将误差方程<br>$$<br>\sum_{j &#x3D; 0}^{k} (\alpha_j - \overline{h}\beta_j)\overline{e}<em>{n + j}&#x3D;\eta_n<br>$$<br>写成向量形式<br>$$<br>E_n&#x3D;\overline{C}E</em>{n - 1}+\overline{\eta}<em>n<br>$$<br> 进一步得到<br>$$<br>E_n&#x3D;\overline{C}^nE_0+\sum</em>{l &#x3D; 0}^{n - 1} \overline{C}^l\overline{\eta}<em>{n - 1 - l}<br>$$<br>为使误差 $E_n$ 在计算中逐步减小，要求<br>$$<br>\lim</em>{n \to \infty}\overline{C}^n &#x3D; 0<br>$$<br>$\overline{C}$ 的特征方程为<br>$$<br>\begin{align}<br>0&#x3D;\sum_{j &#x3D; 0}^{k} a_j\lambda^j&amp;&#x3D;\sum_{j &#x3D; 0}^{k} (\alpha_j - \overline{h}\beta_j)\lambda^j\<br>&amp;&#x3D;\sum_{j &#x3D; 0}^{k} \alpha_j\lambda^j-\overline{h}\sum_{j &#x3D; 0}^{k} \beta_j\lambda^j\<br>&amp;&#x3D;\rho(\lambda)-\overline{h}\sigma(\lambda)<br>\end{align}<br>$$</p>
 <p>$\rho(\lambda)$ 和 $\sigma(\lambda)$ 分别为 $k$ 步法的第一、第二多项式</p>
-<p>根据引理，$\lim_{n \to \infty}\overline{C}^n = 0$ 等价于特征多项式 $\rho(\lambda)-\overline{h}\sigma(\lambda)$ 的根 $|\lambda| &lt; 1$</p>
-<h2 id="绝对稳定性及绝对稳定域定义"><strong>绝对稳定性及绝对稳定域定义</strong></h2>
-<p><strong>绝对稳定性定义</strong>：如果 $k$ 步法的特征多项式方程 $\rho(\lambda)-\overline{h}\sigma(\lambda)$ 的根 $|\lambda| &lt; 1$ ，则称该 $k$ 步法关于 $\overline{h}=h\lambda$ 绝对稳定</p>
-<p><strong>绝对稳定域定义</strong>：若存在复数域 $D_A$ ，使 $k$ 步法对 $\forall\overline{h} \in D_A$ 都绝对稳定，则称 $D_A$ 为该 $k$ 步法的绝对稳定域。此时 $\displaystyle \overline{h}=\frac{\rho(\lambda)}{\sigma(\lambda)}$ ，$D_A={\overline{h}:|\lambda(\overline{h})| &lt; 1}$ 。绝对稳定域越大，方法在不同 $\lambda$ 和 $h$ 取值下适应能力越强，越不容易出现误差发散情况</p>
+<p>根据引理，$\lim_{n \to \infty}\overline{C}^n &#x3D; 0$ 等价于特征多项式 $\rho(\lambda)-\overline{h}\sigma(\lambda)$ 的根 $|\lambda| &lt; 1$ </p>
+<h2><strong>绝对稳定性及绝对稳定域定义</strong></h2><p><strong>绝对稳定性定义</strong>：如果 $k$ 步法的特征多项式方程 $\rho(\lambda)-\overline{h}\sigma(\lambda)$ 的根 $|\lambda| &lt; 1$ ，则称该 $k$ 步法关于 $\overline{h}&#x3D;h\lambda$ 绝对稳定</p>
+<p><strong>绝对稳定域定义</strong>：若存在复数域 $D_A$ ，使 $k$ 步法对 $\forall\overline{h} \in D_A$ 都绝对稳定，则称 $D_A$ 为该 $k$ 步法的绝对稳定域。此时 $\displaystyle \overline{h}&#x3D;\frac{\rho(\lambda)}{\sigma(\lambda)}$ ，$D_A&#x3D;{\overline{h}:|\lambda(\overline{h})| &lt; 1}$ 。绝对稳定域越大，方法在不同 $\lambda$ 和 $h$ 取值下适应能力越强，越不容易出现误差发散情况</p>
 <p><strong>命题 5.1</strong></p>
-<p>对于一个相容的稳定多步法，若绝对稳定，则 $\lambda$ 的实部 $Re(\lambda) &lt; 0$ ，即绝对稳定域 $D_A$ 在左半复平面。这是因为对于稳定的数值方法，当应用于稳定的微分方程（一般对应 $Re(\lambda) &lt; 0$ ，此时精确解随时间衰减 ）时，数值方法的绝对稳定域应与之匹配，保证数值解的稳定性</p>
-<h2 id="Runge-kutta-法绝对稳定域推导">Runge - kutta 法绝对稳定域推导</h2>
-<p><strong>m 级 m 阶 Runge - kutta 法应用于测试方程</strong></p>
-<p>对于测试方程 $u’=\lambda u$ ，其精确解为 $u = e^{\lambda t}$</p>
-<p><strong>计算中间斜率值</strong>：<br>
-$$<br>
-\begin{align}<br>
-k_1 &amp;= f(t_n, u_n)=\lambda u_n=\lambda u_nP_0(\lambda h)\<br>
-\<br>
-k_2 &amp;= f(t_n + a_2h, u_n+hb_{21}k_1)\<br>
-&amp;=\lambda(u_n+hb_{21}k_1)\<br>
-&amp;=\lambda(1 + hb_{21}\lambda)u_n\<br>
-&amp;=\lambda u_nP_1(\lambda h)\<br>
-\<br>
-k_3 &amp;= f(t_n + a_3h, u_n+h(b_{31}k_1 + b_{32}k_2))=\lambda u_nP_2(\lambda h)\<br>
-\vdots\<br>
-k_{m - 1}&amp;=\lambda u_nP_{m - 1}(\lambda h)</p>
-<p>\end{align}<br>
-$$<br>
-这里 $P_i(\lambda h)$ 是关于 $\lambda h$ 的多项式</p>
-<p><strong>计算数值解</strong>：<br>
-$$<br>
-\begin{align}<br>
-u_{n + 1}&amp;=u_n+h(c_1k_1+\cdots + c_{m - 1}k_{m - 1})\<br>
-&amp;=u_n+h(c_1\lambda u_n + c_2P_1(\lambda h)\lambda u_n+\cdots + c_{m - 1}P_{m - 1}(\lambda h)\lambda u_n)\<br>
-&amp;=u_n(1 + P_m(\lambda h))<br>
-\end{align}<br>
-$$<br>
-其中 $P_m(\lambda h)$ 是关于 $\lambda h$ 的多项式</p>
+<p>对于一个相容的稳定多步法，若绝对稳定，则 $\lambda$ 的实部 $Re(\lambda) &lt; 0$ ，即绝对稳定域 $D_A$ 在左半复平面。这是因为对于稳定的数值方法，当应用于稳定的微分方程（一般对应 $Re(\lambda) &lt; 0$ ，此时精确解随时间衰减 ）时，数值方法的绝对稳定域应与之匹配，保证数值解的稳定性 </p>
+<h2>Runge - kutta 法绝对稳定域推导</h2><p><strong>m 级 m 阶 Runge - kutta 法应用于测试方程</strong></p>
+<p>对于测试方程 $u’&#x3D;\lambda u$ ，其精确解为 $u &#x3D; e^{\lambda t}$ </p>
+<p><strong>计算中间斜率值</strong>：<br>$$<br>\begin{align}<br>k_1 &amp;&#x3D; f(t_n, u_n)&#x3D;\lambda u_n&#x3D;\lambda u_nP_0(\lambda h)\<br>\<br>k_2 &amp;&#x3D; f(t_n + a_2h, u_n+hb_{21}k_1)\<br>&amp;&#x3D;\lambda(u_n+hb_{21}k_1)\<br>&amp;&#x3D;\lambda(1 + hb_{21}\lambda)u_n\<br>&amp;&#x3D;\lambda u_nP_1(\lambda h)\<br>\<br>k_3 &amp;&#x3D; f(t_n + a_3h, u_n+h(b_{31}k_1 + b_{32}k_2))&#x3D;\lambda u_nP_2(\lambda h)\<br>\vdots\<br>k_{m - 1}&amp;&#x3D;\lambda u_nP_{m - 1}(\lambda h)</p>
+<p>\end{align}<br>$$<br>这里 $P_i(\lambda h)$ 是关于 $\lambda h$ 的多项式</p>
+<p><strong>计算数值解</strong>：<br>$$<br>\begin{align}<br>u_{n + 1}&amp;&#x3D;u_n+h(c_1k_1+\cdots + c_{m - 1}k_{m - 1})\<br>&amp;&#x3D;u_n+h(c_1\lambda u_n + c_2P_1(\lambda h)\lambda u_n+\cdots + c_{m - 1}P_{m - 1}(\lambda h)\lambda u_n)\<br>&amp;&#x3D;u_n(1 + P_m(\lambda h))<br>\end{align}<br>$$<br>其中 $P_m(\lambda h)$ 是关于 $\lambda h$ 的多项式</p>
 <p><strong>与精确解 Taylor 展开对比</strong></p>
-<p>将精确解 $u(t_{n + 1})$ 在 $t_n$ 处 Taylor 展开：<br>
-$$<br>
-\begin{align}<br>
-u(t_{n + 1})&amp;=u(t_n)+u’(t_n)h+\cdots+\frac{u^{(m)}(t_n)}{m!}h^m+O(h^{m + 1})\<br>
-&amp;=u(t_n)+u(t_n)\lambda h+\cdots+\frac{u(t_n)\lambda^m h^m}{m!}+O(h^{m + 1})\<br>
-&amp;=(1+\lambda h+\cdots+\frac{(\lambda h)^m}{m!})u(t_n)+O(h^{m + 1})</p>
-<p>\end{align}<br>
-$$<br>
-由于 $m$ 级 $m$ 阶 Runge - kutta 法的精度要求，使得<br>
-$$<br>
-1 + P_m(\lambda h)=1+\lambda h+\cdots+\frac{(\lambda h)^m}{m!}<br>
-$$<br>
-由 $u_{n+1}=u_n(1 + P_m(\lambda h))$ 其特征方程为 $\lambda - [1 + P_m(\lambda h)] = 0$ ，其中<br>
-$$<br>
-\begin{align}<br>
-\lambda_1 &amp;= 1 + P_m(\lambda h)=1+\lambda h+\cdots+\frac{(\lambda h)^m}{m!}\<br>
-D_A &amp;={\overline{h}:|\lambda_1(\overline{h})| &lt; 1}={\overline{h}:|1+\overline{h}+\cdots+\frac{\overline{h}^m}{m!}| &lt; 1}\<br>
-&amp;   \quad  \quad \quad \quad \quad  \overline{h} =\lambda h\<br>
-\end{align}<br>
-$$<br>
-通过求解该不等式确定 $$\overline{h}$$ 的取值范围，从而得到方法的绝对稳定域，判断在哪些 $\lambda$ 和 $h$ 组合下数值解稳定</p>
-<h1>一阶方程组和刚性问题</h1>
-<h2 id="常微分方程组（ODEs）相关"><strong>常微分方程组（ODEs）相关</strong></h2>
-<p><strong>常微分方程组</strong>：一般形式为<br>
-$$<br>
-\begin{cases}u_1’ = f_1(u_1,\cdots,u_m)\\vdots\u_m’ = f_m(u_1,\cdots,u_m)\end{cases}<br>
-$$<br>
-初值条件为 $u_i(t_0)=u_{i0}$ ，$i = 1,\cdots,m$</p>
-<p><strong>高阶常微分初值问题</strong>：如<br>
-$$<br>
-\begin{cases}u^{(m)} = f(t,u,u’,\cdots,u^{(m - 1)})\u(t_0)=u_0, u’(t_0)=u_0’,\cdots,u^{(m - 1)}(t_0)=u_0^{(m - 1)}\end{cases}<br>
-$$<br>
-令 $u_1 = u$ ，$u_2 = u’$ ，$\cdots$ ，$u_m = u^{(m - 1)}$ ，可转化为常微分方程组<br>
-$$<br>
-\begin{cases}u_1’ = u_2\u_2’ = u_3\\vdots\u_m’ = f(t,u_1,u_2,\cdots,u_m)\end{cases}<br>
-$$<br>
-写成向量形式为 $\vec{u}'=\vec{f}(t,\vec{u})$ ，$\vec{u}(t_0)=\vec{u}_0$ 。并且单个方程的数值解法（如 Runge - kutta 法等 ）可推广应用到方程组的求解中</p>
-<h2 id="刚性问题（Stiff-ODE）"><strong>刚性问题（Stiff ODE）</strong></h2>
-<p><strong>示例分析</strong>：对于方程组 $\vec{u}’ = A\vec{u}$ ，$\vec{u} \in \mathbb{R}^3$ ，其中<br>
-$$<br>
-A=\begin{bmatrix}-0.1&amp;-49.9&amp;0\0&amp;-50&amp;0\0&amp;70&amp;-3\times10^4\end{bmatrix}<br>
-$$<br>
-$A$ 的特征值为 $\lambda_1=-0.1$ ，$\lambda_2=-50$ ，$\lambda_3=-3\times10^4$ 。当 $t \to \infty$ 时，$u_i(t) \to 0$ ，但收敛速度差异极大。使用 Runge - kutta 法时，为保证绝对稳定，要求 $h \leq 10^{-4}$ ；为使解充分接近定态解 0 ，对于收敛最慢的解（对应 $\lambda_1$ ），需 $e^{-0.1T} \approx 0$ ，即 $T \approx 40$ ，则计算步数 $\displaystyle n=\frac{T}{h} \approx 4\times10^5$ ，计算量巨大</p>
-<p><strong>定义</strong>：设 $\lambda_i$ 为 $A$ 的特征值，若满足：<br>
-$$<br>
-Re(\lambda_i) &lt; 0 ，i = 1,\cdots,m\<br>
-\frac{\max|Re(\lambda_i)|}{\min|Re(\lambda_i)|} = R \gg 1<br>
-$$<br>
-则称方程组是刚性的，$R$ 为刚性比</p>
-<p>对于刚性方程组，需专门的数值方法求解，以避免因步长限制导致计算量过大等问题</p>
-<h1><strong>外推法</strong></h1>
-<h2 id="思想："><strong>思想：</strong></h2>
-<p>以 Euler 法 $\displaystyle u_{n + 1}=u_n+hf(t_n,u_n)$ 为例</p>
-<p>外推法的思想是通过不同步长 $h$ 和 $\displaystyle \frac{h}{2}$ 分别计算数值解序列 $u_1,u_2,\cdots,u_n$ 和 $\displaystyle \overline{u}_{\frac{1}{2}},\overline{u}_1,\overline{u}_{\frac{3}{2}},\cdots,\overline{u}_{n - \frac{1}{2}},\overline{u}_n$ ，一般情况下 $\overline{u}_1 \neq u_1$<br>
-$$<br>
-\begin{align}<br>
-u_1 &amp;= u_0+hf(t_0,u_0)\<br>
-\overline{u}<em>1&amp;=\overline{u}</em>{\frac{1}{2}}+\frac{h}{2}f(t_{\frac{1}{2}},\overline{u}<em>{\frac{1}{2}})=u_0+\frac{h}{2}f(t_0,u_0)+\frac{h}{2}f(t</em>{\frac{1}{2}},\overline{u}_{\frac{1}{2}})<br>
-\end{align}<br>
-$$<br>
-通过 $u_1$ 和 $\overline{u}_1$ 的组合 $\displaystyle 2\overline{u}_1 - u_1=u_0+hf(t_{\frac{1}{2}},\overline{u}_{\frac{1}{2}})$ ，利用 Runge - kutta 法思想，其精度可达到 $u(t_1)+O(h^3)$ ，相比原数值方法精度有所提高</p>
-<h2 id="一般外推法误差分析及线性组合推导"><strong>一般外推法误差分析及线性组合推导</strong></h2>
-<p>对于某数值方法，记步长为 $h$ 时的数值解序列 $u_1,u_2,\cdots,u_n$ 为 $u(t,h)$ ，步长为 $\frac{h}{2}$ 时的数值解序列 $\displaystyle \overline{u}_{\frac{1}{2}},\overline{u}_1,\overline{u}_{\frac{3}{2}},\cdots,\overline{u}_{n - \frac{1}{2}},\overline{u}_n$ 为 $u(t,\frac{h}{2})$</p>
-<p>假设该方法的误差有展开式<br>
-$$<br>
-u(t,h)=u(t)+\varepsilon(t)h^p+O(h^{p + 1})<br>
-$$<br>
-则<br>
-$$<br>
-u(t,\frac{h}{2})=u(t)+\varepsilon(t)(\frac{h}{2})^p+O(h^{p + 1})<br>
-$$<br>
-对 $u(t,h)$ 和 $u(t,\frac{h}{2})$ 进行线性组合：</p>
-<p>设组合式为<br>
-$$<br>
-\frac{2^p u(t,\frac{h}{2})-u(t,h)}{2^p - 1}<br>
-$$<br>
-将误差展开式代入：</p>
-<p>分子为<br>
-$$<br>
-\begin{align}<br>
-&amp;2^p\left[u(t)+\varepsilon(t)(\frac{h}{2})^p+O(h^{p + 1})\right]-\left[u(t)+\varepsilon(t)h^p+O(h^{p + 1})\right]\<br>
-&amp;=2^p u(t)+\varepsilon(t)h^p+2^pO(h^{p + 1})-u(t)-\varepsilon(t)h^p - O(h^{p + 1})\<br>
-&amp;=(2^p - 1)u(t)+O(h^{p + 1})<br>
-\end{align}<br>
-$$<br>
-所以<br>
-$$<br>
-\frac{2^p u(t,\frac{h}{2})-u(t,h)}{2^p - 1}=u(t)+O(h^{p + 1})<br>
-$$<br>
-通过这种线性组合，提高了数值解的精度阶数，从 $O(h^p)$ 提升到 $O(h^{p + 1})$ ，这就是外推法提高数值计算精度的基本原理</p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/" title="微分方程数值解 第二章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微分方程数值解 第二章（1）</div></div><div class="info-2"><div class="info-item-1">椭圆型方程的有限差分法，一维差分格式的直接差分法求解</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A310/" title="微分方程数值解 第四章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-02</div><div class="info-item-2">微分方程数值解 第四章（2）</div></div><div class="info-2"><div class="info-item-1">几种常见的差分格式（迎风格式）及其稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A313/" title="微分方程数值解 第六章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">微分方程数值解 第六章（1）</div></div><div class="info-2"><div class="info-item-1">有限元方法的基本步骤，Ritz法与Galerkin法下的一维一次元</div></div></div></a><a class="pagination-related" href="/2025/06/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A314/" title="微分方程数值解 第六章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-18</div><div class="info-item-2">微分方程数值解 第六章（2）</div></div><div class="info-2"><div class="info-item-1">一维一次元的收敛性与误差估计，一维二次元与一维三次元的构造</div></div></div></a><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">由于插件更新导致mathjax渲染插件与其他插件产生冲突，造成大面积数学公式加载不完全，有空再更新，请移步微信公众号查看文章</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Runge - kutta 法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E7%82%B9%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.1.</span> <span class="toc-text">中点公式推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E8%A7%A3%E4%B8%8E%E7%B2%BE%E7%A1%AE%E8%A7%A3%E5%B1%95%E5%BC%80%E5%8F%8A%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">数值解与精确解展开及误差分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%88%AC-m-%E7%82%B9-Runge-kutta-%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="toc-number">1.3.</span> <span class="toc-text">一般 m 点 Runge - kutta 法思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runge-kutta-%E6%B3%95%E4%B8%80%E8%88%AC%E5%BD%A2%E5%BC%8F%EF%BC%88m-%E7%BA%A7%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">Runge - kutta 法一般形式（m 级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%85%E5%AE%9A%E7%B3%BB%E6%95%B0%E6%B3%95%EF%BC%88%E4%BB%A5%E4%B8%89%E7%BA%A7%E4%B8%89%E9%98%B6%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">待定系数法（以三级三阶为例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runge-kutta-%E6%A0%BC%E5%BC%8F%E5%B1%95%E5%BC%80%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">Runge - kutta 格式展开：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">绝对稳定性和绝对稳定域</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Euler-%E6%B3%95%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">Euler 法绝对稳定性定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-%E6%AD%A5%E6%B3%95%E7%9A%84%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">**k 步法的绝对稳定性 **</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%8F%8A%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E5%9F%9F%E5%AE%9A%E4%B9%89"><span class="toc-number">2.3.</span> <span class="toc-text">绝对稳定性及绝对稳定域定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runge-kutta-%E6%B3%95%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E5%9F%9F%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.4.</span> <span class="toc-text">Runge - kutta 法绝对稳定域推导</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">一阶方程组和刚性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%BB%84%EF%BC%88ODEs%EF%BC%89%E7%9B%B8%E5%85%B3"><span class="toc-number">3.1.</span> <span class="toc-text">常微分方程组（ODEs）相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9A%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%88Stiff-ODE%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">刚性问题（Stiff ODE）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">外推法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">思想：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E5%A4%96%E6%8E%A8%E6%B3%95%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90%E5%8F%8A%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88%E6%8E%A8%E5%AF%BC"><span class="toc-number">4.2.</span> <span class="toc-text">一般外推法误差分析及线性组合推导</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fejér-Jackson 不等式及其推论"/></a><div class="content"><a class="title" href="/2025/06/30/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Fej%C3%A9r-Jackson%20%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="Fejér-Jackson 不等式及其推论">Fejér-Jackson 不等式及其推论</a><time datetime="2025-06-30T12:24:29.000Z" title="发表于 2025-06-30 20:24:29">2025-06-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
-  const loadMathjax = () => {
-    if (!window.MathJax) {
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          tags: 'none',
-        },
-        chtml: {
-          scale: 1.1
-        },
-        options: {
-          enableMenu: true,
-          renderActions: {
-            findScript: [10, doc => {
-              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-                const display = !!node.type.match(/; *mode=display/)
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
-                const text = document.createTextNode('')
-                node.parentNode.replaceChild(text, node)
-                math.start = {node: text, delim: '', n: 0}
-                math.end = {node: text, delim: '', n: 0}
-                doc.math.push(math)
-              }
-            }, '']
-          }
-        }
-      }
-
-      const script = document.createElement('script')
-      script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
-      script.id = 'MathJax-script'
-      script.async = true
-      document.head.appendChild(script)
-    } else {
-      MathJax.startup.document.state(0)
-      MathJax.texReset()
-      MathJax.typesetPromise()
-    }
-  }
-
-  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
-  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
-})()</script></div><script async src="//at.alicdn.com/t/c/font_4890277_rdw0tapxyy.js"></script><div class="aplayer" data-id="13570926609" data-server="netease" data-type="playlist"  data-fixed="true" data-theme="#3F51B5"></div><script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+<p>将精确解 $u(t_{n + 1})$ 在 $t_n$ 处 Taylor 展开：<br>$$<br>\begin{align}<br>u(t_{n + 1})&amp;&#x3D;u(t_n)+u’(t_n)h+\cdots+\frac{u^{(m)}(t_n)}{m!}h^m+O(h^{m + 1})\<br>&amp;&#x3D;u(t_n)+u(t_n)\lambda h+\cdots+\frac{u(t_n)\lambda^m h^m}{m!}+O(h^{m + 1})\<br>&amp;&#x3D;(1+\lambda h+\cdots+\frac{(\lambda h)^m}{m!})u(t_n)+O(h^{m + 1})</p>
+<p>\end{align}<br>$$<br>由于 $m$ 级 $m$ 阶 Runge - kutta 法的精度要求，使得<br>$$<br>1 + P_m(\lambda h)&#x3D;1+\lambda h+\cdots+\frac{(\lambda h)^m}{m!}<br>$$<br>由 $u_{n+1}&#x3D;u_n(1 + P_m(\lambda h))$ 其特征方程为 $\lambda - [1 + P_m(\lambda h)] &#x3D; 0$ ，其中<br>$$<br>\begin{align}<br>\lambda_1 &amp;&#x3D; 1 + P_m(\lambda h)&#x3D;1+\lambda h+\cdots+\frac{(\lambda h)^m}{m!}\<br>D_A &amp;&#x3D;{\overline{h}:|\lambda_1(\overline{h})| &lt; 1}&#x3D;{\overline{h}:|1+\overline{h}+\cdots+\frac{\overline{h}^m}{m!}| &lt; 1}\<br>&amp;   \quad  \quad \quad \quad \quad  \overline{h} &#x3D;\lambda h\<br>\end{align}<br>$$<br>通过求解该不等式确定 $$\overline{h}$$ 的取值范围，从而得到方法的绝对稳定域，判断在哪些 $\lambda$ 和 $h$ 组合下数值解稳定</p>
+<h1>一阶方程组和刚性问题</h1><h2><strong>常微分方程组（ODEs）相关</strong></h2><p><strong>常微分方程组</strong>：一般形式为<br>$$<br>\begin{cases}u_1’ &#x3D; f_1(u_1,\cdots,u_m)\\vdots\u_m’ &#x3D; f_m(u_1,\cdots,u_m)\end{cases}<br>$$<br>初值条件为 $u_i(t_0)&#x3D;u_{i0}$ ，$i &#x3D; 1,\cdots,m$ </p>
+<p><strong>高阶常微分初值问题</strong>：如<br>$$<br>\begin{cases}u^{(m)} &#x3D; f(t,u,u’,\cdots,u^{(m - 1)})\u(t_0)&#x3D;u_0, u’(t_0)&#x3D;u_0’,\cdots,u^{(m - 1)}(t_0)&#x3D;u_0^{(m - 1)}\end{cases}<br>$$<br>令 $u_1 &#x3D; u$ ，$u_2 &#x3D; u’$ ，$\cdots$ ，$u_m &#x3D; u^{(m - 1)}$ ，可转化为常微分方程组<br>$$<br>\begin{cases}u_1’ &#x3D; u_2\u_2’ &#x3D; u_3\\vdots\u_m’ &#x3D; f(t,u_1,u_2,\cdots,u_m)\end{cases}<br>$$<br>写成向量形式为 $\vec{u}’&#x3D;\vec{f}(t,\vec{u})$ ，$\vec{u}(t_0)&#x3D;\vec{u}_0$ 。并且单个方程的数值解法（如 Runge - kutta 法等 ）可推广应用到方程组的求解中 </p>
+<h2><strong>刚性问题（Stiff ODE）</strong></h2><p><strong>示例分析</strong>：对于方程组 $\vec{u}’ &#x3D; A\vec{u}$ ，$\vec{u} \in \mathbb{R}^3$ ，其中<br>$$<br>A&#x3D;\begin{bmatrix}-0.1&amp;-49.9&amp;0\0&amp;-50&amp;0\0&amp;70&amp;-3\times10^4\end{bmatrix}<br>$$<br>$A$ 的特征值为 $\lambda_1&#x3D;-0.1$ ，$\lambda_2&#x3D;-50$ ，$\lambda_3&#x3D;-3\times10^4$ 。当 $t \to \infty$ 时，$u_i(t) \to 0$ ，但收敛速度差异极大。使用 Runge - kutta 法时，为保证绝对稳定，要求 $h \leq 10^{-4}$ ；为使解充分接近定态解 0 ，对于收敛最慢的解（对应 $\lambda_1$ ），需 $e^{-0.1T} \approx 0$ ，即 $T \approx 40$ ，则计算步数 $\displaystyle n&#x3D;\frac{T}{h} \approx 4\times10^5$ ，计算量巨大</p>
+<p><strong>定义</strong>：设 $\lambda_i$ 为 $A$ 的特征值，若满足：<br>$$<br>Re(\lambda_i) &lt; 0 ，i &#x3D; 1,\cdots,m\<br>\frac{\max|Re(\lambda_i)|}{\min|Re(\lambda_i)|} &#x3D; R \gg 1<br>$$<br>则称方程组是刚性的，$R$ 为刚性比 </p>
+<p>对于刚性方程组，需专门的数值方法求解，以避免因步长限制导致计算量过大等问题 </p>
+<h1><strong>外推法</strong></h1><h2><strong>思想：</strong></h2><p>以 Euler 法 $\displaystyle u_{n + 1}&#x3D;u_n+hf(t_n,u_n)$ 为例</p>
+<p>外推法的思想是通过不同步长 $h$ 和 $\displaystyle \frac{h}{2}$ 分别计算数值解序列 $u_1,u_2,\cdots,u_n$ 和 $\displaystyle \overline{u}_{\frac{1}{2}},\overline{u}_1,\overline{u}_{\frac{3}{2}},\cdots,\overline{u}_{n - \frac{1}{2}},\overline{u}_n$ ，一般情况下 $\overline{u}_1 \neq u_1$<br>$$<br>\begin{align}<br>u_1 &amp;&#x3D; u_0+hf(t_0,u_0)\<br>\overline{u}<em>1&amp;&#x3D;\overline{u}</em>{\frac{1}{2}}+\frac{h}{2}f(t_{\frac{1}{2}},\overline{u}<em>{\frac{1}{2}})&#x3D;u_0+\frac{h}{2}f(t_0,u_0)+\frac{h}{2}f(t</em>{\frac{1}{2}},\overline{u}_{\frac{1}{2}})<br>\end{align}<br>$$<br>通过 $u_1$ 和 $\overline{u}_1$ 的组合 $\displaystyle 2\overline{u}_1 - u_1&#x3D;u_0+hf(t_{\frac{1}{2}},\overline{u}_{\frac{1}{2}})$ ，利用 Runge - kutta 法思想，其精度可达到 $u(t_1)+O(h^3)$ ，相比原数值方法精度有所提高</p>
+<h2><strong>一般外推法误差分析及线性组合推导</strong></h2><p>对于某数值方法，记步长为 $h$ 时的数值解序列 $u_1,u_2,\cdots,u_n$ 为 $u(t,h)$ ，步长为 $\frac{h}{2}$ 时的数值解序列 $\displaystyle \overline{u}_{\frac{1}{2}},\overline{u}_1,\overline{u}_{\frac{3}{2}},\cdots,\overline{u}_{n - \frac{1}{2}},\overline{u}_n$ 为 $u(t,\frac{h}{2})$ </p>
+<p>假设该方法的误差有展开式<br>$$<br>u(t,h)&#x3D;u(t)+\varepsilon(t)h^p+O(h^{p + 1})<br>$$<br> 则<br>$$<br>u(t,\frac{h}{2})&#x3D;u(t)+\varepsilon(t)(\frac{h}{2})^p+O(h^{p + 1})<br>$$<br>对 $u(t,h)$ 和 $u(t,\frac{h}{2})$ 进行线性组合：</p>
+<p>设组合式为<br>$$<br>\frac{2^p u(t,\frac{h}{2})-u(t,h)}{2^p - 1}<br>$$<br>将误差展开式代入：</p>
+<p>分子为<br>$$<br>\begin{align}<br>&amp;2^p\left[u(t)+\varepsilon(t)(\frac{h}{2})^p+O(h^{p + 1})\right]-\left[u(t)+\varepsilon(t)h^p+O(h^{p + 1})\right]\<br>&amp;&#x3D;2^p u(t)+\varepsilon(t)h^p+2^pO(h^{p + 1})-u(t)-\varepsilon(t)h^p - O(h^{p + 1})\<br>&amp;&#x3D;(2^p - 1)u(t)+O(h^{p + 1})<br>\end{align}<br>$$<br>所以<br>$$<br>\frac{2^p u(t,\frac{h}{2})-u(t,h)}{2^p - 1}&#x3D;u(t)+O(h^{p + 1})<br>$$<br>通过这种线性组合，提高了数值解的精度阶数，从 $O(h^p)$ 提升到 $O(h^{p + 1})$ ，这就是外推法提高数值计算精度的基本原理 </p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/">微分方程数值解</a></div><div class="post-share"><div class="social-share" data-image="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/05/22/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A33/" title="微分方程数值解 第二章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">微分方程数值解 第二章（1）</div></div><div class="info-2"><div class="info-item-1">椭圆型方程的有限差分法，一维差分格式的直接差分法求解</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/02/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A310/" title="微分方程数值解 第四章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-02</div><div class="info-item-2">微分方程数值解 第四章（2）</div></div><div class="info-2"><div class="info-item-1">几种常见的差分格式（迎风格式）及其稳定性分析</div></div></div></a><a class="pagination-related" href="/2025/06/08/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A311/" title="微分方程数值解 第五章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-08</div><div class="info-item-2">微分方程数值解 第五章（1）</div></div><div class="info-2"><div class="info-item-1">边值问题的变分形式，Sobolev 空间的基本性质，边值问题的分类，虚功原理等</div></div></div></a><a class="pagination-related" href="/2025/05/18/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A31/" title="微分方程数值解 第一章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-18</div><div class="info-item-2">微分方程数值解 第一章（1）</div></div><div class="info-2"><div class="info-item-1">ODE初值解的Euler法，线性多步法，相容性、稳定性和误差估计</div></div></div></a><a class="pagination-related" href="/2025/06/12/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A312/" title="微分方程数值解 第五章（2）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-12</div><div class="info-item-2">微分方程数值解 第五章（2）</div></div><div class="info-2"><div class="info-item-1">二阶椭圆方程 Dirichlet 边值问题和 Ritz-Galerkin 方法</div></div></div></a><a class="pagination-related" href="/2025/06/15/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A313/" title="微分方程数值解 第六章（1）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">微分方程数值解 第六章（1）</div></div><div class="info-2"><div class="info-item-1">有限元方法的基本步骤，Ritz法与Galerkin法下的一维一次元</div></div></div></a><a class="pagination-related" href="/2025/06/23/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A315/" title="微分方程数值解 第六章（3）"><img class="cover" src="https://s21.ax1x.com/2025/05/24/pVSiXi6.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-23</div><div class="info-item-2">微分方程数值解 第六章（3）</div></div><div class="info-2"><div class="info-item-1">二维问题的矩形元与三角元法</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s21.ax1x.com/2025/04/13/pEWCMQ0.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vendredi</div><div class="author-info-description">数学 | 编程 | 技术博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://res.abeim.cn/api/qq/?qq=2891430076" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/161254502" target="_blank" title="B站"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:vendredi_h@163.com" target="_blank" title="邮箱"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang1"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.douban.com/people/210028684" target="_blank" title="豆瓣"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-doubanwang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://music.163.com/#/user/home?id=321454582" target="_blank" title="网易云音乐"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wangyiyunyinle1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-gonggao"></use></svg></a><span>公告</span></div><div class="announcement_content">由于插件更新导致mathjax渲染插件与其他插件产生冲突，造成大面积数学公式加载不完全，有空再更新，请移步微信公众号查看文章</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Runge - kutta 法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">中点公式推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">数值解与精确解展开及误差分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">一般 m 点 Runge - kutta 法思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">Runge - kutta 法一般形式（m 级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text">待定系数法（以三级三阶为例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.6.</span> <span class="toc-text">Runge - kutta 格式展开：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">绝对稳定性和绝对稳定域</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">Euler 法绝对稳定性定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">**k 步法的绝对稳定性 **</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.3.</span> <span class="toc-text">绝对稳定性及绝对稳定域定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.4.</span> <span class="toc-text">Runge - kutta 法绝对稳定域推导</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">一阶方程组和刚性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.1.</span> <span class="toc-text">常微分方程组（ODEs）相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.2.</span> <span class="toc-text">刚性问题（Stiff ODE）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">外推法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.1.</span> <span class="toc-text">思想：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.2.</span> <span class="toc-text">一般外推法误差分析及线性组合推导</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/test/" title="数学公式测试">数学公式测试</a><time datetime="2025-12-31T16:00:00.000Z" title="发表于 2026-01-01 00:00:00">2026-01-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式"><img src="https://s21.ax1x.com/2025/07/29/pVY78qH.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流行积分不等式"/></a><div class="content"><a class="title" href="/2025/07/29/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%B5%81%E8%A1%8C%E7%A7%AF%E5%88%86%E4%B8%8D%E7%AD%89%E5%BC%8F/" title="流行积分不等式">流行积分不等式</a><time datetime="2025-07-29T15:36:46.000Z" title="发表于 2025-07-29 23:36:46">2025-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一则有关伽马函数与三角函数的积分问题"/></a><div class="content"><a class="title" href="/2025/07/04/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E4%BC%BD%E9%A9%AC%E5%87%BD%E6%95%B0%E4%B8%8E%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" title="一则有关伽马函数与三角函数的积分问题">一则有关伽马函数与三角函数的积分问题</a><time datetime="2025-07-04T12:24:29.000Z" title="发表于 2025-07-04 20:24:29">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理"><img src="https://s21.ax1x.com/2025/07/03/pVuqngI.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bohr-Mollerup 定理"/></a><div class="content"><a class="title" href="/2025/07/02/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Bohr-Mollerup%20%E5%AE%9A%E7%90%86/" title="Bohr-Mollerup 定理">Bohr-Mollerup 定理</a><time datetime="2025-07-02T02:20:07.000Z" title="发表于 2025-07-02 10:20:07">2025-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分"><img src="https://s21.ax1x.com/2025/07/02/pVubqBT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dirichlet 核与 Dirichlet 积分"/></a><div class="content"><a class="title" href="/2025/07/01/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/Dirichlet%E6%A0%B8/" title="Dirichlet 核与 Dirichlet 积分">Dirichlet 核与 Dirichlet 积分</a><time datetime="2025-07-01T12:24:29.000Z" title="发表于 2025-07-01 20:24:29">2025-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By Vendredi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/instant.page/instantpage.js" type="module"></script><div class="js-pjax"></div><script async src="//at.alicdn.com/t/c/font_4890277_rdw0tapxyy.js"></script><div class="aplayer" data-id="13570926609" data-server="netease" data-type="playlist"  data-fixed="true" data-theme="#3F51B5"></div><script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script><script src="https://unpkg.com/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
   // 销毁非固定播放器
   const destroyAplayer = () => {
     if (!window.aplayers) return;

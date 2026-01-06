@@ -120,7 +120,15 @@ svg.icon {
   height: 20px !important; /* 限制高度 */
 }
   
-/* 强制显示公式 */
-mjx-container[jax="CHTML"] {
-  display: inline !important;
+
+/* 强制 MathJax SVG 块公式居中 */
+.mjx-chtml, 
+.mjx-svg-halign {
+  display: block !important;       /* 块级显示 */
+  text-align: center !important;   /* 父容器居中 */
+}
+
+.mjx-container[display="true"] {
+  display: block !important;       /* 块公式 */
+  margin: 1em auto !important;     /* 水平居中 + 上下间距 */
 }
